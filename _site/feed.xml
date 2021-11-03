@@ -1,16 +1,55 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2021-11-03T14:32:49+07:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Linz’s Blog</title><subtitle>Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.</subtitle><author><name>linz04</name></author><entry><title type="html">Cyber Jawara Quick Maffs</title><link href="http://localhost:4000/ctf/2021/11/03/quick-maffs.html" rel="alternate" type="text/html" title="Cyber Jawara Quick Maffs" /><published>2021-11-03T00:00:00+07:00</published><updated>2021-11-03T00:00:00+07:00</updated><id>http://localhost:4000/ctf/2021/11/03/quick-maffs</id><content type="html" xml:base="http://localhost:4000/ctf/2021/11/03/quick-maffs.html">&lt;h2 id=&quot;description&quot;&gt;Description&lt;/h2&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="id"><generator uri="https://jekyllrb.com/" version="4.2.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" hreflang="id" /><updated>2021-11-03T20:19:43+07:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Linz’s Blog</title><subtitle>Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.</subtitle><author><name>linz04</name></author><entry><title type="html">Cyber Jawara Quick Maffs</title><link href="http://localhost:4000/ctf/2021/11/03/quick-maffs.html" rel="alternate" type="text/html" title="Cyber Jawara Quick Maffs" /><published>2021-11-03T00:00:00+07:00</published><updated>2021-11-03T00:00:00+07:00</updated><id>http://localhost:4000/ctf/2021/11/03/quick-maffs</id><content type="html" xml:base="http://localhost:4000/ctf/2021/11/03/quick-maffs.html">&lt;h2 id=&quot;description&quot;&gt;Description&lt;/h2&gt;
 &lt;blockquote&gt;
   &lt;p&gt;1 + 1 = 2, e^2 that’s 9? maybe? idk.&lt;br /&gt;
 Author: circleous#0587&lt;/p&gt;
 &lt;/blockquote&gt;
 
-&lt;p&gt;You can download the challenge archive from &lt;a href=&quot;https://google.com&quot;&gt;here&lt;/a&gt;
-And for build the challenge, you can read the README.md&lt;/p&gt;
+&lt;p&gt;Untuk download challengenya kalian bisa download di &lt;a href=&quot;https://google.com&quot;&gt;sini&lt;/a&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;setup&quot;&gt;Setup&lt;/h2&gt;
+&lt;p&gt;Didalam zip file sudah ada README.md bisa kalian baca, tapi disini saya akan jelaskan cara setup dan build untuk challengenya dari awal.&lt;/p&gt;
+&lt;ol&gt;
+  &lt;li&gt;Install depot_tools
+    &lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  &lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;git clone https://chromium.googlesource.com/chromium/tools/depot_tools.git
+  &lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;export PATH=/home/your_path/path/depot_tools:&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$PATH&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&amp;gt;&lt;/span&gt; ~/.bashrc
+  &lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;source&lt;/span&gt; ~/.bashrc
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Next extract challengenya, dan dialamnya sudah ada README.md
+    &lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  &lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;fetch v8 &lt;span class=&quot;c&quot;&gt;# https://chromium.googlesource.com/chromium/tools/depot_tools.git&lt;/span&gt;
+  &lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;cd &lt;/span&gt;v8
+  &lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;./build/install-build-deps.sh
+  &lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;git checkout 5fe0aa3bc79c0a9d3ad546b79211f07105f09585
+  &lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;git apply path/to/maffs.patch &lt;span class=&quot;c&quot;&gt;# challange patch&lt;/span&gt;
+  &lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;git apply path/to/v8_global.patch &lt;span class=&quot;c&quot;&gt;# disable built-in d8 global&lt;/span&gt;
+  &lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;./tools/dev/v8gen.py x64.release
+  &lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;ninja &lt;span class=&quot;nt&quot;&gt;-C&lt;/span&gt; ./out.gn/x64.release &lt;span class=&quot;c&quot;&gt;#Release version&lt;/span&gt;
+  &lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;./tools/dev/v8gen.py x64.debug
+  &lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;ninja &lt;span class=&quot;nt&quot;&gt;-C&lt;/span&gt; ./out.gn/x64.debug &lt;span class=&quot;c&quot;&gt;# Debug version&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;Untuk build v8 akan memakan waktu lumayan lama tergantung kecepatan koneksi kalian sama spec laptop kalian.
+Untuk Debugging bisa menggunakan gdb&lt;/p&gt;
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;gdb &lt;span class=&quot;nt&quot;&gt;-q&lt;/span&gt; d8
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;run &lt;span class=&quot;nt&quot;&gt;--shell&lt;/span&gt; script.js
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;--shell&lt;/code&gt; disini agar v8 tidak langsung exit saat kita running script kita, untuk contoh script saya seperti ini&lt;/p&gt;
+&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;foo&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;Hello World!&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\n&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;foo&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;&lt;img src=&quot;/assets/images/quickmaffs/quick1.png&quot; alt=&quot;Test&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Now we are ready to HACK!&lt;/strong&gt;&lt;/p&gt;
 
 &lt;h2 id=&quot;patch-analysis&quot;&gt;Patch Analysis&lt;/h2&gt;
-&lt;p&gt;First, lets see the patch file. We dont need to understand every single line of code, but we should be able to find the vuln.&lt;/p&gt;
+&lt;p&gt;Sekarang kita baca patch &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;maffs.patch&lt;/code&gt; yang ada di soal untuk yang &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;v8_global.patch&lt;/code&gt; tidak ada yang perlu kita analisis.&lt;br /&gt;
+Kita fokus ke &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;maffs.patch&lt;/code&gt;.&lt;/p&gt;
 
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot; data-lang=&quot;javascript&quot;&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-diff&quot; data-lang=&quot;diff&quot;&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
 2
 3
 4
@@ -37,37 +76,46 @@ And for build the challenge, you can read the README.md&lt;/p&gt;
 25
 26
 27
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;nx&quot;&gt;diff&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;--&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;git&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;src&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;compiler&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;js&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;create&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;lowering&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;cc&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;src&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;compiler&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;js&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;create&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;lowering&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;cc&lt;/span&gt;
-&lt;span class=&quot;nx&quot;&gt;index&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;50&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;a523c606&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;..&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;b46267c4f&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;100644&lt;/span&gt;
-&lt;span class=&quot;o&quot;&gt;---&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;src&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;compiler&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;js&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;create&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;lowering&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;cc&lt;/span&gt;
-&lt;span class=&quot;o&quot;&gt;+++&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;src&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;compiler&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;js&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;create&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;lowering&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;cc&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;@@&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;683&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;9&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;683&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;6&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;@@&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Reduction&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;JSCreateLowering&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;ReduceJSCreateArray&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;Node&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;node&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-         &lt;span class=&quot;nx&quot;&gt;length_type&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;Max&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;kElementLoopUnrollLimit&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt;
-         &lt;span class=&quot;nx&quot;&gt;length_type&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;Min&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;length_type&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;Max&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;())&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-       &lt;span class=&quot;nx&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;capacity&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;static_cast&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;int&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;length_type&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;Max&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;());&lt;/span&gt;
-&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;      &lt;span class=&quot;c1&quot;&gt;// Replace length with a constant in order to protect against a potential&lt;/span&gt;
-&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;      &lt;span class=&quot;c1&quot;&gt;// typer bug leading to length &amp;gt; capacity.&lt;/span&gt;
-&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;      &lt;span class=&quot;nx&quot;&gt;length&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;jsgraph&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;Constant&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;capacity&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-       &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;ReduceNewArray&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;node&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;length&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;capacity&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;initial_map&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;elements_kind&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-                             &lt;span class=&quot;nx&quot;&gt;allocation&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;slack_tracking_prediction&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-     &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;nx&quot;&gt;diff&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;--&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;git&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;src&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;compiler&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;operation&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;typer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;cc&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;src&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;compiler&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;operation&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;typer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;cc&lt;/span&gt;
-&lt;span class=&quot;nx&quot;&gt;index&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;e7dc51bd2d&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;..&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;121&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;a7a7107&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;100644&lt;/span&gt;
-&lt;span class=&quot;o&quot;&gt;---&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;src&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;compiler&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;operation&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;typer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;cc&lt;/span&gt;
-&lt;span class=&quot;o&quot;&gt;+++&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;src&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;compiler&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;operation&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;typer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;cc&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;@@&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;411&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;7&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;411&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;7&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;@@&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Type&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;OperationTyper&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;NumberCosh&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;Type&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;type&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;gh&quot;&gt;diff --git a/src/compiler/js-create-lowering.cc b/src/compiler/js-create-lowering.cc
+index 50a523c606..0b46267c4f 100644
+&lt;/span&gt;&lt;span class=&quot;gd&quot;&gt;--- a/src/compiler/js-create-lowering.cc
+&lt;/span&gt;&lt;span class=&quot;gi&quot;&gt;+++ b/src/compiler/js-create-lowering.cc
+&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;@@ -683,9 +683,6 @@&lt;/span&gt; Reduction JSCreateLowering::ReduceJSCreateArray(Node* node) {
+         length_type.Max() &amp;lt;= kElementLoopUnrollLimit &amp;amp;&amp;amp;
+         length_type.Min() == length_type.Max()) {
+       int capacity = static_cast&amp;lt;int&amp;gt;(length_type.Max());
+&lt;span class=&quot;gd&quot;&gt;-      // Replace length with a constant in order to protect against a potential
+-      // typer bug leading to length &amp;gt; capacity.
+-      length = jsgraph()-&amp;gt;Constant(capacity);
+&lt;/span&gt;       return ReduceNewArray(node, length, capacity, *initial_map, elements_kind,
+                             allocation, slack_tracking_prediction);
+     }
+&lt;span class=&quot;gh&quot;&gt;diff --git a/src/compiler/operation-typer.cc b/src/compiler/operation-typer.cc
+index e7dc51bd2d..121a7a7107 100644
+&lt;/span&gt;&lt;span class=&quot;gd&quot;&gt;--- a/src/compiler/operation-typer.cc
+&lt;/span&gt;&lt;span class=&quot;gi&quot;&gt;+++ b/src/compiler/operation-typer.cc
+&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;@@ -411,7 +411,7 @@&lt;/span&gt; Type OperationTyper::NumberCosh(Type type) {
  
- &lt;span class=&quot;nx&quot;&gt;Type&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;OperationTyper&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;NumberExp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;Type&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;type&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-   &lt;span class=&quot;nx&quot;&gt;DCHECK&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;type&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;Is&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;Type&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;Number&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()));&lt;/span&gt;
-&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;  &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Type&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;Union&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;Type&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;PlainNumber&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(),&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Type&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;kc&quot;&gt;NaN&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(),&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;zone&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;());&lt;/span&gt;
-&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;  &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Type&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;PlainNumber&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
- &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+ Type OperationTyper::NumberExp(Type type) {
+   DCHECK(type.Is(Type::Number()));
+&lt;span class=&quot;gd&quot;&gt;-  return Type::Union(Type::PlainNumber(), Type::NaN(), zone());
+&lt;/span&gt;&lt;span class=&quot;gi&quot;&gt;+  return Type::PlainNumber();
+&lt;/span&gt; }
  
- &lt;span class=&quot;nx&quot;&gt;Type&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;OperationTyper&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;NumberExpm1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;Type&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;type&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+ Type OperationTyper::NumberExpm1(Type type) {
 &lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
-&lt;p&gt;We can see on the patch above, line 23 and 24
-The typer set &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Math.exp to be PlainNumber();&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;Disini saya jelasin sedikit maksud patch diatas:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Line 1 code tersebut patch file &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;src/compiler/js-create-lowring.cc&lt;/code&gt; untuk code yang di patch bisa diliat pada line 9-11 3 baris code di deleted.&lt;/li&gt;
+  &lt;li&gt;The patch was patcehd code to &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;src/compiler/operation-typer.cc&lt;/code&gt; we can see on line 15.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Can u guys see the bug?&lt;br /&gt;
+Sebelum patch typer set&lt;br /&gt;
+&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Math.exp to be Union(Type::PlainNumber(), Type::NaN(), zone())&lt;/code&gt; this mean the output will be either a PlainNumber or a NaN.
+But after the patch, we can see on the patch above on line 24.
+The typer set &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Math.exp to be PlainNumber();&lt;/code&gt; this mean the output will be always a PlainNumber.&lt;/p&gt;
 
 &lt;p&gt;And here is the same code with syntax highlighting:&lt;/p&gt;
 

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <meta charset="utf-8">
@@ -11,7 +11,7 @@
 <meta name="generator" content="Jekyll v4.2.1">
 <meta property="og:title" content="Cyber Jawara Quick Maffs">
 <meta name="author" content="linz04">
-<meta property="og:locale" content="en_US">
+<meta property="og:locale" content="id">
 <meta name="description" content="Description 1 + 1 = 2, e^2 that’s 9? maybe? idk. Author: circleous#0587">
 <meta property="og:description" content="Description 1 + 1 = 2, e^2 that’s 9? maybe? idk. Author: circleous#0587">
 <link rel="canonical" href="http://localhost:4000/ctf/2021/11/03/quick-maffs.html">
@@ -22,7 +22,7 @@
 <meta name="twitter:card" content="summary">
 <meta property="twitter:title" content="Cyber Jawara Quick Maffs">
 <script type="application/ld+json">
-{"@type":"BlogPosting","url":"http://localhost:4000/ctf/2021/11/03/quick-maffs.html","author":{"@type":"Person","name":"linz04"},"headline":"Cyber Jawara Quick Maffs","dateModified":"2021-11-03T00:00:00+07:00","datePublished":"2021-11-03T00:00:00+07:00","description":"Description 1 + 1 = 2, e^2 that’s 9? maybe? idk. Author: circleous#0587","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/ctf/2021/11/03/quick-maffs.html"},"@context":"https://schema.org"}</script>
+{"@type":"BlogPosting","url":"http://localhost:4000/ctf/2021/11/03/quick-maffs.html","headline":"Cyber Jawara Quick Maffs","dateModified":"2021-11-03T00:00:00+07:00","datePublished":"2021-11-03T00:00:00+07:00","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/ctf/2021/11/03/quick-maffs.html"},"author":{"@type":"Person","name":"linz04"},"description":"Description 1 + 1 = 2, e^2 that’s 9? maybe? idk. Author: circleous#0587","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 <link rel="shortcut icon" href="">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -285,6 +285,14 @@ document.addEventListener('DOMContentLoaded', function(event) {
   <ul class="list-unstyled ct-language-dropdown">
     
       <li>
+        <a href="#" class="lang-select" data-lang="id">
+          
+          <img src="https://cdn.countryflags.com/thumbs/indonesia/flag-400.png" title="Indonesia">
+          
+        </a>
+      </li>
+    
+      <li>
         <a href="#" class="lang-select" data-lang="en">
           
           <img src="https://cdn.countryflags.com/thumbs/united-states-of-america/flag-400.png" title="English">
@@ -338,7 +346,7 @@ document.addEventListener('DOMContentLoaded', function(event) {
 <script type="text/javascript">
 function googleTranslateElementInit() {
   new google.translate.TranslateElement({
-    pageLanguage: 'en',
+    pageLanguage: 'id',
     autoDisplay: false,
     layout: google.translate.TranslateElement.InlineLayout.VERTICAL
   }, 'google_translate_element');
@@ -805,7 +813,7 @@ function googleTranslateElementInit() {
 
 
 
-    <span class="post-reading-time left-vsplit"><i class="fa fa-clock-o"></i> About 3 mins</span>
+    <span class="post-reading-time left-vsplit"><i class="fa fa-clock-o"></i> About 12 mins</span>
   </p>
 <div class="post-tags">
 <a class="post-tag" href="/tags.html#writeups">#writeups</a><a class="post-tag" href="/tags.html#v8">#v8</a>
@@ -820,13 +828,54 @@ function googleTranslateElementInit() {
 Author: circleous#0587</p>
 </blockquote>
 
-<p>You can download the challenge archive from <a href="https://google.com">here</a>
-And for build the challenge, you can read the README.md</p>
+<p>Untuk download challengenya kalian bisa download di <a href="https://google.com">sini</a><br></p>
+
+<h2 id="setup">Setup</h2>
+<p>Didalam zip file sudah ada README.md bisa kalian baca, tapi disini saya akan jelaskan cara setup dan build untuk challengenya dari awal.</p>
+<ol>
+  <li>Install depot_tools
+    <div class="language-sh highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code>  <span class="nv">$ </span>git clone https://chromium.googlesource.com/chromium/tools/depot_tools.git
+  <span class="nv">$ </span><span class="nb">echo</span> <span class="s2">"export PATH=/home/your_path/path/depot_tools:</span><span class="nv">$PATH</span><span class="s2">"</span> <span class="o">&gt;&gt;</span> ~/.bashrc
+  <span class="nv">$ </span><span class="nb">source</span> ~/.bashrc
+</code></pre></div>    </div>
+  </li>
+  <li>Next extract challengenya, dan dialamnya sudah ada README.md
+    <div class="language-sh highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code>  <span class="nv">$ </span>fetch v8 <span class="c"># https://chromium.googlesource.com/chromium/tools/depot_tools.git</span>
+  <span class="nv">$ </span><span class="nb">cd </span>v8
+  <span class="nv">$ </span>./build/install-build-deps.sh
+  <span class="nv">$ </span>git checkout 5fe0aa3bc79c0a9d3ad546b79211f07105f09585
+  <span class="nv">$ </span>git apply path/to/maffs.patch <span class="c"># challange patch</span>
+  <span class="nv">$ </span>git apply path/to/v8_global.patch <span class="c"># disable built-in d8 global</span>
+  <span class="nv">$ </span>./tools/dev/v8gen.py x64.release
+  <span class="nv">$ </span>ninja <span class="nt">-C</span> ./out.gn/x64.release <span class="c">#Release version</span>
+  <span class="nv">$ </span>./tools/dev/v8gen.py x64.debug
+  <span class="nv">$ </span>ninja <span class="nt">-C</span> ./out.gn/x64.debug <span class="c"># Debug version</span>
+</code></pre></div>    </div>
+  </li>
+</ol>
+
+<p>Untuk build v8 akan memakan waktu lumayan lama tergantung kecepatan koneksi kalian sama spec laptop kalian.
+Untuk Debugging bisa menggunakan gdb</p>
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>gdb <span class="nt">-q</span> d8
+<span class="nv">$ </span>run <span class="nt">--shell</span> script.js
+</code></pre></div></div>
+<p><code class="language-plaintext highlighter-rouge">--shell</code> disini agar v8 tidak langsung exit saat kita running script kita, untuk contoh script saya seperti ini</p>
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">foo</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">Hello World!</span><span class="se">\n</span><span class="dl">"</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="nx">foo</span><span class="p">();</span>
+</code></pre></div></div>
+<p><img src="/assets/images/quickmaffs/quick1.png" alt="Test"></p>
+
+<p><strong>Now we are ready to HACK!</strong></p>
 
 <h2 id="patch-analysis">Patch Analysis</h2>
-<p>First, lets see the patch file. We dont need to understand every single line of code, but we should be able to find the vuln.</p>
+<p>Sekarang kita baca patch <code class="language-plaintext highlighter-rouge">maffs.patch</code> yang ada di soal untuk yang <code class="language-plaintext highlighter-rouge">v8_global.patch</code> tidak ada yang perlu kita analisis.<br>
+Kita fokus ke <code class="language-plaintext highlighter-rouge">maffs.patch</code>.</p>
 
-<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><table class="rouge-table"><tbody><tr>
+<figure class="highlight"><pre><code class="language-diff" data-lang="diff"><table class="rouge-table"><tbody><tr>
 <td class="gutter gl"><pre class="lineno">1
 2
 3
@@ -855,38 +904,47 @@ And for build the challenge, you can read the README.md</p>
 26
 27
 </pre></td>
-<td class="code"><pre><span class="nx">diff</span> <span class="o">--</span><span class="nx">git</span> <span class="nx">a</span><span class="o">/</span><span class="nx">src</span><span class="o">/</span><span class="nx">compiler</span><span class="o">/</span><span class="nx">js</span><span class="o">-</span><span class="nx">create</span><span class="o">-</span><span class="nx">lowering</span><span class="p">.</span><span class="nx">cc</span> <span class="nx">b</span><span class="o">/</span><span class="nx">src</span><span class="o">/</span><span class="nx">compiler</span><span class="o">/</span><span class="nx">js</span><span class="o">-</span><span class="nx">create</span><span class="o">-</span><span class="nx">lowering</span><span class="p">.</span><span class="nx">cc</span>
-<span class="nx">index</span> <span class="mi">50</span><span class="nx">a523c606</span><span class="p">..</span><span class="mi">0</span><span class="nx">b46267c4f</span> <span class="mi">100644</span>
-<span class="o">---</span> <span class="nx">a</span><span class="o">/</span><span class="nx">src</span><span class="o">/</span><span class="nx">compiler</span><span class="o">/</span><span class="nx">js</span><span class="o">-</span><span class="nx">create</span><span class="o">-</span><span class="nx">lowering</span><span class="p">.</span><span class="nx">cc</span>
-<span class="o">+++</span> <span class="nx">b</span><span class="o">/</span><span class="nx">src</span><span class="o">/</span><span class="nx">compiler</span><span class="o">/</span><span class="nx">js</span><span class="o">-</span><span class="nx">create</span><span class="o">-</span><span class="nx">lowering</span><span class="p">.</span><span class="nx">cc</span>
-<span class="p">@@</span> <span class="o">-</span><span class="mi">683</span><span class="p">,</span><span class="mi">9</span> <span class="o">+</span><span class="mi">683</span><span class="p">,</span><span class="mi">6</span> <span class="p">@@</span> <span class="nx">Reduction</span> <span class="nx">JSCreateLowering</span><span class="p">::</span><span class="nx">ReduceJSCreateArray</span><span class="p">(</span><span class="nx">Node</span><span class="o">*</span> <span class="nx">node</span><span class="p">)</span> <span class="p">{</span>
-         <span class="nx">length_type</span><span class="p">.</span><span class="nx">Max</span><span class="p">()</span> <span class="o">&lt;=</span> <span class="nx">kElementLoopUnrollLimit</span> <span class="o">&amp;&amp;</span>
-         <span class="nx">length_type</span><span class="p">.</span><span class="nx">Min</span><span class="p">()</span> <span class="o">==</span> <span class="nx">length_type</span><span class="p">.</span><span class="nx">Max</span><span class="p">())</span> <span class="p">{</span>
-       <span class="nx">int</span> <span class="nx">capacity</span> <span class="o">=</span> <span class="nx">static_cast</span><span class="o">&lt;</span><span class="nx">int</span><span class="o">&gt;</span><span class="p">(</span><span class="nx">length_type</span><span class="p">.</span><span class="nx">Max</span><span class="p">());</span>
-<span class="o">-</span>      <span class="c1">// Replace length with a constant in order to protect against a potential</span>
-<span class="o">-</span>      <span class="c1">// typer bug leading to length &gt; capacity.</span>
-<span class="o">-</span>      <span class="nx">length</span> <span class="o">=</span> <span class="nx">jsgraph</span><span class="p">()</span><span class="o">-&gt;</span><span class="nx">Constant</span><span class="p">(</span><span class="nx">capacity</span><span class="p">);</span>
-       <span class="k">return</span> <span class="nx">ReduceNewArray</span><span class="p">(</span><span class="nx">node</span><span class="p">,</span> <span class="nx">length</span><span class="p">,</span> <span class="nx">capacity</span><span class="p">,</span> <span class="o">*</span><span class="nx">initial_map</span><span class="p">,</span> <span class="nx">elements_kind</span><span class="p">,</span>
-                             <span class="nx">allocation</span><span class="p">,</span> <span class="nx">slack_tracking_prediction</span><span class="p">);</span>
-     <span class="p">}</span>
-<span class="nx">diff</span> <span class="o">--</span><span class="nx">git</span> <span class="nx">a</span><span class="o">/</span><span class="nx">src</span><span class="o">/</span><span class="nx">compiler</span><span class="o">/</span><span class="nx">operation</span><span class="o">-</span><span class="nx">typer</span><span class="p">.</span><span class="nx">cc</span> <span class="nx">b</span><span class="o">/</span><span class="nx">src</span><span class="o">/</span><span class="nx">compiler</span><span class="o">/</span><span class="nx">operation</span><span class="o">-</span><span class="nx">typer</span><span class="p">.</span><span class="nx">cc</span>
-<span class="nx">index</span> <span class="nx">e7dc51bd2d</span><span class="p">..</span><span class="mi">121</span><span class="nx">a7a7107</span> <span class="mi">100644</span>
-<span class="o">---</span> <span class="nx">a</span><span class="o">/</span><span class="nx">src</span><span class="o">/</span><span class="nx">compiler</span><span class="o">/</span><span class="nx">operation</span><span class="o">-</span><span class="nx">typer</span><span class="p">.</span><span class="nx">cc</span>
-<span class="o">+++</span> <span class="nx">b</span><span class="o">/</span><span class="nx">src</span><span class="o">/</span><span class="nx">compiler</span><span class="o">/</span><span class="nx">operation</span><span class="o">-</span><span class="nx">typer</span><span class="p">.</span><span class="nx">cc</span>
-<span class="p">@@</span> <span class="o">-</span><span class="mi">411</span><span class="p">,</span><span class="mi">7</span> <span class="o">+</span><span class="mi">411</span><span class="p">,</span><span class="mi">7</span> <span class="p">@@</span> <span class="nx">Type</span> <span class="nx">OperationTyper</span><span class="p">::</span><span class="nx">NumberCosh</span><span class="p">(</span><span class="nx">Type</span> <span class="nx">type</span><span class="p">)</span> <span class="p">{</span>
+<td class="code"><pre><span class="gh">diff --git a/src/compiler/js-create-lowering.cc b/src/compiler/js-create-lowering.cc
+index 50a523c606..0b46267c4f 100644
+</span><span class="gd">--- a/src/compiler/js-create-lowering.cc
+</span><span class="gi">+++ b/src/compiler/js-create-lowering.cc
+</span><span class="p">@@ -683,9 +683,6 @@</span> Reduction JSCreateLowering::ReduceJSCreateArray(Node* node) {
+         length_type.Max() &lt;= kElementLoopUnrollLimit &amp;&amp;
+         length_type.Min() == length_type.Max()) {
+       int capacity = static_cast&lt;int&gt;(length_type.Max());
+<span class="gd">-      // Replace length with a constant in order to protect against a potential
+-      // typer bug leading to length &gt; capacity.
+-      length = jsgraph()-&gt;Constant(capacity);
+</span>       return ReduceNewArray(node, length, capacity, *initial_map, elements_kind,
+                             allocation, slack_tracking_prediction);
+     }
+<span class="gh">diff --git a/src/compiler/operation-typer.cc b/src/compiler/operation-typer.cc
+index e7dc51bd2d..121a7a7107 100644
+</span><span class="gd">--- a/src/compiler/operation-typer.cc
+</span><span class="gi">+++ b/src/compiler/operation-typer.cc
+</span><span class="p">@@ -411,7 +411,7 @@</span> Type OperationTyper::NumberCosh(Type type) {
  
- <span class="nx">Type</span> <span class="nx">OperationTyper</span><span class="p">::</span><span class="nx">NumberExp</span><span class="p">(</span><span class="nx">Type</span> <span class="nx">type</span><span class="p">)</span> <span class="p">{</span>
-   <span class="nx">DCHECK</span><span class="p">(</span><span class="nx">type</span><span class="p">.</span><span class="nx">Is</span><span class="p">(</span><span class="nx">Type</span><span class="p">::</span><span class="nb">Number</span><span class="p">()));</span>
-<span class="o">-</span>  <span class="k">return</span> <span class="nx">Type</span><span class="p">::</span><span class="nx">Union</span><span class="p">(</span><span class="nx">Type</span><span class="p">::</span><span class="nx">PlainNumber</span><span class="p">(),</span> <span class="nx">Type</span><span class="p">::</span><span class="kc">NaN</span><span class="p">(),</span> <span class="nx">zone</span><span class="p">());</span>
-<span class="o">+</span>  <span class="k">return</span> <span class="nx">Type</span><span class="p">::</span><span class="nx">PlainNumber</span><span class="p">();</span>
- <span class="p">}</span>
+ Type OperationTyper::NumberExp(Type type) {
+   DCHECK(type.Is(Type::Number()));
+<span class="gd">-  return Type::Union(Type::PlainNumber(), Type::NaN(), zone());
+</span><span class="gi">+  return Type::PlainNumber();
+</span> }
  
- <span class="nx">Type</span> <span class="nx">OperationTyper</span><span class="p">::</span><span class="nx">NumberExpm1</span><span class="p">(</span><span class="nx">Type</span> <span class="nx">type</span><span class="p">)</span> <span class="p">{</span>
+ Type OperationTyper::NumberExpm1(Type type) {
 </pre></td>
 </tr></tbody></table></code></pre></figure>
 
-<p>We can see on the patch above, line 23 and 24
-The typer set <code class="language-plaintext highlighter-rouge">Math.exp to be PlainNumber();</code></p>
+<p>Disini saya jelasin sedikit maksud patch diatas:</p>
+<ul>
+  <li>Line 1 code tersebut patch file <code class="language-plaintext highlighter-rouge">src/compiler/js-create-lowring.cc</code> untuk code yang di patch bisa diliat pada line 9-11 3 baris code di deleted.</li>
+  <li>The patch was patcehd code to <code class="language-plaintext highlighter-rouge">src/compiler/operation-typer.cc</code> we can see on line 15.</li>
+</ul>
+
+<p>Can u guys see the bug?<br>
+Sebelum patch typer set<br>
+<code class="language-plaintext highlighter-rouge">Math.exp to be Union(Type::PlainNumber(), Type::NaN(), zone())</code> this mean the output will be either a PlainNumber or a NaN.
+But after the patch, we can see on the patch above on line 24.
+The typer set <code class="language-plaintext highlighter-rouge">Math.exp to be PlainNumber();</code> this mean the output will be always a PlainNumber.</p>
 
 <p>And here is the same code with syntax highlighting:</p>
 
@@ -937,9 +995,9 @@ The typer set <code class="language-plaintext highlighter-rouge">Math.exp to be 
       <div>Related Articles</div>
       <ul>
         <li><a class="post-link" href="/ctf/2021/11/03/test.html" title="Test!">Test!</a></li>
-<li><a class="post-link" href="/markdown/2018/12/05/an-exhibit-of-markdown.html" title="Test!">An exhibit of Markdown</a></li>
-<li><a class="post-link" href="/jekyll/2018/12/07/welcome-to-jekyll.html" title="Test!">Welcome to Jekyll!</a></li>
 <li><a class="post-link" href="/ctf/2021/11/03/quick-maffs.html" title="Test!">Cyber Jawara Quick Maffs</a></li>
+<li><a class="post-link" href="/jekyll/2018/12/07/welcome-to-jekyll.html" title="Test!">Welcome to Jekyll!</a></li>
+<li><a class="post-link" href="/markdown/2018/12/05/an-exhibit-of-markdown.html" title="Test!">An exhibit of Markdown</a></li>
 </ul>
     </div>
 <div class="post-comments"></div></section>
@@ -957,7 +1015,7 @@ The typer set <code class="language-plaintext highlighter-rouge">Math.exp to be 
 </style>
 
 <div class="post-menu">
-  <div class="post-menu-title">TOC</div>
+  <div class="post-menu-title">Contents</div>
   <div class="post-menu-content"></div>
 </div>
 

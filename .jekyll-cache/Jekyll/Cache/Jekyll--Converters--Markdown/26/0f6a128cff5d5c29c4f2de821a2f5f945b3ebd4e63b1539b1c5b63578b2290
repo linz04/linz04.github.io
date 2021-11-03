@@ -1,0 +1,153 @@
+I"é<h2 id="description">Description</h2>
+<blockquote>
+  <p>1 + 1 = 2, e^2 thatâ€™s 9? maybe? idk.<br />
+Author: circleous#0587</p>
+</blockquote>
+
+<p>Untuk download challengenya kalian bisa download di <a href="https://google.com">sini</a><br /></p>
+
+<h2 id="setup">Setup</h2>
+<p>Didalam zip file sudah ada README.md bisa kalian baca, tapi disini saya akan jelaskan cara setup dan build untuk challengenya dari awal.</p>
+<ol>
+  <li>Install depot_tools
+    <div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="nv">$ </span>git clone https://chromium.googlesource.com/chromium/tools/depot_tools.git
+  <span class="nv">$ </span><span class="nb">echo</span> <span class="s2">"export PATH=/home/your_path/path/depot_tools:</span><span class="nv">$PATH</span><span class="s2">"</span> <span class="o">&gt;&gt;</span> ~/.bashrc
+  <span class="nv">$ </span><span class="nb">source</span> ~/.bashrc
+</code></pre></div>    </div>
+  </li>
+  <li>Next extract challengenya, dan dialamnya sudah ada README.md
+    <div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="nv">$ </span>fetch v8 <span class="c"># https://chromium.googlesource.com/chromium/tools/depot_tools.git</span>
+  <span class="nv">$ </span><span class="nb">cd </span>v8
+  <span class="nv">$ </span>./build/install-build-deps.sh
+  <span class="nv">$ </span>git checkout 5fe0aa3bc79c0a9d3ad546b79211f07105f09585
+  <span class="nv">$ </span>git apply path/to/maffs.patch <span class="c"># challange patch</span>
+  <span class="nv">$ </span>git apply path/to/v8_global.patch <span class="c"># disable built-in d8 global</span>
+  <span class="nv">$ </span>./tools/dev/v8gen.py x64.release
+  <span class="nv">$ </span>ninja <span class="nt">-C</span> ./out.gn/x64.release <span class="c">#Release version</span>
+  <span class="nv">$ </span>./tools/dev/v8gen.py x64.debug
+  <span class="nv">$ </span>ninja <span class="nt">-C</span> ./out.gn/x64.debug <span class="c"># Debug version</span>
+</code></pre></div>    </div>
+  </li>
+</ol>
+
+<p>Untuk build v8 akan memakan waktu lumayan lama tergantung kecepatan koneksi kalian sama spec laptop kalian.
+Untuk Debugging bisa menggunakan gdb</p>
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>gdb <span class="nt">-q</span> d8
+<span class="nv">$ </span>run <span class="nt">--shell</span> script.js
+</code></pre></div></div>
+<p><code class="language-plaintext highlighter-rouge">--shell</code> disini agar v8 tidak langsung exit saat kita running script kita, untuk contoh script saya seperti ini</p>
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">foo</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">Hello World!</span><span class="se">\n</span><span class="dl">"</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="nx">foo</span><span class="p">();</span>
+</code></pre></div></div>
+<p><img src="/assets/images/quickmaffs/quick1.png" alt="Test" /></p>
+
+<p><strong>Now we are ready to HACK!</strong></p>
+
+<h2 id="patch-analysis">Patch Analysis</h2>
+<p>First, lets see the patch file. We dont need to understand every single line of code, but we should be able to find the vuln.</p>
+
+<figure class="highlight"><pre><code class="language-diff" data-lang="diff"><table class="rouge-table"><tbody><tr><td class="gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+</pre></td><td class="code"><pre><span class="gh">diff --git a/src/compiler/js-create-lowering.cc b/src/compiler/js-create-lowering.cc
+index 50a523c606..0b46267c4f 100644
+</span><span class="gd">--- a/src/compiler/js-create-lowering.cc
+</span><span class="gi">+++ b/src/compiler/js-create-lowering.cc
+</span><span class="p">@@ -683,9 +683,6 @@</span> Reduction JSCreateLowering::ReduceJSCreateArray(Node* node) {
+         length_type.Max() &lt;= kElementLoopUnrollLimit &amp;&amp;
+         length_type.Min() == length_type.Max()) {
+       int capacity = static_cast&lt;int&gt;(length_type.Max());
+<span class="gd">-      // Replace length with a constant in order to protect against a potential
+-      // typer bug leading to length &gt; capacity.
+-      length = jsgraph()-&gt;Constant(capacity);
+</span>       return ReduceNewArray(node, length, capacity, *initial_map, elements_kind,
+                             allocation, slack_tracking_prediction);
+     }
+<span class="gh">diff --git a/src/compiler/operation-typer.cc b/src/compiler/operation-typer.cc
+index e7dc51bd2d..121a7a7107 100644
+</span><span class="gd">--- a/src/compiler/operation-typer.cc
+</span><span class="gi">+++ b/src/compiler/operation-typer.cc
+</span><span class="p">@@ -411,7 +411,7 @@</span> Type OperationTyper::NumberCosh(Type type) {
+ 
+ Type OperationTyper::NumberExp(Type type) {
+   DCHECK(type.Is(Type::Number()));
+<span class="gd">-  return Type::Union(Type::PlainNumber(), Type::NaN(), zone());
+</span><span class="gi">+  return Type::PlainNumber();
+</span> }
+ 
+ Type OperationTyper::NumberExpm1(Type type) {
+</pre></td></tr></tbody></table></code></pre></figure>
+
+<p>I will explain a bit about the patch:</p>
+<ul>
+  <li>The patch was patched code to <code class="language-plaintext highlighter-rouge">src/compiler/js-create-lowering.cc</code> we can see on line 1.</li>
+  <li>The patch was patcehd code to <code class="language-plaintext highlighter-rouge">src/compiler/operation-typer.cc</code> we can see on line 15.</li>
+</ul>
+
+<p>Can u guys see the bug?<br />
+Sebelum patch typer set<br />
+<code class="language-plaintext highlighter-rouge">Math.exp to be Union(Type::PlainNumber(), Type::NaN(), zone())</code> this mean the output will be either a PlainNumber or a NaN.
+But after the patch, we can see on the patch above on line 24.
+The typer set <code class="language-plaintext highlighter-rouge">Math.exp to be PlainNumber();</code> this mean the output will be always a PlainNumber.</p>
+
+<p>And here is the same code with syntax highlighting:</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">foo</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">x</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">return</span><span class="p">(</span><span class="nx">x</span> <span class="o">+</span> <span class="mi">5</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="nx">foo</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>And here is the same code yet again but with line numbers:</p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><table class="rouge-table"><tbody><tr><td class="gutter gl"><pre class="lineno">1
+2
+3
+4
+</pre></td><td class="code"><pre><span class="kd">var</span> <span class="nx">foo</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">x</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">return</span><span class="p">(</span><span class="nx">x</span> <span class="o">+</span> <span class="mi">5</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="nx">foo</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+</pre></td></tr></tbody></table></code></pre></figure>
+
+<h2 id="boxes">Boxes</h2>
+<p>You can add notification, warning and error boxes like this:</p>
+
+<h3 id="notification">Notification</h3>
+
+<p class="box-note"><strong>Note:</strong> This is a notification box.</p>
+
+<h3 id="warning">Warning</h3>
+
+<p class="box-warning"><strong>Warning:</strong> This is a warning box.</p>
+
+<h3 id="error">Error</h3>
+
+<p class="box-error"><strong>Error:</strong> This is an error box.</p>
+:ET
