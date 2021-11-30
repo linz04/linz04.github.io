@@ -839,7 +839,7 @@ function copy_shellcode(addr2, shellcode) {
 }
 ```
 
-Saya tidak akan menjelaskan secara detail fungsi tersebut seperti apa, karena kita tinggal copas saja dari CVE yang ada digithub contohnya [ini](https://github.com/r4j0x00/exploits/blob/master/chrome-patch-gap/exploit.js).
+Saya tidak akan menjelaskan secara detail fungsi tersebut seperti apa, karena kita tinggal copas saja dari CVE yang ada digithub contohnya [ini](https://github.com/r4j0x00/exploits/blob/master/chrome-patch-gap/exploit.js). Hal yang beda hanyalah offset dari **backing_store_addr** tinggal debug saja di GDB, semangat!
 
 Ohya karena payload shellcode di v8 berbeda, maka saya buat script python untuk generate payload seperti berikut
 ```py
