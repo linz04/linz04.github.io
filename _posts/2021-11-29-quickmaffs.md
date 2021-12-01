@@ -452,7 +452,7 @@ pwndbg> x/4gx 0x1d0e08283929-1
 0x1d0e08283938:	0x082839290800222d	0x080025a900000002
 ```
 
-Sekali lagi saya ingatkan, yang kita perhatikan disini adalah 4 bytes belakang, karena tag pointer dari v8, oleh karena saat kita `%DebugPrint(obj)` kita mendapatkan value
+Sekali lagi saya ingatkan, yang kita perhatikan disini adalah 4 bytes belakang, karena tag pointer dari v8, oleh karena itu, saat kita `%DebugPrint(obj)` kita mendapatkan value
 `0x1d0e08282241`, namun saat kita debug manual kita dapat value `0x08203b3108282241`, tetapi 4 bytes belakangnya sama yaitu `08282241` maka yang kita gunakan adalah value ini.
 Nah dari penjelasan faith yang
 
