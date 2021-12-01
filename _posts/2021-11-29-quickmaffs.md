@@ -454,7 +454,6 @@ pwndbg> x/4gx 0x1d0e08283929-1
 
 Sekali lagi saya ingatkan, yang kita perhatikan disini adalah 4 bytes belakang, karena tag pointer dari v8, oleh karena itu, saat kita `%DebugPrint(obj)` kita mendapatkan value
 `0x1d0e08282241`, namun saat kita debug manual kita dapat value `0x08203b3108282241`, tetapi 4 bytes belakangnya sama yaitu `08282241` maka yang kita gunakan adalah value ini.
-Nah dari penjelasan faith yang
 
 Nah dari yang kita lihat diatas, **Map** dari **obj_arr** atau **Array of object**. Index 0 dari float array biasa, adalah float value, sedangkan index 0 dari **Array of object**
 adalah value address dari **obj** itu sendiri. Namun saat kita call obj_arr[0], itu bukan print address dari **obj** namun akan print `{A: 1.1}`.<br>
