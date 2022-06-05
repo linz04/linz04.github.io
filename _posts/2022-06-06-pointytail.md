@@ -201,6 +201,7 @@ We can do arbwrite and arbread and we got leak stack and the mapped area. How to
 If you check vmmap, there's many rwxp address there from because of **dotnet**, we can use one of that address to write shellcode.\
 Because we have stack address, we can leak one of rwxp address from stack. Luckily we have one near the address leak we have.
 ![pointytail](/assets/images/pointytail/pointytail5.png)
+<br>
 ![pointytail](/assets/images/pointytail/pointytail6.png)
 The offset to the rwxp will be same, With this now we have the rwxp address.
 ```py
