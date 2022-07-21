@@ -11,7 +11,7 @@ tags: [national, writeups, v8]
 > 1 + 1 = 2, e^2 that's 9? maybe? idk.\
 > Author: circleous#0587
 
-Untuk download challengenya kalian bisa download di [sini](https://google.com)<br>
+Untuk download challengenya kalian bisa download di [sini](https://github.com/linz04/PWN-Writeup/tree/national/CyberJawara/Quick)<br>
 Untuk referensi v8 typer bug kalian bisa lihat di [sini](https://abiondo.me/2019/01/02/exploiting-math-expm1-v8/).<br>
 Hint dari author:
 ```js

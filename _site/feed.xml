@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="id"><generator uri="https://jekyllrb.com/" version="4.2.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" hreflang="id" /><updated>2022-06-06T00:31:39+07:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Linz’s Blog</title><subtitle>Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.</subtitle><author><name>linz04</name></author><entry><title type="html">Pointytail</title><link href="http://localhost:4000/ctf/2022/06/06/pointytail.html" rel="alternate" type="text/html" title="Pointytail" /><published>2022-06-06T00:00:00+07:00</published><updated>2022-06-06T00:00:00+07:00</updated><id>http://localhost:4000/ctf/2022/06/06/pointytail</id><content type="html" xml:base="http://localhost:4000/ctf/2022/06/06/pointytail.html">&lt;h2 id=&quot;pointy-tail&quot;&gt;Pointy Tail&lt;/h2&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="id"><generator uri="https://jekyllrb.com/" version="4.2.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" hreflang="id" /><updated>2022-07-21T21:15:00+07:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Linz’s Blog</title><subtitle>Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.</subtitle><author><name>linz04</name></author><entry><title type="html">Pointytail</title><link href="http://localhost:4000/ctf/2022/06/06/pointytail.html" rel="alternate" type="text/html" title="Pointytail" /><published>2022-06-06T00:00:00+07:00</published><updated>2022-06-06T00:00:00+07:00</updated><id>http://localhost:4000/ctf/2022/06/06/pointytail</id><content type="html" xml:base="http://localhost:4000/ctf/2022/06/06/pointytail.html">&lt;h2 id=&quot;pointy-tail&quot;&gt;Pointy Tail&lt;/h2&gt;
 &lt;p&gt;&lt;img src=&quot;/assets/images/pointytail/pointytail.png&quot; alt=&quot;pointytail&quot; /&gt;&lt;/p&gt;
 
 &lt;h3 id=&quot;description&quot;&gt;Description&lt;/h3&gt;
@@ -150,7 +150,7 @@ For debugging I use script like this.&lt;/p&gt;
 &lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;util&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;proc&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pidof&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;p&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
 &lt;span class=&quot;n&quot;&gt;p&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;interactive&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;Then just attach the pidof at gdb. When we Input &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;s 0 0&lt;/code&gt; the error show Index was out of bound.&lt;br /&gt;
+&lt;p&gt;Then just attach the pidof at gdb. When we Input &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;s 0 0&lt;/code&gt; the error show Object reference is not set.&lt;br /&gt;
 &lt;img src=&quot;/assets/images/pointytail/pointytail1.png&quot; alt=&quot;pointytail&quot; /&gt;
 Next here I try to convert the first value of &lt;strong&gt;s&lt;/strong&gt; from decimal to hex to see what is that.&lt;/p&gt;
 
@@ -181,6 +181,7 @@ As you can see from picture above we can do arbitary write and read with first i
 If you check vmmap, there’s many rwxp address there from because of &lt;strong&gt;dotnet&lt;/strong&gt;, we can use one of that address to write shellcode.&lt;br /&gt;
 Because we have stack address, we can leak one of rwxp address from stack. Luckily we have one near the address leak we have.
 &lt;img src=&quot;/assets/images/pointytail/pointytail5.png&quot; alt=&quot;pointytail&quot; /&gt;
+&lt;br /&gt;
 &lt;img src=&quot;/assets/images/pointytail/pointytail6.png&quot; alt=&quot;pointytail&quot; /&gt;
 The offset to the rwxp will be same, With this now we have the rwxp address.&lt;/p&gt;
 &lt;div class=&quot;language-py highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;do2hex&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;f&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
@@ -277,7 +278,7 @@ The offset on local is 0x9340 and on server is 0x92b0, with this just change the
 Author: circleous#0587&lt;/p&gt;
 &lt;/blockquote&gt;
 
-&lt;p&gt;Untuk download challengenya kalian bisa download di &lt;a href=&quot;https://google.com&quot;&gt;sini&lt;/a&gt;&lt;br /&gt;
+&lt;p&gt;Untuk download challengenya kalian bisa download di &lt;a href=&quot;https://github.com/linz04/PWN-Writeup/tree/national/CyberJawara/Quick&quot;&gt;sini&lt;/a&gt;&lt;br /&gt;
 Untuk referensi v8 typer bug kalian bisa lihat di &lt;a href=&quot;https://abiondo.me/2019/01/02/exploiting-math-expm1-v8/&quot;&gt;sini&lt;/a&gt;.&lt;br /&gt;
 Hint dari author:&lt;/p&gt;
 &lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;foo&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;

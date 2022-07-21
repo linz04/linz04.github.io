@@ -974,7 +974,7 @@ For debugging I use script like this.</p>
 <span class="k">print</span><span class="p">(</span><span class="n">util</span><span class="p">.</span><span class="n">proc</span><span class="p">.</span><span class="n">pidof</span><span class="p">(</span><span class="n">p</span><span class="p">))</span>
 <span class="n">p</span><span class="p">.</span><span class="n">interactive</span><span class="p">()</span>
 </code></pre></div></div>
-<p>Then just attach the pidof at gdb. When we Input <code class="language-plaintext highlighter-rouge">s 0 0</code> the error show Index was out of bound.<br>
+<p>Then just attach the pidof at gdb. When we Input <code class="language-plaintext highlighter-rouge">s 0 0</code> the error show Object reference is not set.<br>
 <img src="/assets/images/pointytail/pointytail1.png" alt="pointytail">
 Next here I try to convert the first value of <strong>s</strong> from decimal to hex to see what is that.</p>
 
@@ -1005,6 +1005,7 @@ As you can see from picture above we can do arbitary write and read with first i
 If you check vmmap, there’s many rwxp address there from because of <strong>dotnet</strong>, we can use one of that address to write shellcode.<br>
 Because we have stack address, we can leak one of rwxp address from stack. Luckily we have one near the address leak we have.
 <img src="/assets/images/pointytail/pointytail5.png" alt="pointytail">
+<br>
 <img src="/assets/images/pointytail/pointytail6.png" alt="pointytail">
 The offset to the rwxp will be same, With this now we have the rwxp address.</p>
 <div class="language-py highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">do2hex</span><span class="p">(</span><span class="n">f</span><span class="p">):</span>
