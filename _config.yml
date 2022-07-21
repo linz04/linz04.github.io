@@ -72,7 +72,7 @@ yat:
 # sitemap: false
 
 # If you want to change site language, you can set lang option
-lang: "id"  # default lang is id
+lang: "en"  # default lang is id
 
 # Translate languges
 # langs refer to https://cloud.google.com/translate/docs/languages
@@ -134,7 +134,7 @@ lang: "id"  # default lang is id
 # it will be always kept on every visit (i.e. no matter
 # the browser is closed or not)
 #
-# night_mode: "auto"
+night_mode: "on"
 
 # Code badge setting
 # You can enable or disable the code badge and so on

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="en">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <meta charset="utf-8">
@@ -11,7 +11,7 @@
 <meta name="generator" content="Jekyll v4.2.1">
 <meta property="og:title" content="Home">
 <meta name="author" content="linz04">
-<meta property="og:locale" content="id">
+<meta property="og:locale" content="en">
 <meta name="description" content="Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.">
 <meta property="og:description" content="Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.">
 <link rel="canonical" href="http://localhost:4000/">
@@ -344,7 +344,7 @@ document.addEventListener('DOMContentLoaded', function(event) {
 <script type="text/javascript">
 function googleTranslateElementInit() {
   new google.translate.TranslateElement({
-    pageLanguage: 'id',
+    pageLanguage: 'en',
     autoDisplay: false,
     layout: google.translate.TranslateElement.InlineLayout.VERTICAL
   }, 'google_translate_element');
@@ -604,16 +604,16 @@ function googleTranslateElementInit() {
 
 <section class="page-banner">
     <div class="page-banner-img">
-<div style="background-image: url(/assets/images/banners/123.jpeg)"></div>
-        <img class="img-placeholder" src="/assets/images/banners/123.jpeg">
+<div style="background-image: url(/assets/images/banners/home.png)"></div>
+        <img class="img-placeholder" src="/assets/images/banners/home.png">
 </div>
     <div class="wrapper">
       <div class="page-banner-inner"><div class="page-banner-default">
             <h1 class="page-banner-heading">
-              Linuz Tri Erianto
+              Home
             </h1>
             <h2 class="page-banner-subheading">
-              CS Student IPB University
+              
             </h2>
           </div></div>
     </div>
@@ -679,7 +679,7 @@ function googleTranslateElementInit() {
   (function() {
     var sw = document.getElementById('theme-switch');
     var html = document.getElementsByTagName('html')[0];
-    var nightModeOption = ('auto' || 'auto').toLowerCase();
+    var nightModeOption = ('on' || 'auto').toLowerCase();
     var storage = nightModeOption === 'manual'
         ? localStorage
         : sessionStorage;
@@ -852,7 +852,7 @@ function googleTranslateElementInit() {
       </h2>
       <div class="post-meta">
         <span class="post-date"><i class="fa fa-calendar"></i> Jun 06, 2022</span>
-        <span class="post-reading-time left-vsplit"><i class="fa fa-clock-o"></i> About 28 mins</span>
+        <span class="post-reading-time left-vsplit"><i class="fa fa-clock-o"></i> About 14 mins</span>
       </div>
       <a class="post-excerpt" href="/ctf/2022/06/06/pointytail.html">
         <p>
@@ -863,7 +863,14 @@ Description
 You can download the challenge here
 
   Author: Neobeo
-Types in .NET are so confusing: should a Point type be a struct or a class? Let’s have one of each, just to compa... <span class="read_more">Read More</span>
+Types in .NET are so confusing: should a Point type be a struct or a class? Let’s have one of each, just to compare.
+nc fun.chall.seetf.sg 50007
+MD5: 211020d68a6243fa5572b360b27eb8d
+
+
+Introduction
+In this challenge we are given 6 files including the Dockerfile.
+The c... <span class="read_more">Read More</span>
         </p>
       </a>
       <div class="post-tags">
@@ -940,7 +947,7 @@ Types in .NET are so confusing: should a Point type be a struct or a class? Let�
       </h2>
       <div class="post-meta">
         <span class="post-date"><i class="fa fa-calendar"></i> Nov 29, 2021</span>
-        <span class="post-reading-time left-vsplit"><i class="fa fa-clock-o"></i> About 2 hours 5 mins</span>
+        <span class="post-reading-time left-vsplit"><i class="fa fa-clock-o"></i> About 1 hour 2 mins</span>
       </div>
       <a class="post-excerpt" href="/ctf/2021/11/29/quickmaffs.html">
         <p>
@@ -952,7 +959,14 @@ Author: circleous#0587
 
 Untuk download challengenya kalian bisa download di sini
 Untuk referensi v8 typer bug kalian bisa lihat di sini.
-... <span class="read_more">Read More</span>
+Hint dari author:
+function foo() {
+  return Object.is(Math.exp(NaN), NaN);
+}
+
+
+Setup
+Didalam zip file sudah ada README.md bisa kalian baca, tapi disini saya... <span class="read_more">Read More</span>
         </p>
       </a>
       <div class="post-tags">
@@ -1029,7 +1043,7 @@ Untuk referensi v8 typer bug kalian bisa lihat di sini.
       </h2>
       <div class="post-meta">
         <span class="post-date"><i class="fa fa-calendar"></i> Nov 07, 2021</span>
-        <span class="post-reading-time left-vsplit"><i class="fa fa-clock-o"></i> About 17 mins</span>
+        <span class="post-reading-time left-vsplit"><i class="fa fa-clock-o"></i> About 9 mins</span>
       </div>
       <a class="post-excerpt" href="/ctf/2021/11/07/padnote.html">
         <p>
@@ -1039,7 +1053,34 @@ Untuk referensi v8 typer bug kalian bisa lihat di sini.
 Author: ptr-yudai
 
 
-You can download the c... <span class="read_more">Read More</span>
+You can download the challenge archive from here
+
+The Bug
+Lets look the source code, the bug is in EditNote function
+
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+2... <span class="read_more">Read More</span>
         </p>
       </a>
       <div class="post-tags">
